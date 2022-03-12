@@ -57,8 +57,8 @@ params:
     buttons:
       - name: Notes
         url: "/note/"
-      - name: Github
-        url: "https://github.com/"
+      - name: Blog-old
+        url: "https://kenshin2438.top/"
   
   # home-info mode
   # homeInfoParams:
