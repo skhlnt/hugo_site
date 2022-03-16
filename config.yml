@@ -50,13 +50,15 @@ params:
     enabled: true
     title: "Kenshin2438" # optional default will be site title
     subtitle: "ACM/Math/Blog/Notes"
-    imageUrl: "images/avatar.jpg" # optional
+    imageUrl: /images/avatar.jpg # optional
     imageTitle: "avatar.jpg" # optional
     imageWidth: 120 # custom size
     imageHeight: 120 # custom size
     buttons:
       - name: Notes
-        url: "/note/"
+        url: "/note/book"
+      - name: Posts
+        url: "/posts/"
       - name: Blog-old
         url: "https://kenshin2438.top/"
   

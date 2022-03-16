@@ -69,12 +69,12 @@ $$
 
 + `AND`
 $$
-c[k] = \sum_{i \& j = k}(a[i] \times b[j])
+c[k] = \sum_{i \\& j = k}(a[i] \times b[j])
 $$
 
 ### SOSDP/高维前缀和
 
-先枚举每个元素，再枚举集合，然后就有转移$S \setminus \{i\} \rightarrow S$。
+先枚举每个元素，再枚举集合，然后就有转移$S \setminus \\{i\\} \rightarrow S$。
 
 ```cpp
 void SOSDP(int *a, int n) { 
@@ -89,7 +89,7 @@ void SOSDP(int *a, int n) {
 ## 子集卷积
 
 $$
-c[k] = \sum_{i \& j=0,i | j=k}(a[i] \times b[j])
+c[k] = \sum_{i \\& j=0,i | j=k}(a[i] \times b[j])
 $$
 
 ## gcd/lcm卷积
@@ -109,7 +109,8 @@ $$
 其实是一类线段树问题，来源[BZOJ 2962. 序列操作](https://hydro.ac/d/bzoj/p/2962)
 
 > 有一个长度为n的序列，有三个操作
-> 1.I a b c表示将[a,b]这一段区间的元素集体增加c
-> 2.R a b表示将[a,b]区间内所有元素变成相反数
-> 3.Q a b c表示询问[a,b]这一段区间中选择c个数相乘的所有方案的和mod 19940417的值。(此处1<=c<=20)
+> 
+> 1. I a b c表示将[a,b]这一段区间的元素集体增加c
+> 2. R a b表示将[a,b]区间内所有元素变成相反数
+> 3. Q a b c表示询问[a,b]这一段区间中选择c个数相乘的所有方案的和mod `19940417`的值。(此处1<=c<=20)
 
