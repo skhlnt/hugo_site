@@ -6,8 +6,11 @@ slug: d7959a4b.html
 
 author: "Kenshin2438"
 description: "记录一下我见过的奇奇怪怪的卷积以及用于高效计算的变换"
-tag: ["卷积"]
-categories: [""]
+tags: 
+- Convolution
+
+categories:
+- 多项式
 
 weight: false
 math: true
@@ -112,5 +115,5 @@ $$
 > 
 > 1. I a b c表示将[a,b]这一段区间的元素集体增加c
 > 2. R a b表示将[a,b]区间内所有元素变成相反数
-> 3. Q a b c表示询问[a,b]这一段区间中选择c个数相乘的所有方案的和mod `19940417`的值。(此处1<=c<=20)
+> 3. Q a b c表示询问[a,b]这一段区间中选择c个数相乘的所有方案的和mod`19940417`的值。(此处1<=c<=20)
 
