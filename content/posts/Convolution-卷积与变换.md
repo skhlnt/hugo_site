@@ -2,15 +2,14 @@
 title: "Convolution 卷积与变换"
 date: 2022-03-12T20:39:10+08:00
 draft: true
-slug: d7959a4b.html
+slug: d7959a4b
 
 author: "Kenshin2438"
 description: "记录一下我见过的奇奇怪怪的卷积以及用于高效计算的变换"
-tags: 
-- Convolution
-
 categories:
 - 多项式
+tags: 
+- Convolution
 
 weight: false
 math: true

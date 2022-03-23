@@ -1,10 +1,10 @@
 baseURL: https://spacedot.xyz/
 languageCode: en-us
-title: SpaceDot
+title: Kenshin2438's Blog
 theme: PaperMod
 
 permalinks:
-  posts: /archives/:slug  
+  posts: /archives/:slug
 
 enableInlineShortcodes: true
 enablePermalinks: true
@@ -58,7 +58,7 @@ params:
     imageHeight: 120 # custom size
     buttons:
       - name: Notes
-        url: "/note/book"
+        url: "https://note.spacedot.xyz/"
       - name: Posts
         url: "/posts/"
       - name: Blog-old
@@ -114,23 +114,23 @@ markup:
 
 menu:
   main:
-    - identifier: search
-      name: Search
-      url: /search/
-      weight: 10
     - identifier: archives
       name: Archive
       url: /archives/
-      weight: 20
+      weight: 10
     - identifier: categories
       name: Categories
       url: /categories/
-      weight: 30
+      weight: 20
     - identifier: tags
       name: Tags
       url: /tags/
-      weight: 40
+      weight: 30
     - identifier: links
       name: Links
       url: /links/
+      weight: 40
+    - identifier: search
+      name: Search
+      url: /search/
       weight: 50
