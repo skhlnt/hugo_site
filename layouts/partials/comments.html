@@ -1,7 +1,10 @@
 {{- /* Comments area start */ -}}
 {{- /* to add comments read => https://gohugo.io/content-management/comments/ */ -}}
 <!-- Twikoo -->
-<div id="tcomment"></div>
+<footer class="tc-container" id="comment">
+    <div class="tc-title"><p class="c-title">Discussion</p></div>
+    <div id="tcomment"></div>
+</footer>
 <script src="https://cdn.jsdelivr.net/npm/twikoo@{{ .Site.Params.twikoo.version }}/dist/twikoo.all.min.js"></script>
 <script>
     twikoo.init({
