@@ -7,18 +7,18 @@ slug: d7959a4b
 author: "Kenshin2438"
 description: "记录一下我见过的奇奇怪怪的卷积以及用于高效计算的变换"
 categories:
-- 多项式
+  - 多项式
 tags: 
-- Convolution
+  - Convolution
 
 weight: false
 math: true
 comments: true
 
 cover:
-    image: "<image path/url>" # image path/url
-    alt: "<alt text>" # alt text
-    caption: "<text>" # display caption under cover
+  image: "<image path/url>" # image path/url
+  alt: "<alt text>" # alt text
+  caption: "<text>" # display caption under cover
 ---
 
 ## 卷积积分/离散卷积
@@ -76,7 +76,7 @@ $$
 
 ### SOSDP/高维前缀和
 
-先枚举每个元素，再枚举集合，然后就有转移$S \setminus \\{i\\} \rightarrow S$。
+先枚举每个元素，再枚举集合，然后就有转移$S \setminus \\\\{i\\\\} \rightarrow S$。
 
 ```cpp
 void SOSDP(int *a, int n) { 
