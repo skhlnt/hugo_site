@@ -1,0 +1,115 @@
+@font-face{
+    font-family: 'SCP';
+    font-weight: 200;
+    font-style: normal;
+    font-stretch: normal;
+    src: url('/font/SourceCodePro-ExtraLight.ttf.woff2') format('woff2');
+}
+
+@font-face{
+    font-family: 'SCP';
+    font-weight: 200;
+    font-style: italic;
+    font-stretch: normal;
+    src: url('/font/SourceCodePro-ExtraLightIt.ttf.woff2') format('woff2');
+}
+
+@font-face{
+    font-family: 'SCP';
+    font-weight: 300;
+    font-style: normal;
+    font-stretch: normal;
+    src: url('/font/SourceCodePro-Light.ttf.woff2') format('woff2');
+}
+
+@font-face{
+    font-family: 'SCP';
+    font-weight: 300;
+    font-style: italic;
+    font-stretch: normal;
+    src: url('/font/SourceCodePro-LightIt.ttf.woff2') format('woff2');
+}
+
+@font-face{
+    font-family: 'SCP';
+    font-weight: 400;
+    font-style: normal;
+    font-stretch: normal;
+    src: url('/font/SourceCodePro-Regular.ttf.woff2') format('woff2');
+}
+
+@font-face{
+    font-family: 'SCP';
+    font-weight: 400;
+    font-style: italic;
+    font-stretch: normal;
+    src: url('/font/SourceCodePro-It.ttf.woff2') format('woff2');
+}
+
+@font-face{
+    font-family: 'SCP';
+    font-weight: 500;
+    font-style: normal;
+    font-stretch: normal;
+    src: url('/font/SourceCodePro-Medium.ttf.woff2') format('woff2');
+}
+
+@font-face{
+    font-family: 'SCP';
+    font-weight: 500;
+    font-style: italic;
+    font-stretch: normal;
+    src: url('/font/SourceCodePro-MediumIt.ttf.woff2') format('woff2');
+}
+
+@font-face{
+    font-family: 'SCP';
+    font-weight: 600;
+    font-style: normal;
+    font-stretch: normal;
+    src: url('/font/SourceCodePro-Semibold.ttf.woff2') format('woff2');
+}
+
+@font-face{
+    font-family: 'SCP';
+    font-weight: 600;
+    font-style: italic;
+    font-stretch: normal;
+    src: url('/font/SourceCodePro-SemiboldIt.ttf.woff2') format('woff2');
+}
+
+@font-face{
+    font-family: 'SCP';
+    font-weight: 700;
+    font-style: normal;
+    font-stretch: normal;
+    src: url('/font/SourceCodePro-Bold.ttf.woff2') format('woff2');
+}
+
+@font-face{
+    font-family: 'SCP';
+    font-weight: 700;
+    font-style: italic;
+    font-stretch: normal;
+    src: url('/font/SourceCodePro-BoldIt.ttf.woff2') format('woff2');
+}
+
+@font-face{
+    font-family: 'SCP';
+    font-weight: 900;
+    font-style: normal;
+    font-stretch: normal;
+    src: url('/font/SourceCodePro-Black.ttf.woff2') format('woff2');
+}
+
+@font-face{
+    font-family: 'SCP';
+    font-weight: 900;
+    font-style: italic;
+    font-stretch: normal;
+    src: url('/font/SourceCodePro-BlackIt.ttf.woff2') format('woff2');
+}
+
+pre, code {
+    font-family: 'SCP';
+}
