@@ -7,18 +7,18 @@ slug: {{ substr (md5 (printf "%s%s" .Date (replace .TranslationBaseName "-" " " 
 author: "Kenshin2438"
 description: ""
 categories: 
-- 
+  - 
 tags: 
-- 
+  - 
 
 weight: false
 math: true
 comments: true
 
 cover:
-    image: "" # image path/url
-    alt: "" # alt text
-    caption: "" # display caption under cover
-    relative: false
+  image: "" # image path/url
+  alt: "" # alt text
+  caption: "" # display caption under cover
+  relative: false
 ---
 
