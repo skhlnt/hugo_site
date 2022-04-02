@@ -1,6 +1,6 @@
-baseURL: https://spacedot.xyz/
+baseURL: https://kenshin2438.top/
 languageCode: en-us
-title: Kenshin2438's Blog
+title: Kenshin2438
 theme: PaperMod
 
 permalinks:
@@ -50,19 +50,19 @@ params:
 
   profileMode:
     enabled: true
-    title: "Kenshin2438" # optional default will be site title
-    subtitle: "ACM/Math/Blog/Notes"
-    imageUrl: /images/avatar.jpg # optional
-    imageTitle: "avatar.jpg" # optional
+    title: "欢迎来到没有知识的荒原" # optional default will be site title
+    subtitle: "ACM/Mathematics/Notes"
+    imageUrl: /images/avatar.webp # optional
+    imageTitle: "avatar.webp" # optional
     imageWidth: 120 # custom size
     imageHeight: 120 # custom size
     buttons:
       - name: Notes
-        url: "https://note.spacedot.xyz/"
+        url: "https://spacedot.xyz/"
       - name: Posts
         url: "/posts/"
       - name: Blog-old
-        url: "https://kenshin2438.top/"
+        url: "https://old.kenshin2438.top/"
   
   # home-info mode
   # homeInfoParams:
