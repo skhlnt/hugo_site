@@ -4,7 +4,7 @@ title: Kenshin2438
 theme: PaperMod
 
 permalinks:
-  posts: /archives/:slug
+  posts: /archives/:slug.html
 
 enableInlineShortcodes: true
 enablePermalinks: true
