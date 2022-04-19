@@ -1,36 +1,14 @@
 <script>
-MathJax = {
-    tex: {
-        inlineMath: [['$', '$'], ['\\(', '\\)']],
-        processEscapes: true,
-        tags: 'ams',
-        macros: {
-            ssqrt: ['\\sqrt{\\smash[b]{\\mathstrut #1}}', 1],
-            tcdegree: ['\\unicode{xb0}'],
-            tccelsius: ['\\unicode{x2103}'],
-            tcperthousand: ['\\unicode{x2030}'],
-            tcmu: ['\\unicode{x3bc}'],
-            tcohm: ['\\unicode{x3a9}']
+    MathJax = {
+        tex: {
+            inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        svg: {
+            fontCache: 'global'
         }
-    },
-    chtml: {
-        scale: 1,                      // global scaling factor for all expressions
-        minScale: .5,                  // smallest scaling factor to use
-        mtextInheritFont: false,       // true to make mtext elements use surrounding font
-        merrorInheritFont: true,       // true to make merror text use surrounding font
-        mathmlSpacing: false,          // true for MathML spacing rules, false for TeX rules
-        skipAttributes: {},            // RFDa and other attributes NOT to copy to the output
-        exFactor: .5,                  // default size of ex in em units
-        displayAlign: 'center',        // default for indentalign when set to 'auto'
-        displayIndent: '0',            // default for indentshift when set to 'auto'
-        matchFontHeight: true,         // true to match ex-height of surrounding font
-        // fontURL: 'https://cdn.jsdelivr.net/npm/source-code-pro/WOFF2/OTF/',   // The URL where the fonts are found
-        adaptiveCSS: true              // true means only produce CSS that is used in the processed equations
-    }
-};
+    };
 </script>
-
-<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-<script id="MathJax-script" async 
+<script 
+    type="text/javascript" id="MathJax-script" async 
     src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
 </script>
