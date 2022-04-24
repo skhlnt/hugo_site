@@ -28,7 +28,7 @@ cover:
 没有代码，放心食用。
 {{< /admonition >}}
 
-<!-- more -->
+<!--more-->
 # A	Find Subsequence
 <small>（WA了一晚上，回来把树状数组重写了一下就过了？？？）</small>
 

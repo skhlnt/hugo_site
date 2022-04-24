@@ -27,7 +27,7 @@ x^{p-1} \equiv 1 \pmod{p}
 \end{aligned}$$
 那么反之，如果有$x$满足$\forall a>1,(a,x)=1,s.t. a^x \equiv 1 \pmod{x}$，这样的$x$一定是素数吗？
 
-<!-- more -->
+<!--more-->
 
 很可惜的是，上述逆定理并不成立。
 

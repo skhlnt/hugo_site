@@ -32,7 +32,7 @@ $$a^x \equiv b\pmod c$$
 
 $$x^n \equiv b\pmod c$$
 
-<!-- more -->
+<!--more-->
 
 # 基础问题 $a^x\equiv b\pmod c$
 具体来说，`BSGS`的思路就是`分块预处理`+`hash`。

@@ -26,6 +26,8 @@ cover:
 
 无法忍受`hexo`的速度，故换到`hugo`，使用主题为`PaperMod`，正在一步步转移博客内容。
 
+<!--more-->
+
 ## 各种参考源
 
 感谢互联网，让本前端菜鸡也能尽可能找到自己想要的实现方式。
@@ -65,7 +67,7 @@ cover:
 
 + 行内公式
 
-When $a \ne 0$, there are two solutions to \\\\(ax^2 + bx + c = 0\\\\) and they are
+When $a \ne 0$, there are two solutions to \\(ax^2 + bx + c = 0\\) and they are
 $$x = {-b \pm \sqrt{b^2-4ac} \over 2a}.$$
 
 ### Bilibili

@@ -30,7 +30,7 @@ $$\begin{aligned}
 & \cos^{2n+1}{x}=\frac{1}{2^{2n}}\sum_{k=0}^{n}{2n+1 \choose k}\cos{(2n-2k+1)x} \\\\
 \end{aligned}$$
 
-<!-- more -->
+<!--more-->
 
 虽然看起来原本简单的式子被极大地复杂化了，但其实在很多命题中，它们起着十分不错的化简作用。
 

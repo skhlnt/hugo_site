@@ -29,7 +29,7 @@ cover:
 
 题目来源：`Luogu`, `LibreOJ`, `HDU`等。
 
-<!-- more -->
+<!--more-->
 
 ---
 
