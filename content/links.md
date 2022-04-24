@@ -13,7 +13,7 @@ ShowToc: false
 
 {{< friend name="Rivego's Blog" url="https://rivego.cn/" logo="https://cdn.jsdelivr.net/gh/rivego/image/img/20210824203824.jpg" word="" >}}
 
-{{< friend name="尤利の博客" url="https://rivego.cn/" logo="https://amcones.cn/wp-content/uploads/2022/01/cropped-1-1.jpg" word="" >}}
+{{< friend name="尤利の博客" url="https://amcones.cn/" logo="https://amcones.cn/wp-content/uploads/2022/01/cropped-1-1.jpg" word="" >}}
 
 {{< friend name="不语奈何の博客" url="https://buyunaihe.cn/" logo="http://buyunaihe.cn/wp-content/uploads/2021/11/avatar1.jpg" word="" >}}
 

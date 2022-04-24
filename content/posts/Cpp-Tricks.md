@@ -1,6 +1,6 @@
 ---
 title: "Cpp Tricks - 语言向进阶（？）指南"
-date: 2022-04-03T18:57:19+08:00
+date: 2022-04-17T18:57:19+08:00
 draft: false
 slug: 84f84658
 
@@ -23,6 +23,10 @@ cover:
 ---
 
 {{< admonition info "Info" true >}}
+update at 2022-04-25 内容未完，之后写代码过程中见到或者想到的好的技巧都会逐步添加。
+
+---
+
 **使用的编译指令：**
 ```bash
 "g++" -std=c++17 -Wall -Ofast -DLOCAL "ac.cpp" -o "ac.exe" 
