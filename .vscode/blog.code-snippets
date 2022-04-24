@@ -37,5 +37,13 @@
 			"{{< bilibili ${1:bid} ${2:p} >}}"
 		],
 		"description": "bilibili shortcode"
+	},
+	"friend": {
+		"scope": "markdown",
+		"prefix": "fri",
+		"body": [
+			"{{< friend name=\"${1:name}\" url=\"${2:url}\" logo=\"{3:img}\" word=\"\" >}}"
+		],
+		"description": "friend-link shortcode"
 	}
 }
