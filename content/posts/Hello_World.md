@@ -45,7 +45,7 @@ cover:
   + 侧边`go to buttom`按钮。
   + `twikoo` 评论区样式。
 + [Mathjax](https://www.mathjax.org/) 数学公式渲染
-+ ...
++ [favicon.io](https://favicon.io/) 图标支持
 
 ## TODO
 
@@ -64,6 +64,10 @@ cover:
 ## 测试
 
 ### Math
+
+{{< admonition note "Note" true >}}
+增加`css`样式，处理长行公式溢出问题（主要在移动端出现）。
+{{< /admonition >}}
 
 + 行内公式
 
