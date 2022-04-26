@@ -9,7 +9,8 @@
     padding: 1rem 2.5rem 1rem 2.5rem;
 }
 
-.twikoo ol, .twikoo ul {
+.twikoo ol,
+.twikoo ul {
     padding-inline-start: 20px;
 }
 

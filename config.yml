@@ -50,18 +50,18 @@ params:
 
   profileMode:
     enabled: true
-    title: "欢迎来到没有知识的荒原" # optional default will be site title
-    subtitle: "ACM/Mathematics/Notes"
+    title: "Kenshin2438's Blog" # optional default will be site title
+    subtitle: "ACM/Mathematics/Notes</br>deadline是第一生产力"
     imageUrl: /images/avatar.webp # optional
     imageTitle: "avatar.webp" # optional
-    imageWidth: 120 # custom size
-    imageHeight: 120 # custom size
+    # imageWidth: 120 # custom size
+    # imageHeight: 120 # custom size
     buttons:
-      - name: Notes
-        url: "https://spacedot.xyz/"
+      # - name: Notes
+      #   url: "https://spacedot.xyz/"
       - name: Posts
         url: "/posts/"
-      - name: Blog-old
+      - name: old.Blog
         url: "https://old.kenshin2438.top/"
   
   # home-info mode
@@ -89,7 +89,7 @@ params:
     keys: ["title", "permalink", "summary", "content"]
   
   assets:
-    disableHLJS: true
+    disableHLJS: false
     # disableFingerprinting: true
     favicon: "/favicon/favicon.ico"
     favicon16x16: "/favicon/favicon-16x16.png"
@@ -98,7 +98,7 @@ params:
     # safari_pinned_tab: ""
 
   twikoo:
-    version: 1.4.18
+    version: 1.5.4
 
 taxonomies:
   category: categories
@@ -113,10 +113,10 @@ markup:
   highlight:
     codeFences: true
     lineNos: true
-    # anchorLineNos: false
+    anchorLineNos: false
     guessSyntax: true
-    noClasses: true
-    style: dracula
+    noClasses: false
+    # style: "" # only for chroma
 
 menu:
   main:

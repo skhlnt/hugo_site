@@ -1,4 +1,4 @@
-@font-face{
+@font-face {
     font-family: 'Source Code Pro';
     font-weight: 400;
     font-style: normal;
@@ -6,7 +6,7 @@
     src: url('/font/SourceCodePro-Regular.ttf.woff2') format('woff2');
 }
 
-@font-face{
+@font-face {
     font-family: 'Source Code Pro';
     font-weight: 400;
     font-style: italic;
@@ -14,6 +14,7 @@
     src: url('/font/SourceCodePro-It.ttf.woff2') format('woff2');
 }
 
-pre, code {
+pre,
+code {
     font-family: 'Source Code Pro', Consolas, Menlo, Courier, monospace;
 }
