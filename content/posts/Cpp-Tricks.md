@@ -162,7 +162,6 @@ sort(all(a), greater<int>()); // 降序
 ```cpp
 [ captures ] ( params ) specs requires(optional) { body }
 
-
 [ 获取的变量 &表示引用，=表示传值 可以写多个变量，但一般缺省，只写& ]
 ( 在表达式中定义的变量 )
 specs requires(optional) 一般缺省，或者写成 -> 返回值类型，如 -> int

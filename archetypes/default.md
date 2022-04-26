@@ -6,6 +6,7 @@ slug: {{ substr (md5 (printf "%s%s" .Date (replace .TranslationBaseName "-" " " 
 
 author: "Kenshin2438"
 description: ""
+summary: ""
 categories: 
   - 
 tags: 
