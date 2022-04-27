@@ -33,7 +33,15 @@ cover:
 > 设$m_1,m_2,\dots,m_k$为$k$个两两互素的正整数，$m=\prod{m_i}$。
 >
 > 令$m=m_iM_i$，则同余方程组
-> $$\begin{cases}x &\equiv & b_1 \pmod{m_1} \\\\ x &\equiv & b_2 \pmod{m_2} \\\\ & \vdots & \\\\ x &\equiv & b_k \pmod{m_k} \end{cases}$$
+>
+> $$
+> \begin{cases}
+> x &\equiv & b_1 \pmod{m_1} \\\\
+> x &\equiv & b_2 \pmod{m_2} \\\\ 
+> & \vdots & \\\\ 
+> x &\equiv & b_k \pmod{m_k} 
+> \end{cases}
+> $$
 > 
 > 有唯一解
 > $$x\equiv {\sum_{i=1}^{k}{b_iM_iM_i^{-1}}}\pmod{m},M_iM_i^{-1}\equiv1\pmod{m_i}$$

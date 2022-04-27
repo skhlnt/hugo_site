@@ -6,6 +6,7 @@ slug: 84f84658
 
 author: "Kenshin2438"
 description: "记录一些常用的C++代码技巧（竞赛向），可能会用到比较高的C++版本。"
+summary: "记录一些常用的C++代码技巧（竞赛向），可能会用到比较高的C++版本。"
 categories: 
   - 漫谈
 tags: 
