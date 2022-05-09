@@ -101,6 +101,59 @@ tie(a, b) = container;
 可以见，这中写法并非**变量声明**，而是**赋值**。
 {{< /admonition >}}
 
+### 关于`Range-based for loop`的一些问题
+
++ 使用`for (auto val : v)`确实会发生拷贝，但并不是说`v`中元素就**一定不会改变**
+
+```cpp
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+  int n = 5;
+  vector<bool> v(n, true);
+  for (auto val : v) val = false;
+  for (int i = 0; i < n; i++) {
+    cout << (v[i] ? "true" : "false");
+    cout << " \n"[i + 1 == n];
+  }
+  return 0;
+}
+
+/** output: 
+false false false false false
+**/
+```
+
+不过，会出现上面情况的应该也就是`vector<bool>`这个奇葩了。显然`auto`判断类型为`_Bit_reference`，通过下面代码可以验证：
+
+```cpp
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+  cout << boolalpha;
+  vector<bool> v = {false};
+  for (auto val : v) {
+    cout << is_same<_Bit_reference, decltype(val)>::value << '\n';
+  }
+  return 0;
+}
+
+/** output: 
+true
+**/
+```
+
+同时，如果你使用了`auto &val : v`，那么你将面临下面的报错：
+
+![compile error](/static/images/compile_error_Sample.png)
+
+---
+
++ 如果想用`auto`自动识别变量类型的引用，但又不想出错，你应当使用`auto &&val : v`来代替。
++ 使用`const auto &val : v`来彻底避免内存拷贝以及保证元素不被修改。
+
 ## 迭代器 与 `all()`宏
 
 ```cpp
