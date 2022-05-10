@@ -10,11 +10,12 @@ summary: ""
 categories: 
   - 
 tags: 
-  - 
+  - CSUST
 
 weight: false
 math: true
 comments: true
+TocOpen: true
 
 cover:
   image: "" # image path/url
@@ -107,7 +108,9 @@ void SingleTest(int TestCase) {
 
 **同余**
 
-$\text{sum}_i - \text{sum}_j \equiv 0 \pmod{m} \Rightarrow \text{sum}_i \equiv \text{sum}_j \pmod{m}$
+$$
+\text{sum}_i - \text{sum}_j \equiv 0 \pmod{m} \Rightarrow \text{sum}_i \equiv \text{sum}_j \pmod{m}
+$$
 
 在循环时记录前缀和模$m$的值，再去看是否存在重复出现的情况即可。
 
@@ -556,6 +559,32 @@ dp[i][j] = dp[i][k] + dp[k+1][j];
 > 由于左右指针最多移动n次，所以找窗口的复杂度为$\mathcal{O}(n)$。
 
 对于本题，对于每个右端点，其所能选取的剩余子集即为当前合法窗口`[l, r-1]`的所有子集。
+
+```cpp
+const int mod = (int) 1e9 + 7;
+
+ll qpow(ll x, ll n, ll mod) {
+  ll res = 1LL;
+  for (x %= mod; n > 0; n >>= 1, x = x * x % mod) {
+    if (n & 1LL) res = res * x % mod;
+  }
+  return (res + mod) % mod;
+}
+
+void SingleTest(int TestCase) {
+  int n, m; cin >> n >> m;
+  vec<ll> a(n);
+  for (ll &x : a) cin >> x;
+  sort(all(a));
+  ll ans = 0;
+  for (int l = 0, r = 0; r < n; r++) {
+    while (a[r] - a[l] > m) l++;
+    // 2的幂可以提前预处理
+    ans = (ans + qpow(2, r - l, mod)) % mod;
+  }
+  cout << ans << '\n';
+}
+```
 
 ### C 摆蔬菜1
 
