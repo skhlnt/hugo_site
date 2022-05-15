@@ -11,7 +11,6 @@ categories:
   - 数论
 tags: 
   - Hash
-  - 同余式
   - CRT
 
 weight: false

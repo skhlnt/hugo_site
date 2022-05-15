@@ -7,7 +7,7 @@ slug: a8baf211
 author: "Kenshin2438"
 description: ""
 categories: 
-  - 
+  - Blog
 tags: 
   - hugo
 

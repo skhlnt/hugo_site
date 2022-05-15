@@ -8,9 +8,9 @@ author: "Kenshin2438"
 description: ""
 summary: ""
 categories: 
-  - 
-tags: 
   - CSUST
+tags: 
+  - Contest
 
 weight: false
 math: true

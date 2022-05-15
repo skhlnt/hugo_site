@@ -7,9 +7,9 @@ slug: 233f4181
 author: "Kenshin2438"
 description: ""
 categories:
-  - Contest
-tags:
   - CSUST
+tags:
+  - Contest
 
 weight: false
 math: true

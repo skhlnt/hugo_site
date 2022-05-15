@@ -7,9 +7,9 @@ slug: bc16ad72
 author: "Kenshin2438"
 description: ""
 categories:
-  - Contest
-tags:
   - CSUST
+tags:
+  - Contest
 
 weight: false
 math: true
