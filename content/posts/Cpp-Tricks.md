@@ -147,7 +147,7 @@ true
 
 同时，如果你使用了`auto &val : v`，那么你将面临下面的报错：
 
-![compile error](/static/images/compile_error_Sample.png)
+![compile error](/images/compile_error_Sample.png)
 
 ---
 
