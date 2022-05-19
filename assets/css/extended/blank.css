@@ -5,3 +5,7 @@
 .dark {
     --hljs-bg: #282C34;
 }
+
+pre {
+    tab-size: 4;
+}
