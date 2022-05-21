@@ -24,7 +24,10 @@ cover:
 ---
 
 {{< admonition info "Info" true >}}
-update at 2022-04-25 内容未完，之后写代码过程中见到或者想到的好的技巧都会逐步添加。
++ update at 2022-04-25 '关于auto和bool的一个问题'
++ update at 2022-05-21 'accumulate返回值类型的细节'
+
+内容未完，之后写代码过程中见到或者想到的好的技巧都会逐步添加。
 
 ---
 
@@ -98,7 +101,7 @@ int a, b;
 
 tie(a, b) = container;
 ```
-可以见，这中写法并非**变量声明**，而是**赋值**。
+可以见，这种写法并非**变量声明**，而是**赋值**。
 {{< /admonition >}}
 
 ### 关于`Range-based for loop`的一些问题
@@ -204,7 +207,7 @@ sort(all(a), greater<int>()); // 降序
 
 + 检验数组是否有序：`std::is_sorted()`
 
-#### `lambda` 表达式 (`c++11`)
+### 关于 `lambda` 表达式 (`c++11`)
 
 在`sort`函数中，第三个参数可以为我们定义的排序规则，如果不使用`lambda`表达式，我们往往会把它们写在外面，然后填写函数指针。
 
@@ -328,6 +331,16 @@ for (int x : a) cout << x << ' ';
 
 ### 计算相关
 
++ `count` 和 `count_if`
+
+统计元素个数时可用前者 `count(all(a), val)` ，如果需要按满足条件来统计，使用后者再搭配上`lambda`表达式即可。
+
+**值得说明的一点是，`map`和`set`中的`find`和`count`函数的复杂度是$\mathcal{O}(\log n)$，可以放心使用。**
+
++ `all_of` `any_of` `none_of`
+
+顾名思义，对于一个范围，判断满足条件（一般用`lambda`表达式写）的集合与全集的关系。
+
 + `accumulate`
 
 比较常见的要求是对数组求和，我们直接利用`accumulate(all(a), 0)`即可，但是该函数还有许多值得探究的部分（[参考链接](https://en.cppreference.com/w/cpp/algorithm/accumulate)）。
@@ -349,28 +362,71 @@ void example() {
                    str_node{"456"},
                    str_node{"!@#"}
                   };
-  str_node sum = accumulate(1 + all(a), a[0]);
+  str_node sum = accumulate(1 + all(a), a.front());
   cout << sum.s << endl;
 }
 
 // 输出：abc + 123 + def + 456 + !@#
 ```
 
-+ `count` 和 `count_if`
+### 使用 `accumulate` 值得注意的问题
 
-统计元素个数时可用前者 `count(all(a), val)` ，如果需要按满足条件来统计，使用后者再搭配上`lambda`表达式即可。
+先来阅读两份源码：
 
-**值得说明的一点是，`map`和`set`中的`find`和`count`函数的复杂度是$\mathcal{O}(\log n)$，可以放心使用。**
+{{< admonition quote "accumulate - cppreference.com" true >}}
+**First version**
+```cpp 
+template<class InputIt, class T>
+constexpr // since C++20
+T accumulate(InputIt first, InputIt last, T init)
+{
+    for (; first != last; ++first) {
+        init = std::move(init) + *first; // std::move since C++20
+    }
+    return init;
+}
+```
+**Second version**
+```cpp 
+template<class InputIt, class T, class BinaryOperation>
+constexpr // since C++20
+T accumulate(InputIt first, InputIt last, T init, 
+             BinaryOperation op)
+{
+    for (; first != last; ++first) {
+        init = op(std::move(init), *first); // std::move since C++20
+    }
+    return init;
+}
+```
+{{< /admonition >}}
 
-+ `all_of` `any_of` `none_of`
+可以发现，无论是哪一种，`accumulate`的返回值类型都**不是由数组元素的类型来决定**。
 
-顾名思义。
+所以，一个常犯的错误就是（此处~~点名批评~~感谢[pbrgg](https://rivego.cn/)提供的素材）
+
+```cpp
+vector<long long> v;
+...
+long long sum = accumulate(all(v), 0);
+
+// 正确的写法如下：
+// long long sum = accumulate(all(v), 0LL);
+// 或者
+// long long sum = accumulate(1 + all(v), v.front());
+```
+
+问题何在呢？相信读者应该马上就能反应出来，**由于`0`的类型为`int`在求和的过程种结果已经溢出。**
+
+---
 
 ## 杂项 与 写法上的技巧
 
 + `iota(all(a), val)`
 
 从`val`开始递增地赋值，赋值后地数组为 `{ val, val + 1, ... }`。
+
+十分适合用来写**并查集**的初始化（当然，还有不同的写法是初始化成-1）。
 
 + `auto [min_val, max_val] = minmax(a, b)` 
 
