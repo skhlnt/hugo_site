@@ -26,6 +26,7 @@ cover:
 {{< admonition info "Info" true >}}
 + update at 2022-04-25 '关于auto和bool的一个问题'
 + update at 2022-05-21 'accumulate返回值类型的细节'
++ update at 2022-05-23 '增加了bit部分的内容'
 
 内容未完，之后写代码过程中见到或者想到的好的技巧都会逐步添加。
 
@@ -417,6 +418,99 @@ long long sum = accumulate(all(v), 0);
 ```
 
 问题何在呢？相信读者应该马上就能反应出来，**由于`0`的类型为`int`在求和的过程种结果已经溢出。**
+
+---
+
+## Bit相关
+
+这部分主要和`c++20`标准库头文件`<bit>`相关，但是考虑到现在许多的编译器还未能完全支持`c++20`，因此在后面加入了一部分来自`GCC Built-in Functions`的位操作函数。
+
+### `c++20 <bit>`常用的函数
+
++ `has_single_bit` 检查一个数是否为二的整数次幂
++ `bit_ceil` 寻找不小于给定值的最小的二的整数次幂
++ `bit_floor` 寻找不大于给定值的最大的二的整数次幂
++ `countl_zero` 从最高位起计量连续的 `0` 位的数量
++ `countl_one` 从最高位起计量连续的 `1` 位的数量
++ `countr_zero` 从最低位起计量连续的 `0` 位的数量
++ `countr_one` 从最低位起计量连续的 `1` 位的数量
++ `popcount` 计量无符号整数中为 `1` 的位的数量
+
+### `bitset` 容器
+
+补充一个不怎么常用的容器，`bitset`本质上就是一个`01`序列。
+
+**其占用内存很小并且也重载了位操作（`&`, `|`, `>>`, `<<`等）因此有时也用于卡常数。**
+
+常用的操作大致如下（以`bitset<N> b;`为例）：
+```cpp
+b.all();
+b.any();
+b.none();
+// 检查是否所有、任一或无位被设为 true
+
+b.count();  // 返回设置为true的位的数量
+b.set();    // 将位置为 true
+b.reset();  // 将位置为 false
+b.flip();   // 翻转位的值
+
+b.to_ullong();
+// 转换 bitset 的内容为 unsigned long long 整数
+// bitset 的首位对应数的最低位，而尾位对应最高位
+// 若值不能以 unsigned long long 表示，则为 std::overflow_error
+```
+
+### 来自`GCC Built-in Functions`的位操作函数
+
+官方的介绍 <https://gcc.gnu.org/onlinedocs/gcc/Other-Builtins.html>
+
+```cpp
+__builtin_clz()        // count leading  0s   前面0的数目
+__builtin_ctz()        // count trailing 0s   后面0的数目
+__builtin_popcount()   // count bit 1         比特位为1的数目
+
+/**
+(16)10 = (00000000 00000000 00000000 00010000)2
+__builtin_clz      : 27
+__builtin_ctz      :  4
+__builtin_popcount :  1
+
+对于 long 类型的在函数名后面加 'l'
+对于 long long 类型的在后面加 'll' 如 __builtin_popcountll
+*/
+```
+
+既然写到了gcc的内建函数，不妨也提一下其它的双下划线函数：
+
++ `__gcd()`，顾名思义，一个用于求两数最大公因数的函数。
+
+值得注意的是，在`c++17`中，已经加入了`gcd()`函数，可以不加下划线使用。
+
++ `__builtin_ia32_rdtsc()`
+
+`rdtsc`的原文大概是`Read Time Stamp Counter`，这个函数原本是用于测量cpu时钟的，用于竞赛大概只能生成随机数种子。所以为什么在这提呢？主要是由于我的随机数生成代码中包含这一个函数。
+
+```cpp
+#include <random>
+
+std::mt19937 rng(__builtin_ia32_rdtsc());
+template<typename T> inline T randint(T l, T r) {
+  return std::uniform_int_distribution<T>(l, r)(rng);
+}
+template<typename E> inline E randreal(E l, E r) {
+  return std::uniform_real_distribution<E>(l, r)(rng);
+}
+```
+
+### 位运算的其它操作
+
++ `^` 异或
+
+对于二值集合`{a, b}`，**如何找到不同与x的另一个数呢？**，直接`if-else`判断当然可以，但没必要。最快的写法利用**相同数的异或为`0`，同时任何数与`0`异或都等于它本身**这两个所有人熟知的性质，写成`x ^ a ^ b`就可以了。
+
++ 二进制枚举
+
+主要是在`dfs`由数组确定的集合时用到，当然直接写`dfs`也是可行的，甚至更快。（但，私以为二进制枚举最优雅）
 
 ---
 
