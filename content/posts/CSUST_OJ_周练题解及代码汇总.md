@@ -1,5 +1,5 @@
 ---
-title: "CSUST OJ 周练题解及代码汇总"
+title: "CSUST - OJ周练题解及代码汇总"
 date: 2022-05-09T20:43:10+08:00
 draft: true
 slug: 527e3034

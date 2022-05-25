@@ -1,5 +1,5 @@
 ---
-title: "CSUST_第十七届ACM程序设计竞赛"
+title: "CSUST - 第十七届ACM程序设计竞赛"
 date: 2022-05-22T22:20:03+08:00
 draft: false
 slug: ec6e1ec2
