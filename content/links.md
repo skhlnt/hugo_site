@@ -18,3 +18,12 @@ ShowToc: false
 {{< friend name="不语奈何の博客" url="https://buyunaihe.cn/" logo="http://buyunaihe.cn/wp-content/uploads/2021/11/avatar1.jpg" word="" >}}
 
 {{< friend name="Just Call Me Jax" url="https://jaxvanyang.github.io/" logo="https://jaxvanyang.github.io/assets/images/avatar.png" word="" >}}
+
+### 关于本站
+
+```
+名称: Kenshin2438's Blog
+链接: https://kenshin2438.top/
+图标: https://kenshin2438.top/images/avatar.webp
+描述: 大概算是（半）个技术博客。
+```

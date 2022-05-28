@@ -54,6 +54,7 @@ cover:
   > - Font License: SIL Open Font License, 1.1 (http://scripts.sil.org/OFL))
 + [highlight.js](https://highlightjs.org/) 使用highlight.js提供代码高亮，官方的`chroma`实在简陋了
   + `atom-one-dark.min.css` 目前出了点问题，和预期的效果有点出入
++ [cdnjs](https://cdnjs.com/)`cdn`支持了`twikoo.js`和`mathjax.js`。
 
 ## TODO
 
@@ -72,6 +73,7 @@ cover:
 + [x] 解决`code`块出现黑色背景色的问题，恢复圆角显示
 + [x] 停用hugo官方提供的`chroma`，使用`highlight.js`高亮代码
 + [ ] `twikoo` 评论邮箱自动通知部署
++ [x] 更换适合国内网络环境的`cdn`，或者放在本地（次之）。包含`twikoo`, `mathjax`。
 
 ---
 
@@ -81,6 +83,20 @@ cover:
 
 When $a \ne 0$, there are two solutions to \\(ax^2 + bx + c = 0\\) and they are
 $$x = {-b \pm \sqrt{b^2-4ac} \over 2a}.$$
+
+测试较长公式的处理
+
++ 行内公式（使用`$...$`）
+
+**未解决**
+
+<!-- $A=B=A=B=A=B=A=B=A=B=A=B=A=B=A=B=A=B=A=B=A=B=A=B=A=B=A=B$ -->
+
++ 行间公式（使用`$$...$$`）
+
+$$
+A=B=A=B=A=B=A=B=A=B=A=B=A=B=A=B=A=B=A=B=A=B=A=B=A=B=A=B
+$$
 
 ### Admonition
 
