@@ -11,7 +11,7 @@ ShowToc: false
 
 ### 0x1 实验室的大佬们
 
-{{< friend name="Rivego's Blog" url="https://rivego.cn/" logo="https://cdn.jsdelivr.net/gh/rivego/image/img/20210824203824.jpg" word="" >}}
+{{< friend name="Rivego's Blog" url="https://rivego.cn/" logo="http://rivego.cn/wp-content/uploads/2022/05/warma_icon.jpg" word="" >}}
 
 {{< friend name="尤利の博客" url="https://amcones.cn/" logo="https://amcones.cn/wp-content/uploads/2022/01/cropped-1-1.jpg" word="" >}}
 
