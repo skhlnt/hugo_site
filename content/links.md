@@ -19,7 +19,13 @@ ShowToc: false
 
 {{< friend name="Just Call Me Jax" url="https://jaxvanyang.github.io/" logo="https://jaxvanyang.github.io/assets/images/avatar.png" word="" >}}
 
+---
+
 ### 关于本站
+
+<center>
+{{< friend name="Kenshin2438's Blog" url="https://kenshin2438.top/" logo="https://kenshin2438.top/images/avatar.webp" word="大概算是（半）个技术博客。" >}}
+</center>
 
 ```
 名称: Kenshin2438's Blog
