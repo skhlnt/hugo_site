@@ -61,8 +61,10 @@ params:
       #   url: "https://spacedot.xyz/"
       - name: Posts
         url: "/posts/"
-      - name: old.Blog
-        url: "https://old.kenshin2438.top/"
+      - name: Search
+        url: "/search/"
+      - name: Links
+        url: "/links/"
   
   # home-info mode
   # homeInfoParams:
