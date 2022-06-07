@@ -11,7 +11,7 @@ categories:
 tags:
   - BSGS
 
-weight: false
+weight: 2
 math: true
 comments: true
 
@@ -73,38 +73,73 @@ $$\frac{a}{g}x\equiv \frac{b}{g}\pmod{\frac{c}{g}}$$
 ### 代码模板
 
 ```cpp
-map<ll, ll> bs;
-inline ll BSGS(ll a, ll b, ll p) { // (a, p) = 1
-	if (b == 1 || p == 1) return 0;
-	ll m = sqrt(p) + 1; bs.clear();
-	for (ll k = 0, t = b; k <= m; k ++, t = mul(t, a, p)) bs[t] = k;
-	for (ll x = 1, t = qpow(a, m, p), base = t; x <= m; x ++, t = mul(t, base, p)) 
-		if (bs.count(t)) return ((x * m - bs[t]) % p + p) % p;
-	return -1;
+ll qpow(ll x, ll n, ll mod) {
+    ll res = 1LL;
+    for (x %= mod; n > 0LL; n >>= 1, x = x * x % mod) {
+        if (n & 1LL) res = res * x % mod;
+    }
+    return (res + mod) % mod;
 }
 
-inline ll exBSGS(ll a, ll b, ll c) {
-	a %= c, b %= c;
-	if (b == 1 || c == 1) return 0;
-	ll g = __gcd(a, c), k = 0, t = 1, res;
-	while (g ^ 1LL) {
-		if (b % g) return -1;
-		c /= g, b /= g, t = mul(t, (a / g), c), k ++;
-		if (t == b) return k;
-		g = __gcd(a, c);
-	}
-	b = b * inv(t, c) % c, res = BSGS(a, b, c);
-	return ~res ? res + k : res;
+// a^x EQUIV n (MOD mod), and gcd(a, mod) = 1
+ll BSGS(ll a, ll n, ll mod) {
+    a %= mod, n %= mod;
+    if (n == 1LL || mod == 1LL) return 0LL;
+    
+    map<ll, ll> bs;
+    ll S = sqrt(mod) + 1;
+    
+    ll base = n;
+    for (ll k = 0, val = base; k <= S; k++) {
+        bs[val] = k, val = val * a % mod;
+    }
+    base = qpow(a, S, mod);
+    for (ll x = 1, val = base; x <= S; x++) {
+        if (bs.count(val)) return x * S - bs[val];
+        val = val * base % mod;
+    }
+    return -1; // No solution
+}
+
+pair<ll, ll> exgcd(ll a, ll b) {
+    bool neg_a = (a < 0), neg_b = (b < 0);
+    ll x = 1, y = 0, r = 0, s = 1;
+    while (b != 0LL) {
+        ll t = a / b;
+        r ^= x ^= r ^= x -= t * r;
+        s ^= y ^= s ^= y -= t * s;
+        b ^= a ^= b ^= a %= b;
+    }
+    return {neg_a ? -x : x, neg_b ? -y : y};
+}
+
+ll inv(ll a, ll mod) {
+    auto [res, _] = exgcd(a, mod);
+    return (res % mod + mod) % mod;
+}
+
+// a^x EQUIV n (MOD mod), and gcd(a, mod) != 1
+ll exBSGS(ll a, ll n, ll mod) {
+    a %= mod, n %= mod;
+    if (n == 1LL || mod == 1LL) return 0LL;
+
+    ll k = 0, val = 1;
+    for (ll g = __gcd(a, mod); g != 1LL; g = __gcd(a, mod)) {
+        if (n % g != 0LL) return -1; // No solution
+        mod /= g, n /= g;
+        val = val * (a / g) % mod, k++;
+        if (val == n) return k;
+    }
+    ll res = BSGS(a, n * inv(val, mod) % mod, mod);
+    return ~res ? res + k : res;
 }
 ```
 
 ### 例题
 
-看我在CSDN发的那篇吧。
+**暂时** 看我在CSDN发的那篇吧。
 
 [传送门](https://blog.csdn.net/qq_41743740/article/details/118946068)
-
----
 
 ## $N$次剩余问题（离散对数）
 
@@ -124,5 +159,7 @@ inline ll exBSGS(ll a, ll b, ll c) {
 
 ## TODO
 
++ [x] 复习BSGS
++ [ ] 更新例题（luogu题单）
 + [ ] 原根
-+ [ ] k次剩余题目加代码
++ [ ] k次剩余题目加代码（Nod51）

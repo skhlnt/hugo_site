@@ -11,7 +11,7 @@ categories:
 tags: 
   - hugo
 
-weight: 999
+weight: 1
 math: true
 comments: true
 
