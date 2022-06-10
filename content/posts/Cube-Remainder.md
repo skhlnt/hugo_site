@@ -4,7 +4,7 @@ date: 2021-07-02 13:07:26
 slug: 8c520df7
 
 author: "Kenshin2438"
-description: ""
+description: "三次剩余，以及一个可以继续推广至k次剩余的随机算法"
 categories:
   - Number Theory
 tags:
@@ -21,7 +21,9 @@ cover:
   relative: false
 ---
 
-三次剩余，以及一个可以继续推广至k次剩余的随机算法
+{{< admonition info "info" true >}}
+update at 2022/06/10: 更新代码，并且新增范例(51Nod-1039)，用于展示**如何求得所有解**。
+{{< /admonition >}}
 
 <!--more-->
 
@@ -82,76 +84,231 @@ $$R=\frac{\mathbb{Z}_p[x]}{x^3-a}=\\{ \alpha+\beta Y+\gamma Y^2 | \alpha,\beta,\
 
 随机结果符合条件的概率为$\frac{1}{9}$，所以这个算法的时间复杂度全在快速幂上了。
 
-## Code
+### Code
 
 ```cpp Peralta.cpp
 #include <bits/stdc++.h>
 using namespace std;
-typedef long long ll;
 
-inline ll qpow(ll x, ll n, ll mod, ll res = 1) {
-	while (n) {
-		if (n & 1) res = res * x % mod;
-		x = x * x % mod, n >>= 1;
-	}
-	return res;
+using ll = long long;
+
+mt19937 rng(__builtin_ia32_rdtsc());
+inline ll randint(ll l, ll r) {
+  return uniform_int_distribution<ll>(l, r)(rng);
 }
 
-ll m;
-struct F {
-	ll s[3];
-	F() { s[0] = 1, s[1] = s[2] = 0; }
-	F(ll a, ll b, ll c) { s[0] = a, s[1] = b, s[2] = c; }
-	void set(ll a, ll b, ll c) { s[0] = a, s[1] = b, s[2] = c; }
-} f;
-
-inline F mul(F a, F b, ll mod) {
-	ll k[3] = {0, 0, 0};
-	for (int i = 0; i < 3; i++) {
-		for (int j = 0; j < 3; j++) {
-			if (i + j < 3) k[i+j] += a.s[i] * b.s[j] % mod;
-			else k[i+j-3] += a.s[i] * b.s[j] % mod * m % mod;
-		}
-	}
-	for (int i = 0; i < 3; i++) k[i] %= mod;
-	return F(k[0], k[1], k[2]);
+ll qpow(ll x, ll n, ll mod) {
+  ll res = 1LL;
+  for (x %= mod; n > 0LL; n >>= 1, x = x * x % mod) {
+    if (n & 1LL) res = res * x % mod;
+  }
+  return (res + mod) % mod;
 }
 
-inline F qp(F x, ll n, ll mod, F res = {}) {
-	while (n) {
-		if (n & 1) res = mul(res, x, mod);
-		x = mul(x, x, mod), n >>= 1;
-	}
-	return res;
-}
+struct R {
+  ll a, p, x, y, z;
 
-inline ll slove(ll a, ll p) {
-	if (a == 0) return p;
-	if (a == 1) return 1;
-	if (p == 3) return 2;
-	if (p % 3 == 2) return qpow(a, 1 + ((p / 3) << 1), p);
-	if (qpow(a, (p - 1) / 3, p) ^ 1LL) return 0;
+  R(ll _a, ll _p) : a(_a), p(_p) { x = 1LL, y = 0LL, z = 0LL; }
+  void rand() {
+    x = randint(0, p - 1);
+    y = randint(0, p - 1);
+    z = randint(0, p - 1);
+  }
+  R &operator*=(const R &rhs) {
+    ll _x = (x * rhs.x + y * rhs.z % p * a + z * rhs.y % p * a) % p;
+    ll _y = (x * rhs.y + y * rhs.x + z * rhs.z % p * a) % p;
+    ll _z = (x * rhs.z + y * rhs.y + z * rhs.x) % p;
+    x = _x, y = _y, z = _z;
+    return *this;
+  }
 
-	ll x, t = (p - 1) / 3; 
-	m = a;
-	while (true) {
-		f.set(rand() % p, rand() % p, rand() % p);
-		f = qp(f, t, p);
-		if (!f.s[0] && !f.s[2] && f.s[1]) return x = qpow(f.s[1], p - 2, p);
-	}
-	return 0;
+  void pow(ll n) {
+    R res(a, p), b = *this;
+    for (; n; n >>= 1, b *= b) {
+      if (n & 1LL) res *= b;
+    }
+    x = res.x, y = res.y, z = res.z;
+  }
+};
+
+ll Peralta_Method_Extension(ll a, ll p) {
+  a = (a % p + p) % p;
+  if (a == 0) return 0LL;
+
+  if (p % 3 == 2) return qpow(a, (p * 2 - 1) / 3, p);
+  
+  if (qpow(a, (p - 1) / 3, p) != 1LL) return 0LL;
+  // No Solution
+
+  R t(a, p);
+  while (true) {
+    t.rand(), t.pow((p - 1) / 3);
+    if (t.x == 0 && t.y != 0 && t.z == 0) {
+      return qpow(t.y, p - 2, p);
+    }
+  }
+
+  assert(false);
+  return -1;
 }
 
 int main() {
-	srand((unsigned)time(nullptr));
-	
-	int t;
-	scanf("%d", &t);
-	while (t--) {
-		ll a, p;
-		scanf("%lld %lld", &a, &p);
-		printf("%lld\n", slove((a % p + p) % p, p));
-	}
-	return 0;
+  cin.tie(nullptr)->sync_with_stdio(false);
+  int T;
+  cin >> T;
+
+  while (T--) {
+    ll p, a;
+    cin >> a >> p;
+
+    cout << Peralta_Method_Extension(a, p) << '\n';
+  }
+
+  return 0;
+}
+```
+
+---
+
+## 51Nod - 1039
+
+问题一致，但需要求得所有可行解。
+
++ 如果$p \bmod 3 = 2$，则有**唯一解**。
++ 反之，若有解则必定有三个不同值。
+
+上面的代码可求得其中之一，不妨令其为$s$。那么，如何求出其他值呢？对于一般的3次方程$x^3=a$，如果已知一个可行解$s$，那么剩余的解可以用$s$分别乘以单位复根的一次和平方得到。
+
+单位根为$\frac{-1+\sqrt{-3}}{2}$，在模意义下，需要用二次剩余去求解$x^2\equiv-3\pmod{p}$，在下面的代码中，使用了$\text{Tonelli Shanks}$算法计算二次剩余。
+
+```cpp
+#include <bits/stdc++.h>
+using namespace std;
+
+using ll = long long;
+
+mt19937 rng(__builtin_ia32_rdtsc());
+inline ll randint(ll l, ll r) {
+  return uniform_int_distribution<ll>(l, r)(rng);
+}
+
+ll qpow(ll x, ll n, ll mod) {
+  ll res = 1LL;
+  for (x %= mod; n > 0LL; n >>= 1, x = x * x % mod) {
+    if (n & 1LL) res = res * x % mod;
+  }
+  return (res + mod) % mod;
+}
+
+struct R {
+  ll a, p, x, y, z;
+
+  R(ll _a, ll _p) : a(_a), p(_p) { x = 1LL, y = 0LL; }
+  void rand() {
+    x = randint(0, p - 1);
+    y = randint(0, p - 1);
+    z = randint(0, p - 1);
+  }
+  R &operator*=(const R &rhs) {
+    ll _x = (x * rhs.x + y * rhs.z % p * a + z * rhs.y % p * a) % p;
+    ll _y = (x * rhs.y + y * rhs.x + z * rhs.z % p * a) % p;
+    ll _z = (x * rhs.z + y * rhs.y + z * rhs.x) % p;
+    x = _x, y = _y, z = _z;
+    return *this;
+  }
+
+  void pow(ll n) {
+    R res(a, p), b = *this;
+    for (; n; n >>= 1, b *= b) {
+      if (n & 1LL) res *= b;
+    }
+    x = res.x, y = res.y, z = res.z;
+  }
+};
+
+ll Peralta_Method_Extension(ll a, ll p) {
+  a = (a % p + p) % p;
+  if (a == 0) return 0LL;
+
+  if (p % 3 == 2) return qpow(a, (p * 2 - 1) / 3, p);
+  
+  if (qpow(a, (p - 1) / 3, p) != 1LL) return -1LL;
+  // No Solution
+
+  R t(a, p);
+  while (true) {
+    t.rand(), t.pow((p - 1) / 3);
+    if (t.x == 0 && t.y != 0 && t.z == 0) {
+      return qpow(t.y, p - 2, p);
+    }
+  }
+
+  assert(false);
+  return -1;
+}
+
+ll Tonelli_Shanks(ll a, ll p) {
+  a = (a % p + p) % p;
+  if (a == 0) return 0LL;
+
+  if (qpow(a, (p - 1) / 2, p) != 1LL) return -1LL;
+  // No Solution
+
+  if (p % 4 == 3) return qpow(a, (p + 1) / 4, p);
+
+  ll k = __builtin_ctzll(p - 1), h = p >> k, N = 2;
+  // p = 1 + h * 2^k
+  while (qpow(N, (p - 1) / 2, p) == 1) N++;
+  // find a non-square mod p
+
+  ll x = qpow(a, (h + 1) / 2, p);
+  ll g = qpow(N, h, p);
+  ll b = qpow(a, h, p);
+
+  for (ll m = 0;; k = m) {
+    ll t = b;
+    for (m = 0; m < k && t != 1LL; m++) {
+      t = t * t % p;
+    }
+
+    if (m == 0) return x;
+    ll gs = qpow(g, 1 << (k - m - 1), p);
+
+    g = gs * gs % p;
+    b = b * g % p;
+    x = x * gs % p;
+  }
+
+  assert(false);
+  return -1;
+}
+
+int main() {
+  cin.tie(nullptr)->sync_with_stdio(false);
+  int T;
+  cin >> T;
+
+  while (T--) {
+    ll p, a;
+    cin >> p >> a;
+
+    ll ans = Peralta_Method_Extension(a, p);
+    if (~ans) {
+      if (p % 3 == 2) {
+        cout << ans << '\n';
+      } else {
+        ll u = qpow(2, p - 2, p) * (Tonelli_Shanks(p - 3, p) - 1) % p;
+
+        vector<ll> out{ans, ans * u % p, ans * u % p * u % p};
+        sort(begin(out), end(out));
+
+        cout << out[0] << ' ' << out[1] << ' ' << out[2] << '\n';
+      }
+    } else {
+      cout << "No Solution\n";
+    }
+  }
+
+  return 0;
 }
 ```
