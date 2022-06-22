@@ -7,7 +7,9 @@ ShowToc: false
 
 ### 0x0 常用的链接
 
-{{< friend name="arxiv" url="https://arxiv.org/" logo="https://static.arxiv.org/static/browse/0.3.4/images/icons/smileybones-pixel.png" word="" >}}
+{{< friend name="arXiv" url="https://arxiv.org/" logo="https://static.arxiv.org/static/browse/0.3.4/images/icons/smileybones-pixel.png" word="" >}}
+
+{{< friend name="oeis" url="https://oeis.org/" logo="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c6/OEISicon.svg/300px-OEISicon.svg.png" word="整数数列线上大全" >}} 
 
 ### 0x1 实验室的大佬们
 
@@ -18,6 +20,10 @@ ShowToc: false
 {{< friend name="不语奈何の博客" url="https://buyunaihe.cn/" logo="http://buyunaihe.cn/wp-content/uploads/2021/11/avatar1.jpg" word="" >}}
 
 {{< friend name="Just Call Me Jax" url="https://jaxvanyang.github.io/" logo="https://jaxvanyang.github.io/assets/images/avatar.png" word="" >}}
+
+### 0x2 大佬们
+
+{{< friend name="ycloong" url="https://ycloong.top/" logo="https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fbc7e9a8b-e62c-44f1-b563-c0168e30e0ed%2Fimage.jpg?table=collection&id=2aa091ae-74f0-45cf-8dc3-65248f153eaa" word="一个普通的干饭人🍚" >}}
 
 ---
 
