@@ -1,7 +1,7 @@
 ---
 title: "筛法 - Sieve"
 date: 2021-07-28 17:36:43
-draft: true
+draft: false
 slug: bb62b52f
 
 author: "Kenshin2438"
@@ -9,11 +9,10 @@ description: ""
 categories:
   - Number Theory
 tags:
-  - 筛法
   - 线性筛
   - 杜教筛
-  - Powerful Number筛
-  - Min25筛
+  - Powerful Number Sieve
+  - Min25
 
 weight: false
 math: true
@@ -27,14 +26,12 @@ cover:
   relative: false
 ---
 
-{{< admonition info "info" true >}}
-Update 2021.10.03 增加PN筛
-
-包含有: 线性筛，杜教筛，Min25筛，PN筛
-
-TODO: 州阁筛
+{{< admonition info "logs" true >}}
+- Update 2021.10.03 增加PN筛
 
 ---
+
+包含有: 线性筛，杜教筛，Min25筛，PN筛，州阁筛
 
 本篇主要用于**入门**数论中的一些简单的筛法
 
@@ -47,31 +44,35 @@ TODO: 州阁筛
 
 ## 线性筛
 
-从名字也可以看出，这种筛法的复杂度为线性。
+从名字也可以看出，这种筛法为线性复杂度。
 
-我们主要用它来得到某个**积性函数**函数值的表，（~~在线性的时间复杂度内得到，废话~~）。
+我们主要用它来得到某个**积性函数**函数值的表，（~~在线性的时间复杂度内得到~~）。
 
 线性筛的基本思路，对于某个合数$n$，若它的最小质因子为$p$：
 
-* 如果$(p,\frac{n}{p})\not = 1$，考虑函数本身，主要看质因子指数对函数值的影响。
-* 如果$(p, \frac{n}{p})=1$，由积性函数的性质$f(n)=f(\frac{n}{p})f(p)$。
+- 如果$(p,\frac{n}{p})\not = 1$，考虑函数本身，主要看质因子指数对函数值的影响。
+- 如果$(p, \frac{n}{p})=1$，由积性函数的性质$f(n)=f(\frac{n}{p})f(p)$。
 
-### 质数筛
+### 质数筛（顺便记录最小素因子）
 
 按照合数的定义就知道了。
 
 ```cpp 
-int pr[maxn], cnt;
-bitset<maxn> ok;
-
-void func(int n) {
-	for (register int i = 2; i <= n; i ++) {
-		if (!ok[i]) pr[++ cnt] = i;
-		for (register int j = 1; j <= cnt && pr[j] <= n / i; j ++) {
-			ok[pr[j] * i] = 1;
-			if (i % pr[j] == 0) break;
-		}
-	}
+int lpf[LIM];
+vector<int> sieve() {
+  vector<int> pr;
+  for (int i = 2; i < LIM; i++) {
+    if (lpf[i] == 0) {
+      lpf[i] = i, pr.push_back(i);
+    }
+    for (const int &p : pr) {
+      ll j = p * 1LL * i;
+      if (j >= LIM) break;
+      lpf[j] = p;
+      if (i % p == 0) break;
+    }
+  }
+  return pr;
 }
 ```
 
@@ -81,51 +82,10 @@ void func(int n) {
 
 $$\varphi(nm)=\varphi(n)\varphi(m)\frac{d}{\varphi(d)}$$
 
-```cpp
-int pr[maxn], cnt;
-bitset<maxn> ok;
-int phi[maxn];
-
-void func(int n) {
-	phi[1] = 1;
-	for (register int i = 2; i <= n; i ++) {
-		if (!ok[i]) pr[++ cnt] = i, phi[i] = i - 1;
-		for (register int j = 1; j <= cnt && pr[j] <= n / i; j ++) {
-			ok[pr[j] * i] = 1;
-			if (i % pr[j] == 0) { 
-				phi[pr[j] * i] = phi[i] * pr[j]; break; 
-			} else {
-				phi[pr[j] * i] = phi[i] * phi[pr[j]];
-			}
-		}
-	}
-}
-```
-
 ### 莫比乌斯函数筛
 
 质因子指数大于1，直接为０就行。（太简单就不写了，代码也是高度类似，~~其实全部都差不多~~）
 
-```cpp
-int pr[maxn], cnt;
-bitset<maxn> ok;
-int mu[maxn];
-
-void func(int n) {
-	mu[1] = 1;
-	for (register int i = 2; i <= n; i ++) {
-		if (!ok[i]) pr[++ cnt] = i, mu[i] = -1;
-		for (register int j = 1; j <= cnt && pr[j] <= n / i; j ++) {
-			ok[pr[j] * i] = 1;
-			if (i % pr[j] == 0) { 
-				mu[pr[j] * i] = 0; break; 
-			} else {
-				mu[pr[j] * i] = mu[i] * mu[pr[j]];
-			}
-		}
-	}
-}
-```
 
 ### 约数个数函数筛
 
@@ -133,39 +93,11 @@ void func(int n) {
 
 $$d(n)=\prod_{i=1}^{s}{(\alpha_i+1)}$$
 
-```cpp
-int pr[maxn], cnt;
-bitset<maxn> ok;
-int d[maxn], num[maxn];
-
-void func(int n) {
-	d[1] = 1;
-	for (register int i = 2; i <= n; i ++) {
-		if (!ok[i]) pr[++ cnt] = i, d[i] = 2, num[i] = 1;
-		for (register int j = 1; j <= cnt && pr[j] <= n / i; j ++) {
-			ok[pr[j] * i] = 1;
-			if (i % pr[j] == 0) { 
-				d[pr[j] * i] = d[i] / (num[i] + 1) * (num[i] + 2); 
-				num[pr[j] * i] = num[i] + 1;
-				break; 
-			} else {
-				d[pr[j] * i] = d[i] * d[pr[j]];
-				num[pr[j] * i] = 1;
-			}
-		}
-	}
-}	
-```
-
 ### 约数和函数筛
 
 设$n=\prod_{i=1}^{s}p_i^{\alpha_i}$，则
 
 $$\sigma(n)=\sum_{d \mid n}{d}=\prod_{i=1}^{s}\sum_{k=0}^{\alpha_i}{p_i^k}$$
-
-```cpp
-// TODO: 更新代码，之前写的太拉了，坑到自己了。
-```
 
 ---
 
@@ -251,9 +183,9 @@ unordered_map<int, pair<ll, ll> > spm;
 
 void func(int n) {
 	mu[1] = phi[1] = 1;
-	for (register int i = 2; i <= n; i ++) {
+	for (int i = 2; i <= n; i ++) {
 		if (!ok[i]) pr[++ cnt] = i, phi[i] = i - 1, mu[i] = -1;
-		for (register int j = 1; j <= cnt && pr[j] <= n / i; j ++) {
+		for (int j = 1; j <= cnt && pr[j] <= n / i; j ++) {
 			ok[pr[j] * i] = 1;
 			if (i % pr[j] == 0) {
 				phi[pr[j] * i] = phi[i] * pr[j];
@@ -264,7 +196,7 @@ void func(int n) {
 			}
 		}
 	}
-	for (register int i = 1; i <= n; i++) phi[i] += phi[i-1], mu[i] += mu[i-1];
+	for (int i = 1; i <= n; i++) phi[i] += phi[i-1], mu[i] += mu[i-1];
 }
 
 inline void slove(ll n, ll & ans1, ll & ans2) {
@@ -277,7 +209,7 @@ inline void slove(ll n, ll & ans1, ll & ans2) {
 		return ;
 	}
 	ans1 = 1LL * n * (n + 1) >> 1LL, ans2 = 1LL;
-	for (register ll l = 2, r; l <= n; l = r + 1) {
+	for (ll l = 2, r; l <= n; l = r + 1) {
 		r = n / (n / l);
 		ll a, b;
 		slove(n / l, a, b);
@@ -346,8 +278,7 @@ $$S(n)=\sum_{i=1}^{n}{i^3}-\sum_{i=2}^{n}{i^2S(\lfloor \frac{n}{i} \rfloor)}$$
 #include <bits/stdc++.h>
 #define PII pair<int, int>
 #define PLL pair<ll, ll>
-#define re register
-#define il inline
+#define re #define il inline
 #define pb push_back
 #define ps push
 #define fi first
@@ -485,7 +416,7 @@ $$\exists n,m\in Z^+,(n, m)=1,\mathrm{s.t. }f(nm) \neq f(n)f(m)$$
 
 首先我们考虑引入一个**拟合函数**$g(x)$，满足$g(p)=f(p)$，且$g(x)$为**积性**函数、**前缀和易求**。
 
-令$h=f*g^{-1}$，即$f=h*g$。
+令$h=f*g^{-1}$，
 
 $$f(p)=g(1)h(p)+h(1)g(p) \Rightarrow h(p)=0$$
 
@@ -702,8 +633,7 @@ $$F(n)=h2(+\infty,n)-h1(+\infty,n)$$
 #include <bits/stdc++.h>
 #define PII pair<int, int>
 #define PLL pair<ll, ll>
-#define re register
-#define il inline
+#define re #define il inline
 #define vec vector
 #define pc putchar
 #define gc getchar

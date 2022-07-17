@@ -35,7 +35,7 @@ cover:
 + [hugo-PaperMod](https://github.com/adityatelange/hugo-PaperMod) 官方文档（~~个人感觉不是很全~~，出现问题先去`issue`找）
 + [LoveIt](https://github.com/dillonzq/LoveIt) 挺好看的一个主题，各项功能也很完善，但是我还是喜欢`PaperMod`多一点
   + `admonition` 支持。（实际代码来自`hugo-backup`）
-  + `bilibili` 视频引入。
+  + ~~`bilibili` 视频引入。~~ （**已删除**）
 + [Sulv's Blog](https://www.sulvblog.cn) 使用了`PaperMod`的一个博客，做了许多修改，[文章合集](https://www.sulvblog.cn/posts/blog/)。
   + 侧边`toc`栏，[文章链接](https://www.sulvblog.cn/posts/blog/hugo_toc_side/)。（效果不太满意，已经放弃）
   + `twikoo`移植，[参考](https://www.sulvblog.cn/posts/blog/hugo_twikoo/)代码的添加方式。（目前为`hugo-backup`的实现方式）
@@ -55,6 +55,7 @@ cover:
 + [highlight.js](https://highlightjs.org/) 使用highlight.js提供代码高亮，官方的`chroma`实在简陋了
   + `atom-one-dark.min.css` 目前出了点问题，和预期的效果有点出入
 + [cdnjs](https://cdnjs.com/)`cdn`支持了`twikoo.js`和`mathjax.js`。
++ [hugo-encryptor](https://github.com/Li4n0/hugo_encryptor) 使用参考[link](https://www.10101.io/2019/04/17/encrypt-content-in-hugo?PageSpeed=noscript)
 
 ## TODO
 
@@ -123,3 +124,21 @@ int main() {
   return 0;
 }
 ```
+
+### hugo_encryptor
+
+{{< admonition danger "Attention" true >}}
+这里必须存在一些明文文字以及概要标签
+{{< /admonition >}}
+
+<!--more-->
+
+{{% hugo-encryptor "PASSWORD" %}}
+
+# 这里是你要加密的内容!
+
+这里是你要加密的内容!
+
+**别忘了闭合 `hugo-encryptor` shortcode 标签:**
+
+{{% /hugo-encryptor %}}

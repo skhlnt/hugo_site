@@ -40,10 +40,20 @@
 	},
 	"friend": {
 		"scope": "markdown",
-		"prefix": "fri",
+		"prefix": "friend",
 		"body": [
 			"{{< friend name=\"${1:name}\" url=\"${2:url}\" logo=\"{3:img}\" word=\"\" >}}"
 		],
 		"description": "friend-link shortcode"
+	},
+	"hugo_encryptor": {
+		"scope": "markdown",
+		"prefix": "encrypt",
+		"body": [
+			"{{% hugo-encryptor \"${1:PASSWORD}\" %}}",
+			"$2",
+			"{{% /hugo-encryptor %}}"
+		],
+		"description": "hugo-encryptor shortcode"
 	}
 }
