@@ -564,3 +564,13 @@ s.substr(start，length); // length 参数缺省时表示后续直到 end()
 + `cout << " \n"[i == n];`
 
 避免行末空格，原理见[我的另一篇博客](../b1757d4d.html/)。
+
+## STL-std::vector内存回收问题
+
+[CF1706D2](https://codeforces.com/problemset/problem/1706/D2)
+
+对于`std::vector`而言，`pop_back()`，`clear()`，`resize()`都不会**立即**回收已经使用过的内存（程序做的应该只是**迭代器的移动**操作，具体细节本人未作研究，建议读者自行查阅`STL`的相关源代码）。这大抵是为了方便后续的写入，省去再次分配空间的消耗。要做到立马回收空间，行之有效的方式是，利用`std::swap()`的机制，将使用的内存交换走。
+
+```cpp
+vector<T>().swap(v);
+```
