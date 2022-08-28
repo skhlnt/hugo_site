@@ -124,23 +124,3 @@ int main() {
   return 0;
 }
 ```
-
-### hugo_encryptor
-
-这里必须存在一些明文文字以及概要标签：
-
-<!--more-->
-
-{{% hugo-encryptor "PASSWORD" %}}
-
-这里是你要加密的内容!
-
-**别忘了闭合 `hugo-encryptor` shortcode 标签:**
-
-$$
-a^2+b^2=c^2
-$$
-
-$1+1=2$
-
-{{% /hugo-encryptor %}}

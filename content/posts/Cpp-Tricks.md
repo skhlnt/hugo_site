@@ -24,6 +24,7 @@ cover:
 ---
 
 {{< admonition info "Info" true >}}
++ update at 2022-08-27 '重写了部分代码实例，以及补充了部分内容'
 + update at 2022-04-25 '关于auto和bool的一个问题'
 + update at 2022-05-21 'accumulate返回值类型的细节'
 + update at 2022-05-23 '增加了bit部分的内容'
@@ -46,16 +47,9 @@ gcc version 11.2.0 (GCC)
 
 **尽量只使用宏：**
 ```cpp
-#define PII pair<int, int>
-#define vec vector
-#define str string
-#define fi first
-#define se second
-#define all(a) (a).begin(), (a).end()
-#define SZ(x) static_cast<int>((x).size())
-
-using db = double;
 using ll = long long;
+#define all(a) begin(a), end(a)
+#define sz(x) (int)((x).size())
 ```
 
 **参考**
@@ -72,6 +66,7 @@ using ll = long long;
 + `set` - `multiset` - `unordered_set`
 + `stack` - `queue` - `prority_queue`
 + `tuple`
++ `bitset`
 
 支持顺序访问的容器可以用下面的办法快速枚举：
 
@@ -161,7 +156,7 @@ true
 ## 迭代器 与 `all()`宏
 
 ```cpp
-#define all(a) (a).begin(), (a).end()
+#define all(a) begin(a), end(a)
 ```
 
 在`c++`的STL中，更常用的是迭代器，而非下标（指针），这与纯`c`写法有较大区别。
@@ -249,7 +244,8 @@ sort(all(v), [&](const Node &p, const Node &q) {
 
 ```cpp
 int V = 100;
-vec G(V, vec<int>());
+vector G(V, vector<int>(V));
+
 function<void (int, int)> dfs = [&](int u, int fa) {
   for (auto v : G[u]) {
     if (v == fa) continue;
@@ -280,7 +276,7 @@ dfs(dfs, source, -1); // 注意调用时需要将 自己 传入
 对于一般容器而言，二分函数的写法比较统一（以`vector<int> a`为例好了）：
 
 ```cpp
-vec<int> a{ 0, 1, 2, 2, 2, 3, 4 };
+vector<int> a { 0, 1, 2, 2, 2, 3, 4 };
 
 // 第一个大于等于 value 的位置（迭代器）
 auto it = lower_bound(all(a), value); 
@@ -316,7 +312,7 @@ cout << *it_min; // 用于输出
 在某些时候，我们可能连$\mathcal{O}(n\log n)$的算法也无法接受，此时可以使用均摊复杂度为$\mathcal{O}(n)$的函数`nth_element()`
 
 ```cpp
-vec<int> a = {4, 5, 3, 1, 6, 2};
+vector<int> a {4, 5, 3, 1, 6, 2};
 int k = 2;
 nth_element(a.begin(), next(a.begin(), k), a.end());
 for (int x : a) cout << x << ' ';
@@ -342,6 +338,12 @@ for (int x : a) cout << x << ' ';
 
 顾名思义，对于一个范围，判断满足条件（一般用`lambda`表达式写）的集合与全集的关系。
 
++ `partial_sum`
+
+前缀和函数，`partial_sum(all(a), begin(b))`，**此处的 `b` 需要先开够空间。**
+
+类似的还有**前向差分**函数。
+
 + `accumulate`
 
 比较常见的要求是对数组求和，我们直接利用`accumulate(all(a), 0)`即可，但是该函数还有许多值得探究的部分（[参考链接](https://en.cppreference.com/w/cpp/algorithm/accumulate)）。
@@ -357,12 +359,13 @@ struct str_node {
 };
 
 void example() {
-  vec<str_node> a{ str_node{"abc"},
-                   str_node{"123"},
-                   str_node{"def"},
-                   str_node{"456"},
-                   str_node{"!@#"}
-                  };
+  vector<str_node> a{ 
+                      str_node{"abc"},
+                      str_node{"123"},
+                      str_node{"def"},
+                      str_node{"456"},
+                      str_node{"!@#"}
+                   };
   str_node sum = accumulate(1 + all(a), a.front());
   cout << sum.s << endl;
 }
@@ -404,7 +407,7 @@ T accumulate(InputIt first, InputIt last, T init,
 
 可以发现，无论是哪一种，`accumulate`的返回值类型都**不是由数组元素的类型来决定**。
 
-所以，一个常犯的错误就是（此处~~点名批评~~感谢[pbrgg](https://rivego.cn/)提供的素材）
+所以，一个常犯的错误就是（此处 ~~点名批评~~ 感谢[pbrgg](https://rivego.cn/)提供的素材）
 
 ```cpp
 vector<long long> v;
@@ -512,6 +515,12 @@ template<typename E> inline E randreal(E l, E r) {
 
 主要是在`dfs`由数组确定的集合时用到，当然直接写`dfs`也是可行的，甚至更快。（但，私以为二进制枚举最优雅）
 
++ 取模$2^k$
+
+等价为 `&` 上 $2^k-1$。用法大概是，最后 `&` 一下就行（大概。
+
+**注意，$2^{32}-1$需要`int64_t`。此时用`uint32_t`自然可以，但是会比`int32_t`慢。**
+
 ---
 
 ## 杂项 与 写法上的技巧
@@ -526,6 +535,26 @@ template<typename E> inline E randreal(E l, E r) {
 
 同时获得两数的最大值和最小值，~~啥用没用~~ 实际使用很少。
 
+**低版本建议的写法是 `tie(min_val, max_val) = minmax(a, b)` ，需要先声明变量。**
+
+{{< admonition danger "注意！！" true >}}
+`tie(a, b) = minmax(a, b)` 为**错误写法！**
+
+1. 函数 `minmax()` 的返回值类型为 `pair<const T &, const T &>`。
+
+2. 函数 `tie(Types&... args)` 会**依次赋值**。
+
+那么，如果 $a>b$，则会出现如下的情况：
+```
+tie(a, b) = minmax(a, b)
+
+   a = (const T&) b
+   b = (const T&) a // 此时，由于此处为 a 的引用，所以值已经改变
+```
+
+最后所有的数都变成原先的最小值！
+{{< /admonition >}}
+
 + `rotate` 旋转，放在圆（环）上理解可能会好点。
 
 ```cpp
@@ -539,7 +568,7 @@ rotate(a.begin(), next(a.begin(), 2), a.end());
 + 求数组中不同元素的个数 
 
 ```cpp
-int num = SZ(set<int>(all(a)));
+int num = sz(set<int>(all(a)));
 ```
 
 + `next_permutation` 和 `prev_permutation`
@@ -565,7 +594,7 @@ s.substr(start，length); // length 参数缺省时表示后续直到 end()
 
 避免行末空格，原理见[我的另一篇博客](../b1757d4d.html/)。
 
-## STL-std::vector内存回收问题
+## `std::vector` 内存回收问题
 
 [CF1706D2](https://codeforces.com/problemset/problem/1706/D2)
 
