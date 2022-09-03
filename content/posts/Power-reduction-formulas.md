@@ -1,5 +1,5 @@
 ---
-title: "三角函数降幂公式 - Power-reduction formulae"
+title: "三角函数降幂公式 - Power-reduction formulas"
 date: 2021-08-01 14:29:35
 slug: ce81e1da
 
