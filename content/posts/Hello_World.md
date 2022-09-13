@@ -124,7 +124,3 @@ int main() {
   return 0;
 }
 ```
-
-### Slide
-
-{{< slide src="http://matwbn.icm.edu.pl/ksiazki/aa/aa94/aa9413.pdf" >}}
