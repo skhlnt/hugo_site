@@ -11,13 +11,13 @@ ShowToc: false
 
 {{< friend name="oeis" url="https://oeis.org/" logo="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c6/OEISicon.svg/300px-OEISicon.svg.png" word="整数数列线上大全" >}} 
 
-### 0x1 实验室的大佬们
+### 0x1 实验室
 
-{{< friend name="Rivego's Blog" url="https://rivego.cn/" logo="http://rivego.cn/wp-content/uploads/2022/05/warma_icon.jpg" word="" >}}
+{{< friend name="Rivego's Blog" url="https://rivego.cn/" logo="https://rivego.cn/wp-content/uploads/2022/05/warma_icon.jpg" word="" >}}
 
 {{< friend name="尤利の博客" url="https://amcones.cn/" logo="https://amcones.cn/wp-content/uploads/2022/01/cropped-1-1.jpg" word="" >}}
 
-{{< friend name="不语奈何の博客" url="https://buyunaihe.cn/" logo="http://buyunaihe.cn/wp-content/uploads/2021/11/avatar1.jpg" word="" >}}
+{{< friend name="不语奈何の博客" url="https://buyunaihe.cn/" logo="https://buyunaihe.cn/wp-content/uploads/2021/11/avatar1.jpg" word="" >}}
 
 {{< friend name="Just Call Me Jax" url="https://jaxvanyang.github.io/" logo="https://jaxvanyang.github.io/assets/images/avatar.png" word="" >}}
 
