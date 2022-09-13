@@ -100,8 +100,8 @@ int main() {
 $$
 \begin{aligned}
 ans 
-&= \sum_{i=1}^{n}\sum_{j=1}^{n}\sum_{k=1}^{n}(a[i]\times a[j]\times a[k])\times(i+j+k)!\\\\
-&= \sum_{k=1}^{n}\sum_{t=2}^{2n}a[k]\times \left(\sum_{i+j=t}a[i]\times a[j]\right)\times(t+k)!\\\\
+&= \sum_{i=1}^{n}\sum_{j=1}^{n}\sum_{k=1}^{n}(a[i]\times a[j]\times a[k])\times(i+j+k)!\newline
+&= \sum_{k=1}^{n}\sum_{t=2}^{2n}a[k]\times \left(\sum_{i+j=t}a[i]\times a[j]\right)\times(t+k)!\newline
 \end{aligned}
 $$
 

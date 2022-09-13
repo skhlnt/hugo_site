@@ -1,4 +1,4 @@
-mjx-container[jax="SVG"][display="true"] {
+.katex-display {
     overflow-x: auto;
     overflow-y: hidden;
     max-width: 100%;

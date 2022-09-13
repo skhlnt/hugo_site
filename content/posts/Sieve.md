@@ -112,8 +112,8 @@ $$\sigma(n)=\sum_{d \mid n}{d}=\prod_{i=1}^{s}\sum_{k=0}^{\alpha_i}{p_i^k}$$
 
 下面开始推表达式：
 $$\begin{aligned}
-\sum_{i=1}^{n}{h(i)}&=\sum_{i=1}^{n}\sum_{d \mid i}{g(d)f(\frac{i}{d})}\\\\
-&= \sum_{d=1}^{n}{g(d)}\sum_{i=1}^{\lfloor \frac{n}{d} \rfloor}{f(i)}\\\\
+\sum_{i=1}^{n}{h(i)}&=\sum_{i=1}^{n}\sum_{d \mid i}{g(d)f(\frac{i}{d})}\newline
+&= \sum_{d=1}^{n}{g(d)}\sum_{i=1}^{\lfloor \frac{n}{d} \rfloor}{f(i)}\newline
 &= \sum_{d=1}^{n}{g(d)S(\lfloor \frac{n}{d} \rfloor)}
 \end{aligned}$$
 
@@ -383,10 +383,10 @@ $$\exists n,m\in Z^+,(n, m)=1,\mathrm{s.t. }f(nm) \neq f(n)f(m)$$
    
    则对于所有$a,b\in Z^+,(a,b)=1,ab<nm$有$f(ab)=f(a)f(b)$成立。
    $$\begin{aligned}
-   h(nm)&=\sum_{a\mid n}\sum_{b\mid m}f(ab)g(\frac{nm}{ab})\\\\ 
-   &= f(nm)g(1) + \sum_{a\mid n, b\mid m, ab<nm}f(ab)g(\frac{n}{a}\times\frac{m}{b}) \\\\ 
-   &= f(nm)g(1) + \sum_{a\mid n, b\mid m, ab<nm}f(a)f(b)g(\frac{n}{a})g(\frac{m}{b}) \\\\ 
-   &= f(nm) - f(n)f(m) + \sum_{a\mid n}f(a)g(\frac{n}{a})\sum_{b\mid m}f(b)g(\frac{m}{b}) \\\\
+   h(nm)&=\sum_{a\mid n}\sum_{b\mid m}f(ab)g(\frac{nm}{ab})\newline 
+   &= f(nm)g(1) + \sum_{a\mid n, b\mid m, ab<nm}f(ab)g(\frac{n}{a}\times\frac{m}{b}) \newline 
+   &= f(nm)g(1) + \sum_{a\mid n, b\mid m, ab<nm}f(a)f(b)g(\frac{n}{a})g(\frac{m}{b}) \newline 
+   &= f(nm) - f(n)f(m) + \sum_{a\mid n}f(a)g(\frac{n}{a})\sum_{b\mid m}f(b)g(\frac{m}{b}) \newline
    &= h(n)h(m) + \left(f(nm) - f(n)f(m)\right)
    \end{aligned}$$
    与$h$为积性函数矛盾。
@@ -423,8 +423,8 @@ $$f(p)=g(1)h(p)+h(1)g(p) \Rightarrow h(p)=0$$
 所求的前缀和为:
 
 $$\begin{aligned} 
-S(n) &= \sum_{i=1}^{n}f(i)\\\\ 
-&= \sum_{i=1}^{n}\sum_{d\mid i}h(d)g(\frac{i}{d})\\\\ 
+S(n) &= \sum_{i=1}^{n}f(i)\newline 
+&= \sum_{i=1}^{n}\sum_{d\mid i}h(d)g(\frac{i}{d})\newline 
 &= \sum_{d=1}^{n}h(d)\sum_{i=1}^{\lfloor\frac{n}{d}\rfloor}g(i) 
 \end{aligned}$$
 
@@ -457,7 +457,7 @@ $$f(p^k)=\sum_{i=0}^{k}h(p^i)g(p^{k-i})=\sum_{i=0}^{k}h(p^i)\rightarrow h(p^k)=f
 
 前缀和为：
 
-$$\begin{aligned} Ans&=\sum_{i=1}^{n}f(i)\\\\ &=\sum_{i=1}^{n}\sum_{d\mid i}h(d)\\\\ &=\sum_{d=1}^{n}h(d)\times\lfloor\frac{n}{d}\rfloor \end{aligned}$$
+$$\begin{aligned} Ans&=\sum_{i=1}^{n}f(i)\newline &=\sum_{i=1}^{n}\sum_{d\mid i}h(d)\newline &=\sum_{d=1}^{n}h(d)\times\lfloor\frac{n}{d}\rfloor \end{aligned}$$
 
 `dfs`去寻找PN时，带上$d,h(d)$更新答案即可。
 
@@ -552,9 +552,9 @@ int main() {
 ### 推导
 
 $$\begin{aligned}
-\sum_{i=1}^{n}{f(i)}&=f(1)+\sum_{2\leq p\leq n}\sum_{2\leq i\leq n,LPF(i)=p}{f(i)}\\\\
-&=f(1)+\sum_{2\leq p\leq \sqrt n}\sum_{2\leq i\leq n,LPF(i)=p}{f(i)}+\sum_{\sqrt n < p\leq n}{f(p)}\\\\
-&=1+\sum_{2\leq p\leq \sqrt n}\sum_{e\geq 1, 2\leq p^e \leq n}{f(p^e)}\left(1 + \sum_{2\leq j\leq \lfloor \frac{n}{p^e} \rfloor,LPF(j)>p}{f(j)} \right)+\sum_{\sqrt n<p\leq n}{f(p)}\\\\
+\sum_{i=1}^{n}{f(i)}&=f(1)+\sum_{2\leq p\leq n}\sum_{2\leq i\leq n,LPF(i)=p}{f(i)}\newline
+&=f(1)+\sum_{2\leq p\leq \sqrt n}\sum_{2\leq i\leq n,LPF(i)=p}{f(i)}+\sum_{\sqrt n < p\leq n}{f(p)}\newline
+&=1+\sum_{2\leq p\leq \sqrt n}\sum_{e\geq 1, 2\leq p^e \leq n}{f(p^e)}\left(1 + \sum_{2\leq j\leq \lfloor \frac{n}{p^e} \rfloor,LPF(j)>p}{f(j)} \right)+\sum_{\sqrt n<p\leq n}{f(p)}\newline
 \end{aligned}$$
 
 ---
@@ -562,10 +562,10 @@ $$\begin{aligned}
 $$\textrm{let }G(n,m)=\sum_{2\leq i\leq n,LPF(i)>m}{f(i)},F(n)=\sum_{2\leq p\leq n}{f(p)}$$
 
 $$\begin{aligned}
-G(n,m)&=\sum_{2\leq i\leq n,LPF(i)>m}{f(i)}\\\\
-&=\sum_{m<p\leq \sqrt n}\sum_{e\geq 1,2\leq p^e\leq n}f(p^e)\left(1+\sum_{2\leq j\leq \lfloor\frac{n}{p^e} \rfloor,LPF(j)>p}f(j) \right) +\sum_{\sqrt n < p\leq n}{f(p)} \\\\
-&=\sum_{m<p\leq\sqrt n}\sum_{e\geq 1,2\leq p^e\leq n}{f(p^e)}\left([e>1]+ \sum_{2\leq j\leq \lfloor\frac{n}{p^e} \rfloor,LPF(j)>p}{f(j)} \right)+\sum_{m<p\leq n}f(p)\\\\
-&=\sum_{m<p\leq\sqrt n}\sum_{e\geq 1,2\leq p^e\leq n}{f(p^e)}\left([e>1]+G(\lfloor \frac{n}{p^e} \rfloor,p) \right)+\left(F(n)-F(m)\right)\\\\
+G(n,m)&=\sum_{2\leq i\leq n,LPF(i)>m}{f(i)}\newline
+&=\sum_{m<p\leq \sqrt n}\sum_{e\geq 1,2\leq p^e\leq n}f(p^e)\left(1+\sum_{2\leq j\leq \lfloor\frac{n}{p^e} \rfloor,LPF(j)>p}f(j) \right) +\sum_{\sqrt n < p\leq n}{f(p)} \newline
+&=\sum_{m<p\leq\sqrt n}\sum_{e\geq 1,2\leq p^e\leq n}{f(p^e)}\left([e>1]+ \sum_{2\leq j\leq \lfloor\frac{n}{p^e} \rfloor,LPF(j)>p}{f(j)} \right)+\sum_{m<p\leq n}f(p)\newline
+&=\sum_{m<p\leq\sqrt n}\sum_{e\geq 1,2\leq p^e\leq n}{f(p^e)}\left([e>1]+G(\lfloor \frac{n}{p^e} \rfloor,p) \right)+\left(F(n)-F(m)\right)\newline
 \end{aligned}$$
 
 到目前为止，我们只要快速求出（预处理）$F(i)$，就能通过递推得到答案$S(n)=G(n,0)+1$。
@@ -601,8 +601,8 @@ $$H(i,n)=\sum_{1\leq k\leq n,k\in Prime \lor k=1 \lor LPF(k)>p_i}{k^s}$$
 
 $$H(i,n)=
 \begin{cases}
-H(i-1,n)-p_i^s\left(H(i-1,\lfloor\frac{n}{p_i}\rfloor)-H(i-1,p_{i-1})\right) & \textrm{if } p_i\leq\sqrt{n} \\\\
-H(i-1,n)		& \textrm{otherwise}		\\\\
+H(i-1,n)-p_i^s\left(H(i-1,\lfloor\frac{n}{p_i}\rfloor)-H(i-1,p_{i-1})\right) & \textrm{if } p_i\leq\sqrt{n} \newline
+H(i-1,n)		& \textrm{otherwise}		\newline
 \end{cases}$$
 
 根据$H(i,n)$与$F(n)$的关系$F(n)=H(+\infty,n)$，我们只需要$\sqrt n$以内的素数就能求出$F(n)$了。

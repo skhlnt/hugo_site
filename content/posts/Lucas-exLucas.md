@@ -80,10 +80,10 @@ $$(1+x)^n\equiv(1+x)^{\sum a_ip^i}\equiv\prod(1+x^{p^i})^{a_i}\pmod{p}$$
 如果合数$p$的唯一分解为$\prod_{i=1}^{s}{p_i}^{\alpha_i}$，则有：
 $$x \equiv {n \choose m} \pmod{p} \Rightarrow
 \begin{cases}
-x & \equiv & {n \choose m} \pmod{p_1^{\alpha_1}} \\\\
-x & \equiv & {n \choose m} \pmod{p_2^{\alpha_2}} \\\\
-  & \vdots & \\\\
-x & \equiv & {n \choose m} \pmod{p_s^{\alpha_s}} \\\\
+x & \equiv & {n \choose m} \pmod{p_1^{\alpha_1}} \newline
+x & \equiv & {n \choose m} \pmod{p_2^{\alpha_2}} \newline
+  & \vdots & \newline
+x & \equiv & {n \choose m} \pmod{p_s^{\alpha_s}} \newline
 \end{cases}$$
 
 所以只要求出$p$的**唯一分解**，再分别解出各个同余式，通过**CRT**合并答案就能完成全部解答。
@@ -265,7 +265,7 @@ int main() {
 > 设$m_1,m_2,\dots,m_k$为$k$个两两互素的正整数，$m=\prod{m_i}$。
 >
 > 令$m=m_iM_i$，则同余方程组
-> $$\begin{cases}x &\equiv & b_1 \pmod{m_1} \\\\ x &\equiv & b_2 \pmod{m_2} \\\\ & \vdots & \\\\ x &\equiv & b_k \pmod{m_k} \end{cases}$$
+> $$\begin{cases}x &\equiv & b_1 \pmod{m_1} \newline x &\equiv & b_2 \pmod{m_2} \newline & \vdots & \newline x &\equiv & b_k \pmod{m_k} \end{cases}$$
 > 
 > 有唯一解
 > $$x\equiv {\sum_{i=1}^{k}{b_iM_iM_i^{-1}}}\pmod{m},M_iM_i^{-1}\equiv1\pmod{m_i}$$

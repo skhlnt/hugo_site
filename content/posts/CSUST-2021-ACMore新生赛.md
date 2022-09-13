@@ -152,10 +152,10 @@ $$
 证明：
 $$
 \begin{aligned}
-LSH & = \frac{\cos A\cos B}{\sin A\sin B}+\frac{\cos B\cos C}{\sin B\sin C}+\frac{\cos C\cos A}{\sin C\sin A}\\\\
-& = \frac{\cos B}{\bcancel{\sin B}}\times\left(\frac{\bcancel{\cos A\sin C + \cos C\sin A}}{\sin A\sin C}\right)+\frac{\cos C\cos A}{\sin C\sin A}\\\\
-& = \frac{\cos B+\cos C\cos A}{\sin C\sin A}\\\\
-& = \frac{\cos(\pi - A - C)+\cos C\cos A}{\sin C\sin A}\\\\
+LSH & = \frac{\cos A\cos B}{\sin A\sin B}+\frac{\cos B\cos C}{\sin B\sin C}+\frac{\cos C\cos A}{\sin C\sin A}\newline
+& = \frac{\cos B}{\bcancel{\sin B}}\times\left(\frac{\bcancel{\cos A\sin C + \cos C\sin A}}{\sin A\sin C}\right)+\frac{\cos C\cos A}{\sin C\sin A}\newline
+& = \frac{\cos B+\cos C\cos A}{\sin C\sin A}\newline
+& = \frac{\cos(\pi - A - C)+\cos C\cos A}{\sin C\sin A}\newline
 & = 1 = RHS
 \end{aligned}
 $$

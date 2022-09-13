@@ -138,9 +138,9 @@ $$S_n{max} = \sum_{i=1}^n{\frac{d_i}{2}\sqrt{R^2-\frac{d_i^2}{4}}\tag{2}}$$
 令 $k = \frac{1}{2R}$
 
 $$\begin{eqnarray}
-\sum_{i=1}^n{\arcsin{\frac{d_i}{2R}}} & = & \sum_{i=1}^n{\arcsin(d_ik)} \\\\
-& = &  \sum_{i=1}^n\sum_{m=0}^{\infty}{[\frac{(2m)!}{2^{2m}(m!)^2}]\frac{(d_ik)^{2m+1}}{2m+1}} \\\\
-& = & \sum_{m=0}^{\infty}{[\frac{(2m)!}{2^{2m}(m!)^2}]\frac{\sum_{i=1}^n{d_i^{2m+1}}}{2m+1}{k^{2m+1}}} \\\\
+\sum_{i=1}^n{\arcsin{\frac{d_i}{2R}}} & = & \sum_{i=1}^n{\arcsin(d_ik)} \newline
+& = &  \sum_{i=1}^n\sum_{m=0}^{\infty}{[\frac{(2m)!}{2^{2m}(m!)^2}]\frac{(d_ik)^{2m+1}}{2m+1}} \newline
+& = & \sum_{m=0}^{\infty}{[\frac{(2m)!}{2^{2m}(m!)^2}]\frac{\sum_{i=1}^n{d_i^{2m+1}}}{2m+1}{k^{2m+1}}} \newline
 & = & \pi ...
 \end{eqnarray}$$
 
@@ -149,7 +149,7 @@ $$\begin{eqnarray}
 或者，（1）两侧对 $R$ 求导
 
 $$\begin{aligned}
-\sum_{i=1}^{n}{\frac{-\frac{d_i}{2R^2}}{\sqrt{1-(\frac{d_i}{2R})^2}}} = 0 \\\\
+\sum_{i=1}^{n}{\frac{-\frac{d_i}{2R^2}}{\sqrt{1-(\frac{d_i}{2R})^2}}} = 0 \newline
 \sum_{i=1}^{n}{\frac{d_i}{\sqrt{4R^2-d_i^2}}} = 0
 \end{aligned}$$
 
@@ -170,8 +170,8 @@ $$\arcsin{\frac{d_m}{2R}} = -i\ln{(i\frac{d_m}{2R}+\sqrt{1-\frac{d_m^2}{4R^2}})}
 所以有
 
 $$\begin{eqnarray}
-\sum_{m=1}^{n}\arcsin{\frac{d_m}{2R}} & = & \sum_{m=1}^{n}(-i\ln{(i\frac{d_m}{2R}+\sqrt{1-\frac{d_m^2}{4R^2}})} \\\\
-& = & -i\ln({\prod_{m=1}^{n}{(i\frac{d_m}{2R} + \sqrt{1-\frac{d_m^2}{4R^2}})}}) \\\\
+\sum_{m=1}^{n}\arcsin{\frac{d_m}{2R}} & = & \sum_{m=1}^{n}(-i\ln{(i\frac{d_m}{2R}+\sqrt{1-\frac{d_m^2}{4R^2}})} \newline
+& = & -i\ln({\prod_{m=1}^{n}{(i\frac{d_m}{2R} + \sqrt{1-\frac{d_m^2}{4R^2}})}}) \newline
 & = & \pi
 \end{eqnarray}$$
 
@@ -181,7 +181,7 @@ $$\prod_{m=1}^{n}{(i\frac{d_m}{2R} + \sqrt{1-\frac{d_m^2}{4R^2}})} = e^{i\pi} = 
 
 令 $k = \frac{1}{2R}$
 
-$$\prod_{m=1}^{n}{(id_mk + \sqrt{1+(id_mk)^2})} = -1 \\\\$$
+$$\prod_{m=1}^{n}{(id_mk + \sqrt{1+(id_mk)^2})} = -1 \newline$$
 
 > 分奇偶、虚实找到结果
 

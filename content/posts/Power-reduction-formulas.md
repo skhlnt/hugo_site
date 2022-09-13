@@ -24,10 +24,10 @@ cover:
 先给出全部公式：
 
 $$\begin{aligned}
-& \sin^{2n}{x}=\frac{1}{2^{2n-1}}\left[ \sum_{k=0}^{n-1}{2n \choose k}(-1)^{n-k}\cos{2(n-k)x} + \frac{1}{2}{2n \choose n} \right] \\\\ 
-& \sin^{2n+1}{x}=\frac{1}{2^{2n}}\sum_{k=0}^{n}{2n+1 \choose k}(-1)^{n-k}\sin{(2n-2k+1)x}  \\\\ 
-& \cos^{2n}{x}=\frac{1}{2^{2n-1}}\left[ \sum_{k=0}^{n-1}{2n \choose k}\cos{2(n-k)x}+\frac{1}{2}{2n \choose n} \right] \\\\
-& \cos^{2n+1}{x}=\frac{1}{2^{2n}}\sum_{k=0}^{n}{2n+1 \choose k}\cos{(2n-2k+1)x} \\\\
+& \sin^{2n}{x}=\frac{1}{2^{2n-1}}\left[ \sum_{k=0}^{n-1}{2n \choose k}(-1)^{n-k}\cos{2(n-k)x} + \frac{1}{2}{2n \choose n} \right] \newline 
+& \sin^{2n+1}{x}=\frac{1}{2^{2n}}\sum_{k=0}^{n}{2n+1 \choose k}(-1)^{n-k}\sin{(2n-2k+1)x}  \newline 
+& \cos^{2n}{x}=\frac{1}{2^{2n-1}}\left[ \sum_{k=0}^{n-1}{2n \choose k}\cos{2(n-k)x}+\frac{1}{2}{2n \choose n} \right] \newline
+& \cos^{2n+1}{x}=\frac{1}{2^{2n}}\sum_{k=0}^{n}{2n+1 \choose k}\cos{(2n-2k+1)x} \newline
 \end{aligned}$$
 
 <!--more-->
@@ -41,20 +41,20 @@ $\mathrm{Proof:}$
 由欧拉恒等式$e^{ix}=\cos{x}+i\sin{x}$有
 
 $$\begin{cases} 
-\sin x &=& \frac{e^{ix}-e^{-ix}}{2i} \\\\ 
+\sin x &=& \frac{e^{ix}-e^{-ix}}{2i} \newline 
 \cos x &=& \frac{e^{ix}+e^{-ix}}{2}
 \end{cases}$$ 
 
 可以得到
 $$\begin{aligned} 
-\sin^{2n}{x} & = \left(\frac{e^{ix}-e^{-ix}}{2i}\right)^{2n} \\\\ 
-& = \frac{1}{(-1)^{n}2^{2n}}\sum_{k=0}^{2n}{2n \choose k}{(-1)^{2n-k}e^{ixk-ix(2n-k)}} \\\\
-& = \frac{1}{2^{2n}}\sum_{k=0}^{2n}{2n \choose k}(-1)^{(n-k)}e^{i2(n-k)x} \\\\
-& = \frac{1}{2^{2n}}{2n \choose n}+\frac{1}{2^{2n-1}}\sum_{k=0}^{n-1}{2n \choose k}(-1)^{n-k}\cos{2(n-k)x}\\\\
-\\\\
-\cos^{2n}{x} & = \left(\frac{e^{ix}+e^{-ix}}{2}\right)^{2n} \\\\
-& = \frac{1}{2^{n}}\sum_{k=0}^{2n}{2n \choose k}{e^{i2(k-n)x}} \\\\
-& = \frac{1}{2^{2n}}\left[\sum_{k=0}^{n-1}{2n \choose k}{e^{i2(k-n)x}}+\sum_{k=0}^{n-1}{2n \choose k}{e^{i2(n-k)x}}\right] + \frac{1}{2^{2n}}{2n \choose n} \\\\
+\sin^{2n}{x} & = \left(\frac{e^{ix}-e^{-ix}}{2i}\right)^{2n} \newline 
+& = \frac{1}{(-1)^{n}2^{2n}}\sum_{k=0}^{2n}{2n \choose k}{(-1)^{2n-k}e^{ixk-ix(2n-k)}} \newline
+& = \frac{1}{2^{2n}}\sum_{k=0}^{2n}{2n \choose k}(-1)^{(n-k)}e^{i2(n-k)x} \newline
+& = \frac{1}{2^{2n}}{2n \choose n}+\frac{1}{2^{2n-1}}\sum_{k=0}^{n-1}{2n \choose k}(-1)^{n-k}\cos{2(n-k)x}\newline
+\newline
+\cos^{2n}{x} & = \left(\frac{e^{ix}+e^{-ix}}{2}\right)^{2n} \newline
+& = \frac{1}{2^{n}}\sum_{k=0}^{2n}{2n \choose k}{e^{i2(k-n)x}} \newline
+& = \frac{1}{2^{2n}}\left[\sum_{k=0}^{n-1}{2n \choose k}{e^{i2(k-n)x}}+\sum_{k=0}^{n-1}{2n \choose k}{e^{i2(n-k)x}}\right] + \frac{1}{2^{2n}}{2n \choose n} \newline
 & = \frac{1}{2^{2n}}{2n \choose n}+\frac{1}{2^{2n-1}}\sum_{k=0}^{n-1}{2n \choose k}{\cos2(n-k)x}
 \end{aligned}$$
 

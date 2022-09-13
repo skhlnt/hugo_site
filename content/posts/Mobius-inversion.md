@@ -49,14 +49,14 @@ cover:
 
 显然有答案为：
 
-$$Ans=\sum_{i=1}^{n}\sum_{j=1}^{m}\sigma(\gcd(i,j))[\gcd(i,j)\leq a] \\\\$$
+$$Ans=\sum_{i=1}^{n}\sum_{j=1}^{m}\sigma(\gcd(i,j))[\gcd(i,j)\leq a] \newline$$
 
 先不考虑大小限制，之后将其转换成离线求值+动态加入贡献的问题。
 
 $$\begin{aligned}
-\sum_{i=1}^{n}\sum_{j=1}^{m}\sigma(\gcd(i,j))&=\sum_{d=1}^{n}\sigma(d)\sum_{i=1}^{[\frac{n}{d}]}\sum_{j=1}^{[\frac{m}{d}]}[\gcd(i,j)=1]\\\\
-&=\sum_{d=1}^{n}\sigma(d)\sum_{k=1}^{[\frac{n}{d}]}\mu(k)\sum_{i=1}^{[\frac{n}{d}]}\sum_{j=1}^{[\frac{m}{d}]}\\\\
-&=\sum_{d=1}^{n}\sigma(d)\sum_{k=1}^{[\frac{n}{d}]}\mu(k)[\frac{n}{dk}]\times[\frac{m}{dk}]\\\\
+\sum_{i=1}^{n}\sum_{j=1}^{m}\sigma(\gcd(i,j))&=\sum_{d=1}^{n}\sigma(d)\sum_{i=1}^{[\frac{n}{d}]}\sum_{j=1}^{[\frac{m}{d}]}[\gcd(i,j)=1]\newline
+&=\sum_{d=1}^{n}\sigma(d)\sum_{k=1}^{[\frac{n}{d}]}\mu(k)\sum_{i=1}^{[\frac{n}{d}]}\sum_{j=1}^{[\frac{m}{d}]}\newline
+&=\sum_{d=1}^{n}\sigma(d)\sum_{k=1}^{[\frac{n}{d}]}\mu(k)[\frac{n}{dk}]\times[\frac{m}{dk}]\newline
 &=\sum_{T=1}^{n}[\frac{n}{T}][\frac{m}{T}]\sum_{d\mid T}\sigma(d)\mu(\frac{T}{d})
 \end{aligned}$$
 
@@ -157,15 +157,15 @@ int main() {
 > 对于 $100\%$ 的数据，$1\le N,K\le 10^9$，$1\le L\le H\le 10^9$，$H-L\le 10^5$。
 
 $$\begin{aligned}
-Ans&=\sum_{a_1=L}^{H}\sum_{a_2=L}^{H}\dots\sum_{a_N=L}^{H}\left[ (a_1,a_2,\dots,a_N)=K \right] \\\\
-&=\sum_{a_1=\lceil \frac{L}{K} \rceil}^{\lfloor\frac{H}{K} \rfloor}\sum_{a_2=\lceil \frac{L}{K} \rceil}^{\lfloor \frac{H}{K} \rfloor}\dots\sum_{a_N=\lceil \frac{L}{K} \rceil}^{\lfloor \frac{H}{K} \rfloor}\left[ (a_1,a_2,\dots,a_N)=1\right] \\\\
-&=\sum_{a_1=\lceil \frac{L}{K} \rceil}^{\lfloor\frac{H}{K} \rfloor}\sum_{a_2=\lceil \frac{L}{K} \rceil}^{\lfloor \frac{H}{K} \rfloor}\dots\sum_{a_N=\lceil \frac{L}{K} \rceil}^{\lfloor \frac{H}{K} \rfloor}\sum_{d\mid(a_1,a_2,\dots,a_N)}{\mu(d)} \\\\
-&=\sum_{d=1}^{\lfloor \frac{H}{K} \rfloor}{\mu(d)\times(\lfloor\frac{\lfloor\frac{H}{K} \rfloor}{d}\rfloor-\lceil\frac{\lceil\frac{L}{K}\rceil}{d}\rceil+1)^N}\\\\
+Ans&=\sum_{a_1=L}^{H}\sum_{a_2=L}^{H}\dots\sum_{a_N=L}^{H}\left[ (a_1,a_2,\dots,a_N)=K \right] \newline
+&=\sum_{a_1=\lceil \frac{L}{K} \rceil}^{\lfloor\frac{H}{K} \rfloor}\sum_{a_2=\lceil \frac{L}{K} \rceil}^{\lfloor \frac{H}{K} \rfloor}\dots\sum_{a_N=\lceil \frac{L}{K} \rceil}^{\lfloor \frac{H}{K} \rfloor}\left[ (a_1,a_2,\dots,a_N)=1\right] \newline
+&=\sum_{a_1=\lceil \frac{L}{K} \rceil}^{\lfloor\frac{H}{K} \rfloor}\sum_{a_2=\lceil \frac{L}{K} \rceil}^{\lfloor \frac{H}{K} \rfloor}\dots\sum_{a_N=\lceil \frac{L}{K} \rceil}^{\lfloor \frac{H}{K} \rfloor}\sum_{d\mid(a_1,a_2,\dots,a_N)}{\mu(d)} \newline
+&=\sum_{d=1}^{\lfloor \frac{H}{K} \rfloor}{\mu(d)\times(\lfloor\frac{\lfloor\frac{H}{K} \rfloor}{d}\rfloor-\lceil\frac{\lceil\frac{L}{K}\rceil}{d}\rceil+1)^N}\newline
 \end{aligned}$$
 前者求$\sum\mu(n)$用杜教筛就可以了，$O(n^{\frac{2}{3}})$。
 
 后者明显是分块+快速幂，但是里面存在一个`向上取整`的部分。想了很久怎样找向上取整的区间，然后突然记起向上取整可以转化为向下取整，即$\lceil \frac{L}{K} \rceil=\lfloor \frac{L-1}{K} \rfloor + 1$。
-$$Ans=\sum_{d=1}^{\lfloor \frac{H}{K} \rfloor}{\mu(d)\times(\lfloor\frac{\lfloor\frac{H}{K} \rfloor}{d}\rfloor-\lfloor\frac{\lfloor\frac{L-1}{K}\rfloor}{d}\rfloor)^N}\\\\$$
+$$Ans=\sum_{d=1}^{\lfloor \frac{H}{K} \rfloor}{\mu(d)\times(\lfloor\frac{\lfloor\frac{H}{K} \rfloor}{d}\rfloor-\lfloor\frac{\lfloor\frac{L-1}{K}\rfloor}{d}\rfloor)^N}\newline$$
 
 然后就和常规的整除分块一样啦。
 
@@ -244,10 +244,10 @@ int main() {
 
 随机数组的形式没办法直接快速求值，注意到，$A_i$的取值范围很小，我们可以定义一个**贡献**，将未出现的数剔除掉，只统计数组中元素的贡献。显然，这里应该用**出现次数**作为贡献（出现多少次就会被计算多少次）。
 $$\begin{aligned}
-Ans&=\sum_{i=1}^{M}\sum_{j=1}^{M}lcm(i,j)\times c[i]\times c[j]\\\\
-&=\sum_{g=1}^{M}\sum_{i=1}^{[\frac{M}{g}]}\sum_{j=1}^{[\frac{M}{g}]}{g\times i\times j}\times[(i,j)=1]\times c[ig]\times c[jg]\\\\
-&=\sum_{g=1}^{M}\sum_{k=1}^{[\frac{M}{g}]}\mu(k)\sum_{i=1}^{[\frac{M}{gk}]}\sum_{j=1}^{[\frac{M}{gk}]}{g\times ik\times jk}\times c[igk]\times c[jgk]\\\\
-&=\sum_{T=1}^{M}T(\sum_{i=1}^{[\frac{M}{T}]}i\times c[iT])^2\sum_{k \mid T}{k\times\mu(k)}\\\\
+Ans&=\sum_{i=1}^{M}\sum_{j=1}^{M}lcm(i,j)\times c[i]\times c[j]\newline
+&=\sum_{g=1}^{M}\sum_{i=1}^{[\frac{M}{g}]}\sum_{j=1}^{[\frac{M}{g}]}{g\times i\times j}\times[(i,j)=1]\times c[ig]\times c[jg]\newline
+&=\sum_{g=1}^{M}\sum_{k=1}^{[\frac{M}{g}]}\mu(k)\sum_{i=1}^{[\frac{M}{gk}]}\sum_{j=1}^{[\frac{M}{gk}]}{g\times ik\times jk}\times c[igk]\times c[jgk]\newline
+&=\sum_{T=1}^{M}T(\sum_{i=1}^{[\frac{M}{T}]}i\times c[iT])^2\sum_{k \mid T}{k\times\mu(k)}\newline
 \end{aligned}$$
 后面一项可以预处理，中间项只能暴力去做，正好$M$不大，时间复杂度$O(M\log M)$能过。
 
@@ -306,7 +306,7 @@ int main() {
 > 求$\sum_{i=1}^{n}\sum_{j=1}^{m}lcm(i,j)\mod 20101009$，其中$1<n,m\leq10^7$。
 
 上面推过了，只要将贡献设置为$1$，得到答案：
-$$Ans=\sum_{T=1}^{n}T(\sum_{i=1}^{[\frac{n}{T}]}i)(\sum_{j=1}^{[\frac{m}{T}]}j)\sum_{k \mid T}{k\times\mu(k)}\\\\$$
+$$Ans=\sum_{T=1}^{n}T(\sum_{i=1}^{[\frac{n}{T}]}i)(\sum_{j=1}^{[\frac{m}{T}]}j)\sum_{k \mid T}{k\times\mu(k)}\newline$$
 看起来最终求值可以$O(\sqrt n)$解决，但是预处理的复杂度$O(n\log n)$太大了，需要优化。
 
 首先，由于$\sum_{d\mid n}f(d)\mu(d)=\prod\limits_{p\mid n,p\in Prime}\left(1-f(p)\right)$，我们得到：
@@ -430,8 +430,8 @@ int main() {
 用一个之前没写过的欧拉反演，原理：$\sum_{d\mid n}\varphi(d)=n$。
 
 $$\begin{aligned}
-Ans&=\sum_{i=1}^{n}\sum_{j=1}^{m}\gcd(i,j)\\\\
-&=\sum_{i=1}^{n}\sum_{j=1}^{m}\sum_{d\mid\gcd(i,j)}\varphi(d)\\\\
+Ans&=\sum_{i=1}^{n}\sum_{j=1}^{m}\gcd(i,j)\newline
+&=\sum_{i=1}^{n}\sum_{j=1}^{m}\sum_{d\mid\gcd(i,j)}\varphi(d)\newline
 &=\sum_{d=1}^{n}\varphi(d)\times[\frac{n}{d}]\times[\frac{m}{d}]
 \end{aligned}$$
 总共$O(n+\sqrt{n})$，数据范围给得太小了。
@@ -488,9 +488,9 @@ int main() {
 > $T=1e4$，$N,M\leq1e7$。
 
 $$\begin{aligned}
-Ans&=\sum_{x=1}^{N}\sum_{y=1}^{M}[(x,y)=p \land p\in Prime]\\\\
-&=\sum_{p\in Prime}\sum_{x=1}^{[\frac{N}{p}]}\sum_{y=1}^{[\frac{M}{p}]}[(x,y)=1]\\\\
-&=\sum_{p\in Prime}\sum_{k=1}^{[\frac{N}{p}]}\mu(k)\times[\frac{N}{pk}]\times[\frac{M}{pk}]\\\\
+Ans&=\sum_{x=1}^{N}\sum_{y=1}^{M}[(x,y)=p \land p\in Prime]\newline
+&=\sum_{p\in Prime}\sum_{x=1}^{[\frac{N}{p}]}\sum_{y=1}^{[\frac{M}{p}]}[(x,y)=1]\newline
+&=\sum_{p\in Prime}\sum_{k=1}^{[\frac{N}{p}]}\mu(k)\times[\frac{N}{pk}]\times[\frac{M}{pk}]\newline
 &=\sum_{T=1}^{N}[\frac{N}{T}]\times[\frac{M}{T}]\sum_{p\mid T,p\in Prime}\mu(\frac{T}{p})
 \end{aligned}$$
 
@@ -499,8 +499,8 @@ $O(N+\pi(N)\log p)$预处理后面部分$F(n)=\sum\limits_{p\mid n,p\in Prime}\m
 > （用线性筛可以优化到$O(N)$预处理）
 > $$F(n)=
 > \begin{cases}
-> 1 & \textrm{if } n\in Prime \\\\
-> \mu(\frac{n}{p}) - F(\frac{n}{p}) & \textrm{if } p\mid\mid n\\\\
+> 1 & \textrm{if } n\in Prime \newline
+> \mu(\frac{n}{p}) - F(\frac{n}{p}) & \textrm{if } p\mid\mid n\newline
 > \mu(\frac{n}{p}) & \textrm{otherwise}
 > \end{cases}
 > $$
@@ -566,9 +566,9 @@ int main() {
 > 多组，$1\leq T\leq 5e4$，$1\leq N,M,\leq 5e4$。
 
 $$\begin{aligned}
-Ans&=\sum_{i=1}^{N}\sum_{j=1}^{M}\sum_{x\mid i}\sum_{y\mid j}[\gcd(x,y)=1]\\\\
-&=\sum_{i=1}^{N}\sum_{j=1}^{M}\sum_{x\mid i}\sum_{y\mid j}\sum_{k\mid\gcd(x,y)}\mu(k)\\\\
-&=\sum_{k=1}^{N}\mu(k)\times\left( \sum_{x=1}^{[\frac{N}{k}]}\sum_{i=1}^{[\frac{N}{kx}]}1 \right)\times\left( \sum_{y=1}^{[\frac{M}{k}]}\sum_{j=1}^{[\frac{M}{ky}]}1 \right)\\\\
+Ans&=\sum_{i=1}^{N}\sum_{j=1}^{M}\sum_{x\mid i}\sum_{y\mid j}[\gcd(x,y)=1]\newline
+&=\sum_{i=1}^{N}\sum_{j=1}^{M}\sum_{x\mid i}\sum_{y\mid j}\sum_{k\mid\gcd(x,y)}\mu(k)\newline
+&=\sum_{k=1}^{N}\mu(k)\times\left( \sum_{x=1}^{[\frac{N}{k}]}\sum_{i=1}^{[\frac{N}{kx}]}1 \right)\times\left( \sum_{y=1}^{[\frac{M}{k}]}\sum_{j=1}^{[\frac{M}{ky}]}1 \right)\newline
 &=\sum_{k=1}^{N}\mu(k)\times\left(\sum_{x=1}^{[\frac{N}{k}]}[\frac{N}{kx}]\right)\times\left(\sum_{y=1}^{[\frac{M}{k}]}[\frac{M}{ky}]\right)
 \end{aligned}$$
 
@@ -644,8 +644,8 @@ int main() {
 > 多组，$T\leq3e5,1\leq n\leq1e6$。
 
 $$\begin{aligned}
-Ans&=\sum_{g\mid n}\sum_{i=1}^{\frac{n}{g}}i\times n\times[(i, \frac{n}{g})=1]\\\\
-&=n\sum_{g\mid n}\sum_{i=1}^{\frac{n}{g}}i\times[(i,\frac{n}{g})=1]\\\\
+Ans&=\sum_{g\mid n}\sum_{i=1}^{\frac{n}{g}}i\times n\times[(i, \frac{n}{g})=1]\newline
+&=n\sum_{g\mid n}\sum_{i=1}^{\frac{n}{g}}i\times[(i,\frac{n}{g})=1]\newline
 &=n\sum_{g\mid n}\frac{\frac{n}{g}\times\varphi(\frac{n}{g})}{2}
 \end{aligned}$$
 
@@ -705,9 +705,9 @@ int main() {
 
 先考虑一个子问题，$g(n)=\sum_{i=1}^{n}\lceil\frac{n}{i}\rceil\times[(n,i)=1]$。
 $$\begin{aligned}
-g(n)&=\sum_{i=1}^{n}\lceil\frac{n}{i}\rceil\times[(n,i)=1]\\\\
-&=\sum_{d\mid n}\mu(d)\sum_{i=1}^{\frac{n}{d}}\lceil\frac{\frac{n}{d}}{i}\rceil\\\\
-&=\sum_{d\mid n}\mu(d)\left(\frac{n}{d}-\sigma_0(\frac{n}{d})+\sum_{i=1}^{\frac{n}{d}}\lfloor\frac{\frac{n}{d}}{i}\rfloor\right)\\\\
+g(n)&=\sum_{i=1}^{n}\lceil\frac{n}{i}\rceil\times[(n,i)=1]\newline
+&=\sum_{d\mid n}\mu(d)\sum_{i=1}^{\frac{n}{d}}\lceil\frac{\frac{n}{d}}{i}\rceil\newline
+&=\sum_{d\mid n}\mu(d)\left(\frac{n}{d}-\sigma_0(\frac{n}{d})+\sum_{i=1}^{\frac{n}{d}}\lfloor\frac{\frac{n}{d}}{i}\rfloor\right)\newline
 &=\sum_{d\mid n}\mu(d)\left(\frac{n}{d}+\sum_{i=1}^{\frac{n}{d}-1}\sigma_0(i)\right)
 \end{aligned}$$
 

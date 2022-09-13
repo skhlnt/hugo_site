@@ -304,7 +304,7 @@ for (int i = 1; i <= n; i++) {
 
 $$
 \begin{cases}
-p_i - t_i \times v \leq p_j - t_j \times v \\\\
+p_i - t_i \times v \leq p_j - t_j \times v \newline
 p_j + t_j \times v \leq p_i + t_i \times v
 \end{cases}
 $$

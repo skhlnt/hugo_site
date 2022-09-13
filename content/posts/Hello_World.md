@@ -47,6 +47,7 @@ cover:
 + [Mathjax](https://www.mathjax.org/) 数学公式渲染
 + [Source Code Pro](https://github.com/adobe-fonts/source-code-pro) 代码字体
 + [favicon.io](https://favicon.io/) 网站图标
+  
   > This favicon was generated using the following font:
   > - Font Title: Lexend Zetta
   > - Font Author: Copyright 2019 The Lexend Project Authors (https://github.com/googlefonts/lexend)
@@ -66,7 +67,6 @@ cover:
 + [ ] 内容加密，类似[hexo-blog-encrypt](https://github.com/D0n9X1n/hexo-blog-encrypt)的实现方式
 + [ ] `img lazyload`（暂时用不到）
 + [x] **deleted** `bilibili`视频引入。（受到b站api限制，画面质量太低，准备清除）
-+ [ ] `music`
 + [ ] 寻找更好的侧边`toc`实现方式。
 + [x] 使用`<!--more-->`自动摘要
 + [x] 解决移动端`Mathjax`公式过长带来的问题
@@ -124,3 +124,7 @@ int main() {
   return 0;
 }
 ```
+
+### Slide
+
+{{< slide src="http://matwbn.icm.edu.pl/ksiazki/aa/aa94/aa9413.pdf" >}}

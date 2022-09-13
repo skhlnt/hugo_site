@@ -68,9 +68,9 @@ $$a^{n-1}\equiv 1 \pmod{n}$$
 
 据此，我们再看看费马小定理：
 $$\begin{aligned}
-\because \quad & a^{p-1}=a^{k2^t}\equiv1\pmod{p} \\\\
-\therefore \quad & a^{k2^t}-1\equiv0\pmod{p} \\\\
-\therefore \quad & (a^{k}-1)\prod_{i=0}^{t-1}{(a^{k2^i}+1)}\equiv0\pmod{p} \\\\
+\because \quad & a^{p-1}=a^{k2^t}\equiv1\pmod{p} \newline
+\therefore \quad & a^{k2^t}-1\equiv0\pmod{p} \newline
+\therefore \quad & (a^{k}-1)\prod_{i=0}^{t-1}{(a^{k2^i}+1)}\equiv0\pmod{p} \newline
 \end{aligned}$$
 
 由此可知$p\mid(a^k-1)\prod_{i=0}^{t-1}{(a^{k2^i}+1)}$，即$p\mid (a^k-1)$或者$p\mid(a^{k2^i}+1),i=0,1,\dots,t-1$

@@ -1,7 +1,7 @@
 ---
 title: "孙子剩余定理 - CRT/exCRT"
 date: 2021-07-25 15:04:43
-draft: true
+draft: false
 slug: 72b0c59
 
 author: "Kenshin2438"
@@ -36,9 +36,9 @@ cover:
 >
 > $$
 > \begin{cases}
-> x &\equiv & b_1 \pmod{m_1} \\\\
-> x &\equiv & b_2 \pmod{m_2} \\\\ 
-> & \vdots & \\\\ 
+> x &\equiv & b_1 \pmod{m_1} \newline
+> x &\equiv & b_2 \pmod{m_2} \newline 
+> & \vdots & \newline 
 > x &\equiv & b_k \pmod{m_k} 
 > \end{cases}
 > $$
@@ -48,16 +48,16 @@ cover:
 
 我们从基础解和基础解系的角度出发，构造这样一组**基础解**：
 $$\begin{cases}
-x_1 & \equiv & 1 \pmod{m_1} \quad \\\\
-x_1 & \equiv & 0 \pmod{m_2} \quad \\\\
-& \vdots & \\\\
+x_1 & \equiv & 1 \pmod{m_1} \quad \newline
+x_1 & \equiv & 0 \pmod{m_2} \quad \newline
+& \vdots & \newline
 x_1 & \equiv & 0 \pmod{m_k} \quad 
 \end{cases}
 \quad \dots \quad
 \begin{cases}
-x_k & \equiv & 0 \pmod{m_1} \quad \\\\
-x_k & \equiv & 0 \pmod{m_2} \quad \\\\
-& \vdots & \\\\
+x_k & \equiv & 0 \pmod{m_1} \quad \newline
+x_k & \equiv & 0 \pmod{m_2} \quad \newline
+& \vdots & \newline
 x_k & \equiv & 1 \pmod{m_k} \quad 
 \end{cases}$$
 
@@ -86,13 +86,13 @@ $$x_i\equiv\frac{m}{m_i}\times (\frac{m}{m_i})^{-1} \equiv 1\pmod{m_i}$$
 从两个式子的情况开始:
 
 $$\begin{cases}
-x \equiv b_1 \pmod{m_1} \\\\
+x \equiv b_1 \pmod{m_1} \newline
 x \equiv b_2 \pmod{m_2}
 \end{cases}$$
 
 我们令$(m_1, m_2)=d$，且两同余式有公共解$x_0$.
 
-则有$\begin{cases}x_0\equiv b_1 \pmod{d} \\\\ x_0 \equiv b_2 \pmod{d} \end{cases}$，得到$d\mid(b_1-b_2)$。
+则有$\begin{cases}x_0\equiv b_1 \pmod{d} \newline x_0 \equiv b_2 \pmod{d} \end{cases}$，得到$d\mid(b_1-b_2)$。
 
 > 这也是该方程组的有解的必要条件，充分性也很好证明。
 
@@ -143,7 +143,7 @@ inline ll exCRT(ll r[], ll m[], int n) {
 }
 ```
 
-## 相关定理
+## 相关的定理
 
 > 若$m_1,m_2,\dots,m_k$为$k$个两两互素的正整数，$m=\prod{m_i}$。
 > 
@@ -153,6 +153,4 @@ inline ll exCRT(ll r[], ll m[], int n) {
 > 
 > 若用$T_i$表示第$i$个方程的`解数`，则$f(x)\equiv0\pmod{m}$的解数$T=\prod{T_i}$。
 
-证明从略。
-
-~~咕咕咕~~
+证明从略。~~咕咕咕~~

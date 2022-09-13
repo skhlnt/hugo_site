@@ -830,7 +830,7 @@ void SingleTest(int TestCase) {
 $$
 \begin{aligned}
 \sum_{i=l}^{r}(x_i+1)^2
-&=\sum_{i=l}^{r}(x_i^2+2\times x_i+1)\\\\
+&=\sum_{i=l}^{r}(x_i^2+2\times x_i+1)\newline
 &=\sum_{i=l}^{r}x_i^2+2\times\sum_{i=l}^{r}x_i+\sum_{i=l}^{r}1
 \end{aligned}
 $$
@@ -904,7 +904,7 @@ $$
 $$
 \begin{aligned}
 Ans 
-&= \sum_{a=\lceil\frac{n-k+L}{2}\rceil}^{\min(n-k, \lfloor\frac{n-k+R}{2}\rfloor)}\Bigg[{n-k \choose a} - {n-k \choose a+1}\Bigg]\\\\
+&= \sum_{a=\lceil\frac{n-k+L}{2}\rceil}^{\min(n-k, \lfloor\frac{n-k+R}{2}\rfloor)}\Bigg[{n-k \choose a} - {n-k \choose a+1}\Bigg]\newline
 &= {n-k \choose \lceil\frac{n-k+L}{2}\rceil} - {n-k \choose \min(n-k, \lfloor\frac{n-k+R}{2}\rfloor)+1}
 \end{aligned}
 $$

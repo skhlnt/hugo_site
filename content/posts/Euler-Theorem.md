@@ -45,7 +45,7 @@ $$a^n\equiv a^{n \mod \varphi(m) + \varphi(m)} \pmod{m} \quad \textrm{if }n \geq
 当$(a,m)=1$，我们可以得到:
 $$
 \begin{aligned}
-(ar_1)(ar_2)\dots(ar_{\varphi(m)}) & \equiv & r_1r_2\dots r_{\varphi(m)}\pmod{m}\\\\
+(ar_1)(ar_2)\dots(ar_{\varphi(m)}) & \equiv & r_1r_2\dots r_{\varphi(m)}\pmod{m}\newline
 (r_1r_2\dots r_{\varphi(m)})\times (a^{\varphi(m)} - 1) & \equiv & 0\pmod{m}
 \end{aligned}
 $$
@@ -80,9 +80,9 @@ $$
 
 $$
 \begin{aligned}
-LHS &=s(p-2)p-(p^2-3p+2)\\\\
-&\geq s(p-2)p-(p^2-3p+p)\\\\
-&=(s-1)(p-2)p\\\\
+LHS &=s(p-2)p-(p^2-3p+2)\newline
+&\geq s(p-2)p-(p^2-3p+p)\newline
+&=(s-1)(p-2)p\newline
 &\geq0=RHS
 \end{aligned}
 $$

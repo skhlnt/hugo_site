@@ -76,7 +76,7 @@ $$
 
 ### SOSDP/高维前缀和
 
-先枚举每个元素，再枚举集合，然后就有转移$S \setminus \\\\{i\\\\} \rightarrow S$。
+先枚举每个元素，再枚举集合，然后就有转移$S \setminus \newline{i\newline} \rightarrow S$。
 
 ```cpp
 void SOSDP(int *a, int n) { 

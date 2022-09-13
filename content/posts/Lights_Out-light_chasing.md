@@ -52,11 +52,11 @@ $n$很小时，或许能够在$1s$内解决。例如这题，[gym102920 J](https
 $$
 \left(
 \begin{matrix}
-  C & I & O & O & O \\\\
-  I & C & I & O & O \\\\
-  O & I & C & I & O \\\\
-  O & O & I & C & I \\\\
-  O & O & O & I & C \\\\
+  C & I & O & O & O \newline
+  I & C & I & O & O \newline
+  O & I & C & I & O \newline
+  O & O & I & C & I \newline
+  O & O & O & I & C \newline
 \end{matrix}
 \right)
 $$
@@ -66,11 +66,11 @@ $$
 $$
 C = \left(
 \begin{matrix}
-  1 & 1 & 0 & 0 & 0 \\\\
-  1 & 1 & 1 & 0 & 0 \\\\
-  0 & 1 & 1 & 1 & 0 \\\\
-  0 & 0 & 1 & 1 & 1 \\\\
-  0 & 0 & 0 & 1 & 1 \\\\
+  1 & 1 & 0 & 0 & 0 \newline
+  1 & 1 & 1 & 0 & 0 \newline
+  0 & 1 & 1 & 1 & 0 \newline
+  0 & 0 & 1 & 1 & 1 \newline
+  0 & 0 & 0 & 1 & 1 \newline
 \end{matrix}
 \right)
 $$
