@@ -25,9 +25,12 @@ outputs:
     - RSS
     - JSON # is necessary
 
+paginate: 10
+
 params:
   env: production # to enable google analytics, opengraph, twitter-cards and schema.
   author: Kenshin2438
+  description: "Kenshin2438的个人博客, 不定期分享一些算法(主要为ACM/ICPC中常见的涉及数学的部分)教程以及个人的生活琐事。"
 
   # defaultTheme: light
   # defaultTheme: dark
