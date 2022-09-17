@@ -44,7 +44,7 @@ cover:
   + `fontawsome` 直接copy了代码。
   + 侧边`go to buttom`按钮。
   + `twikoo` 评论区样式。
-+ [Mathjax](https://www.mathjax.org/) 数学公式渲染
++ ~~[Mathjax](https://www.mathjax.org/) 数学公式渲染~~(**已更换**为`KaTex` [Wiki](https://github.com/KaTeX/KaTeX.wiki.git))
 + [Source Code Pro](https://github.com/adobe-fonts/source-code-pro) 代码字体
 + [favicon.io](https://favicon.io/) 网站图标
   
