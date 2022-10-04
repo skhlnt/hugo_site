@@ -1,5 +1,5 @@
 baseURL: https://kenshin2438.top/
-languageCode: en-us
+languageCode: zh-CN
 title: Kenshin2438
 theme: PaperMod
 
@@ -30,7 +30,7 @@ paginate: 10
 params:
   env: production # to enable google analytics, opengraph, twitter-cards and schema.
   author: Kenshin2438
-  description: "Kenshin2438的个人博客, 不定期分享一些算法(主要为ACM/ICPC中常见的涉及数学的部分)教程以及个人的生活琐事。"
+  description: "Kenshin2438的个人博客，不定期分享一些算法(主要为ACM/ICPC中常见的涉及数学的部分)教程，以及个人的生活琐事。"
 
   # defaultTheme: light
   # defaultTheme: dark
@@ -54,7 +54,7 @@ params:
   profileMode:
     enabled: true
     title: "Kenshin2438's Blog" # optional default will be site title
-    subtitle: "ACM/Mathematics/Notes</br>deadline是第一生产力"
+    subtitle: "ACM/Mathematics/Notes"
     imageUrl: /images/avatar.webp # optional
     imageTitle: "avatar.webp" # optional
     # imageWidth: 120 # custom size
@@ -94,7 +94,7 @@ params:
     keys: ["title", "permalink", "summary", "content"]
   
   assets:
-    disableHLJS: false
+    disableHLJS: true # 禁用 highlight.js
     # disableFingerprinting: true
     favicon: "/favicon/favicon.ico"
     favicon16x16: "/favicon/favicon-16x16.png"
@@ -115,13 +115,13 @@ markup:
     renderer:
       unsafe: true # HUGO 默认转义 Markdown 文件中的 HTML 代码，如需开启的话
 
+markup:
   highlight:
     codeFences: true
     lineNos: true
-    anchorLineNos: false
     guessSyntax: true
     noClasses: false
-    # style: "" # only for chroma
+    # style: dracula # PaperMod代码写得和shit一样
 
 menu:
   main:

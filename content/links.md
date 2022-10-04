@@ -21,7 +21,7 @@ ShowToc: false
 
 {{< friend name="Just Call Me Jax" url="https://jaxvanyang.github.io/" logo="https://jaxvanyang.github.io/assets/images/avatar.png" word="" >}}
 
-### 0x2 大佬们
+### 0x2 吾友
 
 {{< friend name="ycloong" url="https://ycloong.top/" logo="https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fbc7e9a8b-e62c-44f1-b563-c0168e30e0ed%2Fimage.jpg?table=collection&id=2aa091ae-74f0-45cf-8dc3-65248f153eaa" word="一个普通的干饭人🍚" >}}
 
@@ -29,9 +29,7 @@ ShowToc: false
 
 ### 关于本站
 
-<center>
 {{< friend name="Kenshin2438's Blog" url="https://kenshin2438.top/" logo="https://kenshin2438.top/images/avatar.webp" word="大概算是（半）个技术博客。" >}}
-</center>
 
 **名称**：&nbsp; Kenshin2438's Blog<br>
 **链接**：&nbsp; https://kenshin2438.top/<br>

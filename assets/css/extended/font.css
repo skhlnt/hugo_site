@@ -3,7 +3,7 @@
     font-weight: 400;
     font-style: normal;
     font-stretch: normal;
-    src: url('/font/SourceCodePro-Regular.ttf.woff2') format('woff2');
+    src: local(''), url('/font/SourceCodePro-Regular.ttf.woff2') format('woff2');
 }
 
 @font-face {
@@ -11,10 +11,50 @@
     font-weight: 400;
     font-style: italic;
     font-stretch: normal;
-    src: url('/font/SourceCodePro-It.ttf.woff2') format('woff2');
+    src: local(''), url('/font/SourceCodePro-It.ttf.woff2') format('woff2');
+}
+
+/* josefin-sans-regular - latin */
+@font-face {
+    font-family: 'Josefin Sans';
+    font-style: normal;
+    font-weight: 400;
+    src: local(''),
+        url('/font/josefin-sans-v25-latin-regular.woff2') format('woff2'),
+        /* Chrome 26+, Opera 23+, Firefox 39+ */
+        url('/font/josefin-sans-v25-latin-regular.woff') format('woff');
+    /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+
+/* noto-serif-sc-regular - chinese-simplified */
+@font-face {
+    font-family: 'Noto Serif SC';
+    font-style: normal;
+    font-weight: 400;
+    src: local(''),
+        url('/font/noto-serif-sc-v22-chinese-simplified-regular.woff2') format('woff2'),
+        /* Chrome 26+, Opera 23+, Firefox 39+ */
+        url('/font/noto-serif-sc-v22-chinese-simplified-regular.woff') format('woff');
+    /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+
+body {
+    font-family: 'Noto Serif SC', sans-serif;
+    white-space: pre-line;
 }
 
 pre,
 code {
-    font-family: 'Source Code Pro', Consolas, Menlo, Courier, monospace;
+    font-family: Monaco, 'Source Code Pro', Consolas, Courier, monospace;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+nav,
+a {
+    font-family: 'Josefin Sans', 'Noto Serif SC', sans-serif;
 }
