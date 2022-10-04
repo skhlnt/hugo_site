@@ -53,7 +53,7 @@ params:
 
   profileMode:
     enabled: true
-    title: "Kenshin2438's Blog" # optional default will be site title
+    title: "Kenshin2438のBlog" # optional default will be site title
     subtitle: "ACM/Mathematics/Notes"
     imageUrl: /images/avatar.webp # optional
     imageTitle: "avatar.webp" # optional
