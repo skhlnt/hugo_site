@@ -24,7 +24,7 @@ cover:
 
 ## Hello World
 
-无法忍受`hexo`的速度，故换到`hugo`，使用主题为`PaperMod`，正在一步步转移博客内容。
+无法忍受`hexo`的速度，故换到`hugo`，使用主题为`PaperMod`。
 
 <!--more-->
 
@@ -45,7 +45,7 @@ cover:
   + 侧边`go to buttom`按钮。
   + `twikoo` 评论区样式。
 + ~~[Mathjax](https://www.mathjax.org/) 数学公式渲染~~(**已更换**为`KaTex` [Wiki](https://github.com/KaTeX/KaTeX.wiki.git))
-+ [Source Code Pro](https://github.com/adobe-fonts/source-code-pro) 代码字体
++ ~~[Source Code Pro](https://github.com/adobe-fonts/source-code-pro) 代码字体~~(**已调整**默认为`Monaco`字体)
 + [favicon.io](https://favicon.io/) 网站图标
   
   > This favicon was generated using the following font:
@@ -53,10 +53,13 @@ cover:
   > - Font Author: Copyright 2019 The Lexend Project Authors (https://github.com/googlefonts/lexend)
   > - Font Source: http://fonts.gstatic.com/s/lexendzetta/v22/ll8uK2KYXje7CdOFnEWcU8synQbuVYjYB3BCy9bG0z5jbs8qbts.ttf
   > - Font License: SIL Open Font License, 1.1 (http://scripts.sil.org/OFL))
-+ [highlight.js](https://highlightjs.org/) 使用highlight.js提供代码高亮，官方的`chroma`实在简陋了
-  + `atom-one-dark.min.css` 目前出了点问题，和预期的效果有点出入
++ ~~[highlight.js](https://highlightjs.org/) 使用highlight.js提供代码高亮，官方的`chroma`实在简陋了~~
+  + ~~`atom-one-dark.min.css` 目前出了点问题，和预期的效果有点出入~~
+  + 使用`chroma`，主题为`Dracula`。
 + [cdnjs](https://cdnjs.com/)`cdn`支持了`twikoo.js`和`mathjax.js`。
-+ [hugo-encryptor](https://github.com/Li4n0/hugo_encryptor) 使用参考[link](https://www.10101.io/2019/04/17/encrypt-content-in-hugo?PageSpeed=noscript)
++ ~~[hugo-encryptor](https://github.com/Li4n0/hugo_encryptor) 使用参考[link](https://www.10101.io/2019/04/17/encrypt-content-in-hugo?PageSpeed=noscript)~~(**未实现**)
++ [hsingko](https://hsingko.github.io/) 一个使用同主题的博客。
+  + 参考，字体与`dark`时的配色。
 
 ## TODO
 
@@ -64,15 +67,15 @@ cover:
 + [x] 筛选旧博客，剔除/修改部分低创内容，与主题相适应。
 + [x] **failed** 更换字体，并解决`Mathjax`字体大小同全局字体的冲突
 + [x] `permalinks`修改，~~正在考虑换域名一事~~
-+ [ ] 内容加密，类似[hexo-blog-encrypt](https://github.com/D0n9X1n/hexo-blog-encrypt)的实现方式
-+ [ ] `img lazyload`（暂时用不到）
++ [x] **failed** 内容加密，类似[hexo-blog-encrypt](https://github.com/D0n9X1n/hexo-blog-encrypt)的实现方式
++ [x] **deleted** `img lazyload`（暂时用不到）
 + [x] **deleted** `bilibili`视频引入。（受到b站api限制，画面质量太低，准备清除）
 + [ ] 寻找更好的侧边`toc`实现方式。
 + [x] 使用`<!--more-->`自动摘要
 + [x] 解决移动端`Mathjax`公式过长带来的问题
 + [x] 修复`cases`大括号断裂 (已替换为`svg`格式显示)
 + [x] 解决`code`块出现黑色背景色的问题，恢复圆角显示
-+ [x] 停用hugo官方提供的`chroma`，使用`highlight.js`高亮代码
++ [x] **deleted** 停用hugo官方提供的`chroma`，使用`highlight.js`高亮代码
 + [ ] `twikoo` 评论邮箱自动通知部署
 + [x] 更换适合国内网络环境的`cdn`，或者放在本地（次之）。包含`twikoo`, `mathjax`。
 
