@@ -7,6 +7,7 @@ hugo -D # if using a theme, replace with `hugo -t <YOURTHEME>`
 pip3 install fonttools brotli --user
 
 # brew install ripgrep
+curl https://sh.rustup.rs -sSf | sh
 git clone https://github.com/BurntSushi/ripgrep
 cd ripgrep
 cargo build --release
