@@ -5,7 +5,7 @@ hugo -D # if using a theme, replace with `hugo -t <YOURTHEME>`
 
 # 中文字体压缩
 pip3 install fonttools brotli
-apt-get install ripgrep
+sudo apt install ripgrep
 
 # Go To Public folder
 cd public
