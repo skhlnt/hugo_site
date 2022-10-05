@@ -1,13 +1,18 @@
 #!/bin/bash
 
 # install fonttools, brotli
-pip3 install fonttools brotli
+pip3 install fonttools brotli --user
+export PATH="/vercel/.local/bin/:$PATH"
 
 # install ripgrep
 yum install wget
 mkdir ripgrep
-wget -qO- https://github.com/BurntSushi/ripgrep/releases/download/13.0.0/ripgrep-13.0.0-x86_64-unknown-linux-musl.tar.gz | tar xvzf - --strip-components 1 -C ./ripgrep
+echo "下载并安装ripgrep"
+wget -qO- https://github.com/BurntSushi/ripgrep/releases/download/13.0.0/ripgrep-13.0.0-x86_64-unknown-linux-musl.tar.gz | \
+   tar xvzf - --strip-components 1 -C ./ripgrep
+echo "添加环境变量"
 export PATH="./ripgrep/:$PATH"
+echo $PATH
 
 # Build the project.
 hugo -D # if using a theme, replace with `hugo -t <YOURTHEME>`
