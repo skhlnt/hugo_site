@@ -6,6 +6,10 @@ hugo -D # if using a theme, replace with `hugo -t <YOURTHEME>`
 # Go To Public folder
 cd public
 
+# 中文字体压缩
+pip3 install fonttools brotli
+brew install ripgrep
+
 origin='LXGWWenKaiLite-Regular.ttf' # 原始字体名称
 optimized='LXGW.woff2' # 压缩后的字体名称，注意需要和 font-face 中定义的字体名一致
 
