@@ -3,12 +3,17 @@
 # Build the project.
 hugo -D # if using a theme, replace with `hugo -t <YOURTHEME>`
 
+# 中文字体压缩
+pip3 install fonttools brotli --user
+
+# brew install ripgrep
+git clone https://github.com/BurntSushi/ripgrep
+cd ripgrep
+cargo build --release
+cp ./target/release/rg /usr/local/bin/
+
 # Go To Public folder
 cd public
-
-# 中文字体压缩
-pip3 install fonttools brotli
-brew install ripgrep
 
 origin='LXGWWenKaiLite-Regular.ttf' # 原始字体名称
 optimized='LXGW.woff2' # 压缩后的字体名称，注意需要和 font-face 中定义的字体名一致
