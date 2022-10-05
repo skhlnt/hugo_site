@@ -4,14 +4,8 @@
 hugo -D # if using a theme, replace with `hugo -t <YOURTHEME>`
 
 # 中文字体压缩
-pip3 install fonttools brotli --user
-
-# brew install ripgrep
-curl https://sh.rustup.rs -sSf | sh
-git clone https://github.com/BurntSushi/ripgrep
-cd ripgrep
-cargo build --release
-cp ./target/release/rg /usr/local/bin/
+pip3 install fonttools brotli
+apt-get install ripgrep
 
 # Go To Public folder
 cd public
