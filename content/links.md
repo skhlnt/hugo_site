@@ -29,9 +29,9 @@ ShowToc: false
 
 ### 关于本站
 
-{{< friend name="Kenshin2438's Blog" url="https://kenshin2438.top/" logo="https://kenshin2438.top/images/avatar.webp" word="大概算是（半）个技术博客。" >}}
+{{< friend name="Kenshin2438のBlog" url="https://kenshin2438.top/" logo="/images/avatar.webp" word="大概算是（半）个技术博客。" >}}
 
-- **名称**：&nbsp; Kenshin2438's Blog
+- **名称**：&nbsp; Kenshin2438のBlog
 - **链接**：&nbsp; https://kenshin2438.top/
 - **图标**：&nbsp; https://kenshin2438.top/images/avatar.webp
 - **描述**：&nbsp; 大概算是（半）个技术博客。

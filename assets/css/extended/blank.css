@@ -1,11 +1,8 @@
 :root {
-    --hljs-bg: #282C34;
-    /* --theme: #FCFAF2;
-    --code-bg: #FFFFFB; */
+    --hljs-bg: rgb(51, 65, 85);
 }
 
 .dark {
-    --hljs-bg: rgb(51, 65, 85);
     --theme: rgb(30, 41, 59);
     --entry: rgb(51, 65, 85);
     --primary: rgb(218, 218, 219);
