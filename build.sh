@@ -1,16 +1,16 @@
 #!/bin/bash
 
-# Build the project.
-hugo -D # if using a theme, replace with `hugo -t <YOURTHEME>`
-
 # install fonttools, brotli
 pip3 install fonttools brotli
 
 # install ripgrep
-yum-config-manager --add-repo=https://copr.fedorainfracloud.org/coprs/carlwgeorge/ripgrep/repo/epel-7/carlwgeorge-ripgrep-epel-7.repo
-yum install ripgrep
+yum install wget
+mkdir ripgrep
+wget -qO- https://github.com/BurntSushi/ripgrep/releases/download/13.0.0/ripgrep-13.0.0-x86_64-unknown-linux-musl.tar.gz | tar xvzf - --strip-components 1 -C ./ripgrep
+export PATH="./ripgrep/:$PATH"
 
-# Go To Public folder
+# Build the project.
+hugo -D # if using a theme, replace with `hugo -t <YOURTHEME>`
 cd public
 
 origin='LXGWWenKaiLite-Regular.ttf' # 原始字体名称
