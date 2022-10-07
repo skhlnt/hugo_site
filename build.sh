@@ -12,7 +12,7 @@ yum install ripgrep
 # Build the project.
 hugo -D # if using a theme, replace with `hugo -t <YOURTHEME>`
 
-pyftsubset "public/font/LXGWWenKaiLite-Regular.ttf" --text=$(rg -e '[\w\d\p{P}]' "public/" -oN --no-filename | sort | uniq | tr -d '\n') --no-hinting --timing
+pyftsubset "public/font/LXGWWenKaiLite-Regular.ttf" --text=$(rg -e '[\w\d]' "public/" -oN --no-filename | sort | uniq | tr -d '\n') --no-hinting --timing
 fonttools ttLib.woff2 compress -o "public/font/LXGW.woff2" "public/font/LXGWWenKaiLite-Regular.subset.ttf"
 
 rm "public/font/LXGWWenKaiLite-Regular.subset.ttf"

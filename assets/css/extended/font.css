@@ -1,25 +1,17 @@
 @font-face {
-    font-family: 'Source Code Pro';
-    font-weight: 400;
-    font-style: normal;
-    font-stretch: normal;
-    src: url('/font/SourceCodePro-Regular.ttf.woff2') format('woff2');
-}
-
-@font-face {
-    font-family: 'Source Code Pro';
-    font-weight: 400;
-    font-style: italic;
-    font-stretch: normal;
-    src: url('/font/SourceCodePro-It.ttf.woff2') format('woff2');
-}
-
-@font-face {
     font-family: "LXGW";
     font-weight: 400;
     font-style: normal;
     font-display: swap;
-    src: url("/font/LXGW.woff2") format("truetype");
+    src: url("/font/LXGW.woff2") format("woff2");
+}
+
+@font-face {
+    font-family: "Monaco";
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+    src: url("/font/monaco-webfont.woff2") format("woff2");
 }
 
 body {
@@ -33,5 +25,5 @@ body {
 
 pre,
 code {
-    font-family: Monaco, 'Source Code Pro', Consolas, Courier, monospace;
+    font-family: Monaco, Consolas, Courier, monospace;
 }
