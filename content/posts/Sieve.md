@@ -57,7 +57,7 @@ cover:
 
 按照合数的定义就知道了。
 
-```cpp 
+```cpp
 int lpf[LIM];
 vector<int> sieve() {
   vector<int> pr;
@@ -111,14 +111,14 @@ $$\sigma(n)=\sum_{d \mid n}{d}=\prod_{i=1}^{s}\sum_{k=0}^{\alpha_i}{p_i^k}$$
 我们考虑引入另一个积性函数$g(n)$，它们的**迪利克雷乘积**为$h(n)$
 
 下面开始推表达式：
-$$\begin{aligned}
-\sum_{i=1}^{n}{h(i)}&=\sum_{i=1}^{n}\sum_{d \mid i}{g(d)f(\frac{i}{d})}\newline
+$$
+\begin{aligned}
+\sum_{i=1}^{n}{h(i)}
+&= \sum_{i=1}^{n}\sum_{d \mid i}{g(d)f(\frac{i}{d})}\newline
 &= \sum_{d=1}^{n}{g(d)}\sum_{i=1}^{\lfloor \frac{n}{d} \rfloor}{f(i)}\newline
 &= \sum_{d=1}^{n}{g(d)S(\lfloor \frac{n}{d} \rfloor)}
-\end{aligned}$$
-
-怎么从它们的迪利克雷乘积的前缀和得到$S(n)$呢，我们考虑左式的差分：	
-$$\sum_{i=1}^{n}{h(i)}-\sum_{i=2}^{n}{h(i)}=g(1)S(n)$$
+\end{aligned}
+$$
 
 所以有
 $$g(1)S(n)=\sum_{i=1}^{n}{h(i)}-\sum_{i=2}^{n}{g(i)S(\lfloor \frac{n}{i} \rfloor)}$$
@@ -136,9 +136,9 @@ $$g(1)S(n)=\sum_{i=1}^{n}{h(i)}-\sum_{i=2}^{n}{g(i)S(\lfloor \frac{n}{i} \rfloor
 #### 洛谷 P4213 【模板】杜教筛（Sum）
 
 > [洛谷 P4213 【模板】杜教筛（Sum）](https://www.luogu.com.cn/problem/P4213)
-> 
+>
 > **题目描述：**
-> 
+>
 > 给定一个正整数，求
 > $$ans_1=\sum_{i=1}^{n}{\varphi(i)},ans_2=\sum_{i=1}^{n}{\mu(i)}$$
 
@@ -310,7 +310,7 @@ il ll qpow(ll x, ll n, ll res = 1LL) {
 }
 
 il ll sum2(ll n) { return n %= p, (n * n + n >> 1LL) % p * (n << 1 | 1) % p * inv % p; }
-	
+
 il ll sum3(ll n) { return n %= p, qpow((n * n + n >> 1LL) % p, 2); }
 
 void init(int n) {
@@ -337,9 +337,9 @@ il ll slove(ll n) {
 	ll res = sum3(n);
 	for (re ll l = 2, r; l <= n; l = r + 1) {
 		r = n / (n / l);
-		res = (res - (sum2(r) - sum2(l-1) + p) % p * slove(n / l) % p + p) % p; 
-        res = (res - (sum2(r) - sum2(l-1) + p) % p * slove(n / l) % p + p) % p; 
-		res = (res - (sum2(r) - sum2(l-1) + p) % p * slove(n / l) % p + p) % p; 
+		res = (res - (sum2(r) - sum2(l-1) + p) % p * slove(n / l) % p + p) % p;
+        res = (res - (sum2(r) - sum2(l-1) + p) % p * slove(n / l) % p + p) % p;
+		res = (res - (sum2(r) - sum2(l-1) + p) % p * slove(n / l) % p + p) % p;
 	} return sp[n] = res;
 }
 
@@ -377,18 +377,21 @@ $$\exists n,m\in Z^+,(n, m)=1,\mathrm{s.t. }f(nm) \neq f(n)f(m)$$
 我们取这样一对$n,m$使得$nm$最小。
 
 1. $mn = 1$
-   
+
    则有$f(1)\neq f(1)f(1)$，即$f(1)\neq 1$，但是$h(1)=1=f(1)g(1)=f(1)$，矛盾。
 2. $nm > 1$
-   
+
    则对于所有$a,b\in Z^+,(a,b)=1,ab<nm$有$f(ab)=f(a)f(b)$成立。
-   $$\begin{aligned}
-   h(nm)&=\sum_{a\mid n}\sum_{b\mid m}f(ab)g(\frac{nm}{ab})\newline 
-   &= f(nm)g(1) + \sum_{a\mid n, b\mid m, ab<nm}f(ab)g(\frac{n}{a}\times\frac{m}{b}) \newline 
-   &= f(nm)g(1) + \sum_{a\mid n, b\mid m, ab<nm}f(a)f(b)g(\frac{n}{a})g(\frac{m}{b}) \newline 
+   $$
+	 \begin{aligned}
+   h(nm)
+	 &= \sum_{a\mid n}\sum_{b\mid m}f(ab)g(\frac{nm}{ab})\newline
+   &= f(nm)g(1) + \sum_{a\mid n, b\mid m, ab<nm}f(ab)g(\frac{n}{a}\times\frac{m}{b}) \newline
+   &= f(nm)g(1) + \sum_{a\mid n, b\mid m, ab<nm}f(a)f(b)g(\frac{n}{a})g(\frac{m}{b}) \newline
    &= f(nm) - f(n)f(m) + \sum_{a\mid n}f(a)g(\frac{n}{a})\sum_{b\mid m}f(b)g(\frac{m}{b}) \newline
    &= h(n)h(m) + \left(f(nm) - f(n)f(m)\right)
-   \end{aligned}$$
+   \end{aligned}
+	 $$
    与$h$为积性函数矛盾。
 
 综上得证。
@@ -422,17 +425,20 @@ $$f(p)=g(1)h(p)+h(1)g(p) \Rightarrow h(p)=0$$
 
 所求的前缀和为:
 
-$$\begin{aligned} 
-S(n) &= \sum_{i=1}^{n}f(i)\newline 
-&= \sum_{i=1}^{n}\sum_{d\mid i}h(d)g(\frac{i}{d})\newline 
-&= \sum_{d=1}^{n}h(d)\sum_{i=1}^{\lfloor\frac{n}{d}\rfloor}g(i) 
-\end{aligned}$$
+$$
+\begin{aligned}
+S(n) 
+&= \sum_{i=1}^{n}f(i)\newline
+&= \sum_{i=1}^{n}\sum_{d\mid i}h(d)g(\frac{i}{d})\newline
+&= \sum_{d=1}^{n}h(d)\sum_{i=1}^{\lfloor\frac{n}{d}\rfloor}g(i)
+\end{aligned}
+$$
 
-> **Powerful Number**: 
+> **Powerful Number**:
 > 由于$h(p)=0$，且$h$为积性函数，则仅当$n$满足下面的条件时，$h(n)$才有贡献。
 > $$n=\prod_{i=1}^{s} p_i^{t_i},\forall i \in [1, s],t_i>1$$
 > **关于PN的数目**，从莫比乌斯函数的角度考虑，应该为$n-\sum_{i=1}^{n}\mu^2(i)$，但是这样并不能很好的计算值。
-> 
+>
 > 这里用PN的一个性质，$n\in PN,\exists a,b, \mathrm{s.t. } n=a^2b^3$，则结果为$\sum_{a=1}^{\sqrt n}\sqrt[3]{\frac{n}{a^2}}$，用积分可以简单求值为$O(\sqrt n)$。
 
 现在需要做的是：
@@ -447,7 +453,7 @@ $$f(p^k)=\sum_{i=0}^{k}h(p^i)g(p^{k-i})$$
 
 ### PN筛的示例
 > [gym 103306 Flipped Factorization](https://codeforces.com/gym/103306/problem/F)
-> 
+>
 > $$n=\prod p_i^{e_i}(p_i\in Prime), f(n)=\prod e_i^{p_i},f(1)=1$$
 > 求前缀和，取模`1e9+7`
 
@@ -461,7 +467,7 @@ $$\begin{aligned} Ans&=\sum_{i=1}^{n}f(i)\newline &=\sum_{i=1}^{n}\sum_{d\mid i}
 
 `dfs`去寻找PN时，带上$d,h(d)$更新答案即可。
 
-```cpp 
+```cpp
 #include <algorithm>
 #include <iostream>
 #include <cstdio>
@@ -551,22 +557,26 @@ int main() {
 
 ### 推导
 
-$$\begin{aligned}
+$$
+\begin{aligned}
 \sum_{i=1}^{n}{f(i)}&=f(1)+\sum_{2\leq p\leq n}\sum_{2\leq i\leq n,LPF(i)=p}{f(i)}\newline
 &=f(1)+\sum_{2\leq p\leq \sqrt n}\sum_{2\leq i\leq n,LPF(i)=p}{f(i)}+\sum_{\sqrt n < p\leq n}{f(p)}\newline
 &=1+\sum_{2\leq p\leq \sqrt n}\sum_{e\geq 1, 2\leq p^e \leq n}{f(p^e)}\left(1 + \sum_{2\leq j\leq \lfloor \frac{n}{p^e} \rfloor,LPF(j)>p}{f(j)} \right)+\sum_{\sqrt n<p\leq n}{f(p)}\newline
-\end{aligned}$$
+\end{aligned}
+$$
 
 ---
 
 $$\textrm{let }G(n,m)=\sum_{2\leq i\leq n,LPF(i)>m}{f(i)},F(n)=\sum_{2\leq p\leq n}{f(p)}$$
 
-$$\begin{aligned}
+$$
+\begin{aligned}
 G(n,m)&=\sum_{2\leq i\leq n,LPF(i)>m}{f(i)}\newline
 &=\sum_{m<p\leq \sqrt n}\sum_{e\geq 1,2\leq p^e\leq n}f(p^e)\left(1+\sum_{2\leq j\leq \lfloor\frac{n}{p^e} \rfloor,LPF(j)>p}f(j) \right) +\sum_{\sqrt n < p\leq n}{f(p)} \newline
 &=\sum_{m<p\leq\sqrt n}\sum_{e\geq 1,2\leq p^e\leq n}{f(p^e)}\left([e>1]+ \sum_{2\leq j\leq \lfloor\frac{n}{p^e} \rfloor,LPF(j)>p}{f(j)} \right)+\sum_{m<p\leq n}f(p)\newline
 &=\sum_{m<p\leq\sqrt n}\sum_{e\geq 1,2\leq p^e\leq n}{f(p^e)}\left([e>1]+G(\lfloor \frac{n}{p^e} \rfloor,p) \right)+\left(F(n)-F(m)\right)\newline
-\end{aligned}$$
+\end{aligned}
+$$
 
 到目前为止，我们只要快速求出（预处理）$F(i)$，就能通过递推得到答案$S(n)=G(n,0)+1$。
 
@@ -599,11 +609,13 @@ $$H(i,n)=\sum_{1\leq k\leq n,k\in Prime \lor k=1 \lor LPF(k)>p_i}{k^s}$$
 
 这里的$p_i$表示第$i$大的素数。
 
-$$H(i,n)=
+$$
+H(i,n)=
 \begin{cases}
 H(i-1,n)-p_i^s\left(H(i-1,\lfloor\frac{n}{p_i}\rfloor)-H(i-1,p_{i-1})\right) & \textrm{if } p_i\leq\sqrt{n} \newline
 H(i-1,n)		& \textrm{otherwise}		\newline
-\end{cases}$$
+\end{cases}
+$$
 
 根据$H(i,n)$与$F(n)$的关系$F(n)=H(+\infty,n)$，我们只需要$\sqrt n$以内的素数就能求出$F(n)$了。
 
@@ -613,7 +625,7 @@ H(i-1,n)		& \textrm{otherwise}		\newline
 
 ### 示例
 > [Luogu P5325 【模板】Min_25筛](https://www.luogu.com.cn/problem/P5325)
-> 
+>
 > 设$f(x)$为积性函数，且$f(p^k)=p^k(p^k-1)$，求$\sum_{i=1}^{n}f(i)\bmod 1e9+7$.
 
 显然$f(p^k)=(p^k)^2-(p^k)$，满足所需条件。
