@@ -1,15 +1,21 @@
 ---
-title: "已知边长的任意多边形，最大面积是多少呢？"
+title: "已知多边形的各边长，求其最大面积"
 date: 2021-03-19 00:00:00
 slug: b87e558f
 draft: true
 
 author: "Kenshin2438"
-description: ""
+description: "已知边长的任意多边形，最大面积是多少呢？是否和$n$次多项式有关？"
+keywords:  
+  - 婆罗摩笈多公式
+  - 已知多边形的各边长
+  - 多边形最大面积
 categories:
   - 漫谈
+  - Math
 tags:
-  - Unsolved
+  - Unsolved problem
+  - 婆罗摩笈多公式
 
 weight: false
 math: true
@@ -35,7 +41,7 @@ cover:
 
 ---
 
-### Q1、构成多边形的边的条件
+## Q1、构成多边形的边的条件
 
 我们从三角形出发。任意两边之和大于第三边是构成三角形的三边的充要条件。
 
@@ -45,7 +51,7 @@ cover:
 
 ---
 
-### Q2、最大面积下，多边形的特征
+## Q2、最大面积下，多边形的特征
 
 ~~我们从三角形出发……三角形有个der的最大面积~~
 
@@ -85,7 +91,7 @@ $$S_{max} = \sqrt{(s-a)(s-b)(s-c)(s-d)}$$
 
 表达式和海伦公式极其相像，事实上海伦公式为该公式（婆罗摩笈多公式）的$d=0$的特殊情况。同时也不难看出，此时的四边形四顶点共圆。
 
-#### 猜测
+### 猜测
 
 > 任意多边形取到面积最大值的时候，它的顶点共圆，且表达式为 $S_{max}=\sqrt{\prod(s-a_{i})}, s = \frac{\sum a_{i}}{2}$。(公式显然是错的，随便就是一万个反例)
 
@@ -103,7 +109,7 @@ $$S_{max} = \sqrt{(s-a)(s-b)(s-c)(s-d)}$$
 
 ---
 
-### Q3、最大面积的表达式
+## Q3、最大面积的表达式
 
 既然猜测的面积公式不成立, ~~那不如我们再猜一个吧~~ 我们尝试一下从正面直接推导。
 
@@ -137,27 +143,32 @@ $$S_n{max} = \sum_{i=1}^n{\frac{d_i}{2}\sqrt{R^2-\frac{d_i^2}{4}}\tag{2}}$$
 
 令 $k = \frac{1}{2R}$
 
-$$\begin{eqnarray}
-\sum_{i=1}^n{\arcsin{\frac{d_i}{2R}}} & = & \sum_{i=1}^n{\arcsin(d_ik)} \newline
-& = &  \sum_{i=1}^n\sum_{m=0}^{\infty}{[\frac{(2m)!}{2^{2m}(m!)^2}]\frac{(d_ik)^{2m+1}}{2m+1}} \newline
-& = & \sum_{m=0}^{\infty}{[\frac{(2m)!}{2^{2m}(m!)^2}]\frac{\sum_{i=1}^n{d_i^{2m+1}}}{2m+1}{k^{2m+1}}} \newline
-& = & \pi ...
-\end{eqnarray}$$
+$$
+\begin{aligned}
+\sum_{i=1}^n{\arcsin{\frac{d_i}{2R}}} 
+& = \sum_{i=1}^n{\arcsin(d_ik)} \newline
+& = \sum_{i=1}^n\sum_{m=0}^{\infty}{[\frac{(2m)!}{2^{2m}(m!)^2}]\frac{(d_ik)^{2m+1}}{2m+1}} \newline
+& = \sum_{m=0}^{\infty}{[\frac{(2m)!}{2^{2m}(m!)^2}]\frac{\sum_{i=1}^n{d_i^{2m+1}}}{2m+1}{k^{2m+1}}} \newline
+& = \pi ...
+\end{aligned}
+$$
 
 > 2021-03-20记 脑阔疼，总之感觉是个高次方程
 
 或者，（1）两侧对 $R$ 求导
 
-$$\begin{aligned}
+$$
+\begin{aligned}
 \sum_{i=1}^{n}{\frac{-\frac{d_i}{2R^2}}{\sqrt{1-(\frac{d_i}{2R})^2}}} = 0 \newline
 \sum_{i=1}^{n}{\frac{d_i}{\sqrt{4R^2-d_i^2}}} = 0
-\end{aligned}$$
+\end{aligned}
+$$
 
 > 2021-03-21记 无解？！可能要引入复数了 先搁着吧
 
 这个求导应该有问题，对于确定的 $d_i$ 数组，$R$ 应为确值而非变量，对 $R$ 求导之后出现的问题，很可能就是因为我们在求导过程中认为 $R$ 可变，而认为 $d_i$ 为常数。
 
-#### 一个新的思路
+### 一个新的思路
 
 由于
 
@@ -169,11 +180,14 @@ $$\arcsin{\frac{d_m}{2R}} = -i\ln{(i\frac{d_m}{2R}+\sqrt{1-\frac{d_m^2}{4R^2}})}
 
 所以有
 
-$$\begin{eqnarray}
-\sum_{m=1}^{n}\arcsin{\frac{d_m}{2R}} & = & \sum_{m=1}^{n}(-i\ln{(i\frac{d_m}{2R}+\sqrt{1-\frac{d_m^2}{4R^2}})} \newline
-& = & -i\ln({\prod_{m=1}^{n}{(i\frac{d_m}{2R} + \sqrt{1-\frac{d_m^2}{4R^2}})}}) \newline
-& = & \pi
-\end{eqnarray}$$
+$$
+\begin{aligned}
+\sum_{m=1}^{n}\arcsin{\frac{d_m}{2R}} 
+& = \sum_{m=1}^{n}(-i\ln{(i\frac{d_m}{2R}+\sqrt{1-\frac{d_m^2}{4R^2}})} \newline
+& = -i\ln({\prod_{m=1}^{n}{(i\frac{d_m}{2R} + \sqrt{1-\frac{d_m^2}{4R^2}})}}) \newline
+& = \pi
+\end{aligned}
+$$
 
 即
 
@@ -187,4 +201,4 @@ $$\prod_{m=1}^{n}{(id_mk + \sqrt{1+(id_mk)^2})} = -1 \newline$$
 
 知识水平受限，目前的结论是，~~最大面积有无通解不确定~~，还没有结论。
 
-### Q4、代码实现
+## Q4、代码实现

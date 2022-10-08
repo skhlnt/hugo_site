@@ -6,6 +6,10 @@ slug: ec6e1ec2
 
 author: "Kenshin2438"
 description: "贴个题解，看不懂代码就看不懂吧。没用宏定义我已经尽力了。⌓‿⌓"
+keywords:
+  - 长沙理工大学第十七届ACM程序设计竞赛
+  - CSUST ACM
+  - 个人题解
 summary: "贴个题解，看不懂代码就看不懂吧。没用宏定义我已经尽力了。⌓‿⌓"
 categories: 
   - CSUST

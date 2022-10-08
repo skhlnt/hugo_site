@@ -5,7 +5,10 @@ draft: true
 slug: af868eb0
 
 author: "Kenshin2438"
-description: ""
+description: "Bell数的Touchard同余，使用上一篇文中介绍的Stirling数的模小素数的结论来证明。"
+keywords: 
+  - Bell数
+  - Touchard同余
 summary: ""
 categories: 
   - Number Theory

@@ -1,10 +1,15 @@
 ---
-title: "斯特灵公式 - Stirling formula"
+title: "斯特林公式 - Stirling's approximation"
 date: 2021-06-03 00:00:00
 slug: 5160a86b
 
 author: "Kenshin2438"
-description: ""
+description: "简单写一下斯特林公式的证明，过程不是很严谨。"
+keywords: 
+  - Stirling's approximation
+  - 斯特林公式
+  - 斯特林公式证明
+  - 阶乘近似
 categories:
   - Math
 tags:
@@ -21,17 +26,15 @@ cover:
   relative: false
 ---
 
-$$\textrm{Stirling formula: } n! \thickapprox \sqrt{2 \pi n} \left ( \frac{n}{e} \right )^{n}$$
+$$n! \thickapprox \sqrt{2 \pi n} \left ( \frac{n}{e} \right )^{n}$$
 
-上次写题用到了斯特灵公式，然后就被老师“喷”了……
+上次写题用到了斯特林公式，然后就被老师“喷”了……
 
-u1s1活该被喷，虽然斯特灵公式我一直在用，但是从来没有证过。为了以后大胆地用斯特灵公式，这里简单写一个证明。
+有一说一，活该被喷，虽然斯特林公式我一直在用，但是从来没有证过。为了以后大胆地用斯特林公式，这里简单写一个证明。
 
 <!--more-->
 
-### 简要证明
-
-第一眼看见，真的被惊艳到了。
+## 简要证明
 
 这是一个很好的对阶乘的渐进估计，事实上，就算是对广义阶乘函数（$\Gamma$）也很管用。
 
@@ -53,15 +56,15 @@ x!
 \end{aligned}
 $$
 
-####  使用 Laplace's method
+### 使用 Laplace's method
 
-$Wiki$上关于斯特灵公式的证明用到了$\text{Laplace's method}$
+维基百科上关于斯特林公式的证明用到了$\text{Laplace's method}$
 
 $$\int_{a}^{b} {e^{M \ f(x)}} \mathrm{d} x \thickapprox e^{M f(x_0)} \sqrt{\frac{2\pi}{M|f''(x_0)|}} \quad as \quad M \rightarrow \infty$$
 
-这里不作介绍（不太会，嘤嘤嘤），请移步$Wiki$。
+这里不作介绍（不太会，嘤嘤嘤），请移步维基百科。
 
-#### 使用形式
+## 使用形式
 
 一般用到的是更为精确一点的形式：
 

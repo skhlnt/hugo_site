@@ -5,7 +5,11 @@ date: 2021-09-23 13:01:24
 slug: c9c1bd29
 
 author: "Kenshin2438"
-description: ""
+description: "简单介绍一下平面图的欧拉示性数公式，该问题该能拓展到更高维的情况，是拓扑学中的一个经典问题。"
+keywords:
+  - 平面图欧拉示性数公式
+  - 欧拉示性数公式
+  - V+F-E=2
 tags:
   - 图论
   - 欧拉示性数公式

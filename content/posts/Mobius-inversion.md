@@ -4,7 +4,19 @@ date: 2021-08-27 19:24:52
 slug: e7791216
 
 author: "Kenshin2438"
-description: ""
+description: "莫比乌斯反演问题记录，每一题都代表了一种典型，实在不好取舍便都记录下来了。"
+keywords:
+  - 莫比乌斯反演
+  - 问题记录
+  - "P3172 [CQOI2015]选数"
+  - "P3312 [SDOI2014]数表"
+  - "P3911 最小公倍数之和"
+  - "P1829 [国家集训队]Crash的数字表格 / JZPTAB"
+  - "P2398 GCD SUM"
+  - "P2257 YY的GCD"
+  - "「SDOI2015」约数个数和"
+  - "LCMSUM"
+  - "HDU 6134 Battlestation Operational"
 categories:
   - Number Theory
 tags:
@@ -13,7 +25,6 @@ tags:
 weight: false
 math: true
 comments: true
-TocOpen: true
 
 cover:
   image: "" # image path/url
@@ -53,12 +64,14 @@ $$Ans=\sum_{i=1}^{n}\sum_{j=1}^{m}\sigma(\gcd(i,j))[\gcd(i,j)\leq a] \newline$$
 
 先不考虑大小限制，之后将其转换成离线求值+动态加入贡献的问题。
 
-$$\begin{aligned}
+$$
+\begin{aligned}
 \sum_{i=1}^{n}\sum_{j=1}^{m}\sigma(\gcd(i,j))&=\sum_{d=1}^{n}\sigma(d)\sum_{i=1}^{[\frac{n}{d}]}\sum_{j=1}^{[\frac{m}{d}]}[\gcd(i,j)=1]\newline
 &=\sum_{d=1}^{n}\sigma(d)\sum_{k=1}^{[\frac{n}{d}]}\mu(k)\sum_{i=1}^{[\frac{n}{d}]}\sum_{j=1}^{[\frac{m}{d}]}\newline
 &=\sum_{d=1}^{n}\sigma(d)\sum_{k=1}^{[\frac{n}{d}]}\mu(k)[\frac{n}{dk}]\times[\frac{m}{dk}]\newline
 &=\sum_{T=1}^{n}[\frac{n}{T}][\frac{m}{T}]\sum_{d\mid T}\sigma(d)\mu(\frac{T}{d})
-\end{aligned}$$
+\end{aligned}
+$$
 
 只有当$\sigma(n)\leq a_i$，才将$\sigma(n)$的贡献计入，那么我们可以离线处理，用树状数组维护，$O(Q\sqrt{n}\log{n})$。
 
@@ -156,12 +169,14 @@ int main() {
 >
 > 对于 $100\%$ 的数据，$1\le N,K\le 10^9$，$1\le L\le H\le 10^9$，$H-L\le 10^5$。
 
-$$\begin{aligned}
+$$
+\begin{aligned}
 Ans&=\sum_{a_1=L}^{H}\sum_{a_2=L}^{H}\dots\sum_{a_N=L}^{H}\left[ (a_1,a_2,\dots,a_N)=K \right] \newline
 &=\sum_{a_1=\lceil \frac{L}{K} \rceil}^{\lfloor\frac{H}{K} \rfloor}\sum_{a_2=\lceil \frac{L}{K} \rceil}^{\lfloor \frac{H}{K} \rfloor}\dots\sum_{a_N=\lceil \frac{L}{K} \rceil}^{\lfloor \frac{H}{K} \rfloor}\left[ (a_1,a_2,\dots,a_N)=1\right] \newline
 &=\sum_{a_1=\lceil \frac{L}{K} \rceil}^{\lfloor\frac{H}{K} \rfloor}\sum_{a_2=\lceil \frac{L}{K} \rceil}^{\lfloor \frac{H}{K} \rfloor}\dots\sum_{a_N=\lceil \frac{L}{K} \rceil}^{\lfloor \frac{H}{K} \rfloor}\sum_{d\mid(a_1,a_2,\dots,a_N)}{\mu(d)} \newline
 &=\sum_{d=1}^{\lfloor \frac{H}{K} \rfloor}{\mu(d)\times(\lfloor\frac{\lfloor\frac{H}{K} \rfloor}{d}\rfloor-\lceil\frac{\lceil\frac{L}{K}\rceil}{d}\rceil+1)^N}\newline
-\end{aligned}$$
+\end{aligned}
+$$
 前者求$\sum\mu(n)$用杜教筛就可以了，$O(n^{\frac{2}{3}})$。
 
 后者明显是分块+快速幂，但是里面存在一个`向上取整`的部分。想了很久怎样找向上取整的区间，然后突然记起向上取整可以转化为向下取整，即$\lceil \frac{L}{K} \rceil=\lfloor \frac{L-1}{K} \rfloor + 1$。
@@ -243,12 +258,14 @@ int main() {
 > **$1\le N \le 50000;1 \le A_i \le 50000。$**
 
 随机数组的形式没办法直接快速求值，注意到，$A_i$的取值范围很小，我们可以定义一个**贡献**，将未出现的数剔除掉，只统计数组中元素的贡献。显然，这里应该用**出现次数**作为贡献（出现多少次就会被计算多少次）。
-$$\begin{aligned}
+$$
+\begin{aligned}
 Ans&=\sum_{i=1}^{M}\sum_{j=1}^{M}lcm(i,j)\times c[i]\times c[j]\newline
 &=\sum_{g=1}^{M}\sum_{i=1}^{[\frac{M}{g}]}\sum_{j=1}^{[\frac{M}{g}]}{g\times i\times j}\times[(i,j)=1]\times c[ig]\times c[jg]\newline
 &=\sum_{g=1}^{M}\sum_{k=1}^{[\frac{M}{g}]}\mu(k)\sum_{i=1}^{[\frac{M}{gk}]}\sum_{j=1}^{[\frac{M}{gk}]}{g\times ik\times jk}\times c[igk]\times c[jgk]\newline
 &=\sum_{T=1}^{M}T(\sum_{i=1}^{[\frac{M}{T}]}i\times c[iT])^2\sum_{k \mid T}{k\times\mu(k)}\newline
-\end{aligned}$$
+\end{aligned}
+$$
 后面一项可以预处理，中间项只能暴力去做，正好$M$不大，时间复杂度$O(M\log M)$能过。
 
 ```cpp
@@ -429,11 +446,13 @@ int main() {
 
 用一个之前没写过的欧拉反演，原理：$\sum_{d\mid n}\varphi(d)=n$。
 
-$$\begin{aligned}
+$$
+\begin{aligned}
 Ans&=\sum_{i=1}^{n}\sum_{j=1}^{m}\gcd(i,j)\newline
 &=\sum_{i=1}^{n}\sum_{j=1}^{m}\sum_{d\mid\gcd(i,j)}\varphi(d)\newline
 &=\sum_{d=1}^{n}\varphi(d)\times[\frac{n}{d}]\times[\frac{m}{d}]
-\end{aligned}$$
+\end{aligned}
+$$
 总共$O(n+\sqrt{n})$，数据范围给得太小了。
 
 用莫反推起来步骤一样，就略去了。
@@ -487,12 +506,14 @@ int main() {
 >
 > $T=1e4$，$N,M\leq1e7$。
 
-$$\begin{aligned}
+$$
+\begin{aligned}
 Ans&=\sum_{x=1}^{N}\sum_{y=1}^{M}[(x,y)=p \land p\in Prime]\newline
 &=\sum_{p\in Prime}\sum_{x=1}^{[\frac{N}{p}]}\sum_{y=1}^{[\frac{M}{p}]}[(x,y)=1]\newline
 &=\sum_{p\in Prime}\sum_{k=1}^{[\frac{N}{p}]}\mu(k)\times[\frac{N}{pk}]\times[\frac{M}{pk}]\newline
 &=\sum_{T=1}^{N}[\frac{N}{T}]\times[\frac{M}{T}]\sum_{p\mid T,p\in Prime}\mu(\frac{T}{p})
-\end{aligned}$$
+\end{aligned}
+$$
 
 $O(N+\pi(N)\log p)$预处理后面部分$F(n)=\sum\limits_{p\mid n,p\in Prime}\mu(\frac{n}{p})$。
 
@@ -565,12 +586,14 @@ int main() {
 >
 > 多组，$1\leq T\leq 5e4$，$1\leq N,M,\leq 5e4$。
 
-$$\begin{aligned}
+$$
+\begin{aligned}
 Ans&=\sum_{i=1}^{N}\sum_{j=1}^{M}\sum_{x\mid i}\sum_{y\mid j}[\gcd(x,y)=1]\newline
 &=\sum_{i=1}^{N}\sum_{j=1}^{M}\sum_{x\mid i}\sum_{y\mid j}\sum_{k\mid\gcd(x,y)}\mu(k)\newline
 &=\sum_{k=1}^{N}\mu(k)\times\left( \sum_{x=1}^{[\frac{N}{k}]}\sum_{i=1}^{[\frac{N}{kx}]}1 \right)\times\left( \sum_{y=1}^{[\frac{M}{k}]}\sum_{j=1}^{[\frac{M}{ky}]}1 \right)\newline
 &=\sum_{k=1}^{N}\mu(k)\times\left(\sum_{x=1}^{[\frac{N}{k}]}[\frac{N}{kx}]\right)\times\left(\sum_{y=1}^{[\frac{M}{k}]}[\frac{M}{ky}]\right)
-\end{aligned}$$
+\end{aligned}
+$$
 
 后面部分令为$F(\lfloor\frac{n}{k}\rfloor)=\sum_{x=1}^{\lfloor\frac{n}{k}\rfloor}\lfloor\frac{n}{kx}\rfloor=\sum_{x=1}^{\lfloor\frac{n}{k}\rfloor}\lfloor\frac{\lfloor\frac{n}{k}\rfloor}{x}\rfloor$。
 
@@ -643,11 +666,13 @@ int main() {
 >
 > 多组，$T\leq3e5,1\leq n\leq1e6$。
 
-$$\begin{aligned}
+$$
+\begin{aligned}
 Ans&=\sum_{g\mid n}\sum_{i=1}^{\frac{n}{g}}i\times n\times[(i, \frac{n}{g})=1]\newline
 &=n\sum_{g\mid n}\sum_{i=1}^{\frac{n}{g}}i\times[(i,\frac{n}{g})=1]\newline
 &=n\sum_{g\mid n}\frac{\frac{n}{g}\times\varphi(\frac{n}{g})}{2}
-\end{aligned}$$
+\end{aligned}
+$$
 
 直接预处理就完事$O(n\ln n)$。
 
@@ -704,12 +729,15 @@ int main() {
 > $1\leq n\leq 1e6$，多组（不超过$1e4$）
 
 先考虑一个子问题，$g(n)=\sum_{i=1}^{n}\lceil\frac{n}{i}\rceil\times[(n,i)=1]$。
-$$\begin{aligned}
-g(n)&=\sum_{i=1}^{n}\lceil\frac{n}{i}\rceil\times[(n,i)=1]\newline
+$$
+\begin{aligned}
+g(n)
+&=\sum_{i=1}^{n}\lceil\frac{n}{i}\rceil\times[(n,i)=1]\newline
 &=\sum_{d\mid n}\mu(d)\sum_{i=1}^{\frac{n}{d}}\lceil\frac{\frac{n}{d}}{i}\rceil\newline
 &=\sum_{d\mid n}\mu(d)\left(\frac{n}{d}-\sigma_0(\frac{n}{d})+\sum_{i=1}^{\frac{n}{d}}\lfloor\frac{\frac{n}{d}}{i}\rfloor\right)\newline
 &=\sum_{d\mid n}\mu(d)\left(\frac{n}{d}+\sum_{i=1}^{\frac{n}{d}-1}\sigma_0(i)\right)
-\end{aligned}$$
+\end{aligned}
+$$
 
 > 中间一步稍作解释吧，
 > $$\sum_{i=1}^{n}\sigma_0(i)=\sum_{i=1}^{n}\sum_{d\mid i}1=\sum_{d=1}^{n}\sum_{i=1}^{\lfloor\frac{n}{d}\rfloor}1=\sum_{d=1}^{n}\lfloor\frac{n}{d}\rfloor$$。

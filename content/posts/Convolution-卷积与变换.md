@@ -6,6 +6,10 @@ slug: d7959a4b
 
 author: "Kenshin2438"
 description: "记录一下我见过的奇奇怪怪的卷积以及用于高效计算的变换"
+keywords:
+  - Convolution
+  - 卷积
+  - 变换
 categories:
   - 多项式
 tags: 

@@ -5,7 +5,12 @@ draft: false
 slug: 72b0c59
 
 author: "Kenshin2438"
-description: ""
+description: "中国剩余定理以及拓展情况下的中国剩余定理。"
+keywords: 
+  - CRT
+  - exCRT
+  - 中国剩余定理
+  - 拓展中国剩余定理
 categories:
   - Number Theory
 tags:
@@ -47,7 +52,8 @@ cover:
 > $$x\equiv {\sum_{i=1}^{k}{b_iM_iM_i^{-1}}}\pmod{m},M_iM_i^{-1}\equiv1\pmod{m_i}$$
 
 我们从基础解和基础解系的角度出发，构造这样一组**基础解**：
-$$\begin{cases}
+$$
+\begin{cases}
 x_1 & \equiv & 1 \pmod{m_1} \quad \newline
 x_1 & \equiv & 0 \pmod{m_2} \quad \newline
 & \vdots & \newline
@@ -59,7 +65,8 @@ x_k & \equiv & 0 \pmod{m_1} \quad \newline
 x_k & \equiv & 0 \pmod{m_2} \quad \newline
 & \vdots & \newline
 x_k & \equiv & 1 \pmod{m_k} \quad 
-\end{cases}$$
+\end{cases}
+$$
 
 由于$m_i$两两之间互素，我们很容易得到**最初**给的同余方程组的解，为：$\sum{b_ix_i}\mod m$.
 
@@ -85,10 +92,12 @@ $$x_i\equiv\frac{m}{m_i}\times (\frac{m}{m_i})^{-1} \equiv 1\pmod{m_i}$$
 ### 再思考 - 合并同余式
 从两个式子的情况开始:
 
-$$\begin{cases}
+$$
+\begin{cases}
 x \equiv b_1 \pmod{m_1} \newline
 x \equiv b_2 \pmod{m_2}
-\end{cases}$$
+\end{cases}
+$$
 
 我们令$(m_1, m_2)=d$，且两同余式有公共解$x_0$.
 
@@ -110,7 +119,7 @@ $$x=b_1+m_1y_0+\frac{m_1m_2}{d}t,(t=0,\pm1,\pm2,\dots)$$
 
 观察最后的解，可以知道同余式组的解$x$对模数$[m_1,m_2]$唯一。
 
-也就是，`合并`两个同余式为
+也就是，**合并**两个同余式为
 
 $$x\equiv x_t\pmod{[m_1,m_2]}$$
 
@@ -151,6 +160,6 @@ inline ll exCRT(ll r[], ll m[], int n) {
 > $$f(x)\equiv0\pmod{m_i}(i=1,2,\dots,k)$$
 > 对每一个$i$均有解。
 > 
-> 若用$T_i$表示第$i$个方程的`解数`，则$f(x)\equiv0\pmod{m}$的解数$T=\prod{T_i}$。
+> 若用$T_i$表示第$i$个方程的**解数**，则$f(x)\equiv0\pmod{m}$的解数$T=\prod{T_i}$。
 
 证明从略。~~咕咕咕~~

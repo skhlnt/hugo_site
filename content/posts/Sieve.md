@@ -5,7 +5,18 @@ draft: false
 slug: bb62b52f
 
 author: "Kenshin2438"
-description: ""
+description: "本篇博客着重于介绍在算法竞赛中几种常见的筛法，默认读者有基本的数论知识。"
+keywords: 
+  - 筛法
+  - 线性筛
+  - Min25筛
+  - Powerful Number筛
+  - PN筛
+  - 杜教筛
+  - "P4213 【模板】杜教筛（Sum）"
+  - "P3768 简单的数学题"
+  - "gym 103306 Flipped Factorization"
+  - "Luogu P5325 【模板】Min_25筛"
 categories:
   - Number Theory
 tags:
@@ -17,7 +28,6 @@ tags:
 weight: false
 math: true
 comments: true
-TocOpen: true
 
 cover:
   image: "" # image path/url
@@ -129,11 +139,10 @@ $$g(1)S(n)=\sum_{i=1}^{n}{h(i)}-\sum_{i=2}^{n}{g(i)S(\lfloor \frac{n}{i} \rfloor
 + 引入的积性函数$g(n)$的前缀和容易计算
 + $h(n)$的前缀和容易计算
 
-### 杜教筛示例
+### 优化方式
+预处理出$n^{\frac{2}{3}}$以内的前缀和，使得递归的出口更快得到。
 
-自己也没刷到太多的杜教筛的题，~~日后再加~~。
-
-#### 洛谷 P4213 【模板】杜教筛（Sum）
+### 洛谷 P4213 【模板】杜教筛（Sum）
 
 > [洛谷 P4213 【模板】杜教筛（Sum）](https://www.luogu.com.cn/problem/P4213)
 >
@@ -142,7 +151,7 @@ $$g(1)S(n)=\sum_{i=1}^{n}{h(i)}-\sum_{i=2}^{n}{g(i)S(\lfloor \frac{n}{i} \rfloor
 > 给定一个正整数，求
 > $$ans_1=\sum_{i=1}^{n}{\varphi(i)},ans_2=\sum_{i=1}^{n}{\mu(i)}$$
 
-##### 欧拉函数的前缀和
++ **1.欧拉函数的前缀和**
 
 考虑积性函数$g(n)=1(n)=1$，则
 
@@ -152,19 +161,13 @@ $$h(n)=\sum_{d \mid n}{\varphi(d)}=n$$
 
 $$S(n)=\sum_{i=1}^{n}{i}-\sum_{i=2}^{n}{S(\lfloor \frac{n}{i} \rfloor)}$$
 
-##### 麦比乌斯函数的前缀和
++ **2.麦比乌斯函数的前缀和**
 
 依旧考虑积性函数$g(n)=1(n)=1$，则
 
 $$h(n)=\sum_{d \mid n}{\mu(d)}=\lfloor \frac{1}{n} \rfloor$$
 
 $$S(n)=\sum_{i=1}^{n}{\lfloor \frac{1}{i} \rfloor}-\sum_{i=2}^{n}{S(\lfloor \frac{n}{i} \rfloor)}$$
-
-##### 优化方式
-
-预处理出$n^{\frac{2}{3}}$以内的前缀和，使得递归的出口更快得到。
-
-##### AC代码
 
 ```cpp P4213.cpp
 #include <bits/stdc++.h>
@@ -231,7 +234,7 @@ int main() {
 }
 ```
 
-#### 洛谷 P3768 简单的数学题
+### 洛谷 P3768 简单的数学题
 
 > [洛谷 P3768 简单的数学题](https://www.luogu.com.cn/problem/P3768)
 >
@@ -249,8 +252,6 @@ int main() {
 $$ANS=\sum_{i=1}^{n}{F^2(i)}\times i^2\varphi(i),F(i)=\sum_{i=1}^{\lfloor\frac{n}{i}\rfloor}{i}$$
 
 前者分块，后者杜教筛。
-
-##### 分析过程
 
 现在我们待求的$S(n)=\sum_{i=1}^{n}i^2\varphi(i)$，令$f(n)=n^2\varphi(n)$。
 
@@ -271,8 +272,6 @@ $$h(n)=\sum_{d\mid n}d^2\varphi(d)(\frac{n}{d})^2=n^2\sum_{d\mid n}\varphi(d)=n^
 最终，代回最初的结论就好了
 
 $$S(n)=\sum_{i=1}^{n}{i^3}-\sum_{i=2}^{n}{i^2S(\lfloor \frac{n}{i} \rfloor)}$$
-
-##### AC代码
 
 ```cpp P3768.cpp
 #include <bits/stdc++.h>

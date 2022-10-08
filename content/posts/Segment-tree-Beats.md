@@ -5,7 +5,13 @@ date: 2021-09-07 23:43:34
 slug: ef1abe7a
 
 author: "Kenshin2438"
-description: ""
+description: "吉老师线段树，以及个人近期关于线段树用法的一点点思考。"
+keywords:
+  - 吉老师线段树
+  - 线段树
+  - "Segment tree Beats"
+  - "HDU5306 Gorgeous Sequence"
+  - "HDU7116 Lowbit"
 categories:
   - Data Structure
 tags:

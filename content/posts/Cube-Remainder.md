@@ -5,6 +5,13 @@ slug: 8c520df7
 
 author: "Kenshin2438"
 description: "三次剩余，以及一个可以继续推广至k次剩余的随机算法"
+keywords: 
+  - 三次剩余
+  - k次剩余
+  - 随机算法
+  - "LiBreOJ #175. 模立方根"
+  - "51Nod - 1039"
+  - "Peralta Method"
 categories:
   - Number Theory
 tags:
@@ -62,19 +69,18 @@ $\textrm{Proof:}$
 2. $p$为$3n+1$形式的素数时，解的存在性上面已经讨论了。若有解，我们虽然没有上述那么漂亮的解的形式，但这里有一个绝妙的算法可以解决该问题。
 
 ### Peralta Method Extension
-[参考资料](https://www.sciencedirect.com/science/article/pii/S0893965902000319)
 
->The Peralta method is a fast way of computing square roots for a prime of form $p=2^eq+1$ $(q \not\equiv0\mod 2)$ for large $e$.
+>The Peralta method is a fast way of computing square roots for a prime of form $p=2^eq+1$ $(q \not\equiv0\mod 2)$ for large $e$. 
+
 
 考虑这样一个环：
 $$R=\frac{\mathbb{Z}_p[x]}{x^3-a}=\\{ \alpha+\beta Y+\gamma Y^2 | \alpha,\beta,\gamma\in\mathbb{Z}_p,Y^3=a\\}$$
-可知，
 
 对于$z\in R$，即$z=\alpha+\beta Y+\gamma Y^2$，有$z^{p-1}\equiv 1\pmod{p}$
 
 如果$z^{\frac{p-1}{3}}=\beta_0 Y$，则有$(\beta_0 Y)^3\equiv\beta_0^3a\equiv1\pmod{p}$，即$\sqrt[3]{a}\equiv\beta_0^{-1}\pmod{p}$
 
-**算法流程**
+**算法流程**[^1]
 
 > For a prime $p\equiv 1 \mod 3$:
 > 
@@ -312,3 +318,6 @@ int main() {
   return 0;
 }
 ```
+
+## 参考资料
+[^1]: https://www.sciencedirect.com/science/article/pii/S0893965902000319

@@ -6,6 +6,12 @@ slug: a8baf211
 
 author: "Kenshin2438"
 description: ""
+keywords:
+  - Hugo 
+  - Blog
+  - PaperMod
+  - 博客搭建笔记
+  - 个人博客
 categories: 
   - Blog
 tags: 

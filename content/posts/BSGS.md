@@ -5,7 +5,15 @@ draft: true
 slug: 4fd858f9
 
 author: "Kenshin2438"
-description: ""
+description: "DLP同余方程的解法，以及使用小步大步（BSGS）算法解决离散对数问题。"
+keywords:
+  - DLP同余方程
+  - 离散对数
+  - BSGS
+  - exBSGS
+  - Baby Step/Giant Step Algorithm
+  - 小步大步算法
+  - "51nod 1038 X^A mod P"
 categories:
   - Number Theory
 tags:

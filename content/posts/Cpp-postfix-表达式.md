@@ -1,11 +1,16 @@
 ---
-title: '用来避免行末空格的cout<<"\n "[i < n];是什么语法？'
+title: 用来避免行末空格的cout<<"\n "[i < n];是什么语法？
 date: 2021-12-03 21:50:00
 draft: false
 slug: b1757d4d
 
 author: "Kenshin2438"
-description: ""
+description: "算法竞赛中，用来避免行末空格的cout<<\"\\n \"[i < n];是什么语法支撑的？"
+keywords:
+  - 避免行末空格
+  - postfix-expression
+  - 后缀表达式
+  - C++
 categories:
   - 漫谈
 tags:

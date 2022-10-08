@@ -6,6 +6,14 @@ slug: a8d49aaf
 
 author: "Kenshin2438"
 description: "关于(n * n)的Lights Out问题，使用光追逐(Light chasing)在O(n^3)时间复杂度下解决。"
+keywords:
+  - 关灯问题
+  - Lights Out Game
+  - Light chasing
+  - "gym102920 J"
+  - 高斯消元
+  - 线性基
+  - "LibreOJ #6243. 关灯问题"
 summary: ""
 categories: 
   - Data Structure

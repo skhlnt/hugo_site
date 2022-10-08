@@ -5,7 +5,16 @@ slug: e874bcb3
 lastmod: 2022-01-19 10:22:32
 
 author: "Kenshin2438"
-description: ""
+description: "组合数取模小素数的情况下，可以利用Lucas定理快速求解。同时，在模数并非素数但为一些较小的素数的乘积时，也可以利用中国剩余定理分解后再计算。"
+keywords: 
+  - 组合数取模
+  - Lucas
+  - exLucas
+  - 卢卡斯定理
+  - 拓展卢卡斯定理
+  - 中国剩余定理
+  - 洛谷 P4720
+  - "LibreOJ #181. 二项式系数"
 categories:
   - Number Theory
 tags:
@@ -38,7 +47,7 @@ $${n \choose m} \mod p = {\lfloor \frac{n}{p} \rfloor \choose \lfloor \frac{m}{p
 
 此时，若$p$为一个较小的素数，而$n,m$为一个较大的数（指不能直接通过预处理阶乘及其逆元的大数，比如$1e18$），那么我们就可以递归地求解该结果。
 
-```cpp Lucas
+```cpp
 inline ll func(ll n, ll m, ll p, ll res = 1LL) {
 	if (n < m) return 0;
 	while (m) res = res * C(n % p, m % p) % p, n /= p, m /= p;
@@ -48,7 +57,7 @@ inline ll func(ll n, ll m, ll p, ll res = 1LL) {
 
 根据上述代码，我们只要预处理出$p$以内的阶乘及其逆元即可，时间复杂度$O(p+\log{m})$。
 
-## 证明
+### 证明
 
 > 其实在上面的递归过程已经提示了一件事：$p$进制分解。
 
@@ -72,19 +81,21 @@ $$(1+x)^n\equiv(1+x)^{\sum a_ip^i}\equiv\prod(1+x^{p^i})^{a_i}\pmod{p}$$
 
 现在考虑$x^m$的系数，左边是${n \choose m}$，右边是$\prod{a_i \choose b_i}$，已经是`Lucas`的表达式啦。
 
-## 拓展问题
+## 拓展问题 - exLucas定理
 如果上式中$p$为合数，同时$n,m$依旧很大，怎么求解呢？
 
 由**中国剩余定理**可以知道，
 
 如果合数$p$的唯一分解为$\prod_{i=1}^{s}{p_i}^{\alpha_i}$，则有：
-$$x \equiv {n \choose m} \pmod{p} \Rightarrow
+$$
+x \equiv {n \choose m} \pmod{p} \Rightarrow
 \begin{cases}
 x & \equiv & {n \choose m} \pmod{p_1^{\alpha_1}} \newline
 x & \equiv & {n \choose m} \pmod{p_2^{\alpha_2}} \newline
   & \vdots & \newline
 x & \equiv & {n \choose m} \pmod{p_s^{\alpha_s}} \newline
-\end{cases}$$
+\end{cases}
+$$
 
 所以只要求出$p$的**唯一分解**，再分别解出各个同余式，通过**CRT**合并答案就能完成全部解答。
 
@@ -99,13 +110,13 @@ x & \equiv & {n \choose m} \pmod{p_s^{\alpha_s}} \newline
 所以现在的思路就是，预处理$p^{\alpha}$内所有与$p$互素的数的乘积（令为$base$），那么$n!$中必然有$\lfloor \frac{n}{p^{\alpha}} \rfloor$个这样的乘积，剩余部分为$n\%p^{\alpha}$内与$p$互素的数的乘积。
 
 $$
-fac(n)=base^\frac{n}{p^{\alpha}} fac(n \\% p^{\alpha})
+fac(n)=base^\frac{n}{p^{\alpha}} fac(n \bmod p^{\alpha})
 $$
 
 总结一下就是，现在我们把阶乘在$O({p^{\alpha}}+\log_{p}{n})$时间上，分成了互素数乘积`fac(n)`和不互素的`p^pot`两部分。
 
 所以，上代码了。
-```cpp exLucas  
+```cpp
 inline ll pot(ll n, ll p, ll res = 0) {
 	while (n) 
 		res += n / p, n /= p;

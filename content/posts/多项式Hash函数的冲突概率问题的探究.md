@@ -6,6 +6,10 @@ slug: 6751dc4c
 
 author: "Kenshin2438"
 description: "最近做题碰到了Hash，学习时对Hash冲突的概率产生了一点兴趣。"
+keywords:
+  - Rolling Hash
+  - 滚动hash
+  - hash冲突
 categories: 
   - Number Theory
 tags: 

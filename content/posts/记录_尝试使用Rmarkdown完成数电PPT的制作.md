@@ -7,6 +7,9 @@ slug: bd6e8d4c
 author: "Kenshin2438"
 description: "实际上为Beamer(PDF)输出, R语言用得不太熟练还不如直接用LaTex..."
 summary: "实际上为Beamer(PDF)输出, R语言用得不太熟练还不如直接用LaTex..."
+keywords:
+  - Rmarkdown
+  - R语言制作Beamer
 categories: 
   - R
 tags: 
@@ -22,8 +25,6 @@ cover:
   caption: "" # display caption under cover
   relative: false
 ---
-
-<!-- more -->
 
 暂时只作代码记录，后面复盘。
 

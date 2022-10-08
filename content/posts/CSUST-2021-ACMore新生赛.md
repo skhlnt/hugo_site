@@ -5,7 +5,10 @@ draft: false
 slug: bc16ad72
 
 author: "Kenshin2438"
-description: ""
+description: "CSUST - 2021 ACMore新生赛"
+keywords:
+  - CSUST - 2021 ACMore新生赛
+  - 个人题解
 categories:
   - CSUST
 tags:

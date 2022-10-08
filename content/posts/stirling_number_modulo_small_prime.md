@@ -5,7 +5,14 @@ draft: false
 slug: 16b0c7ac
 
 author: "Kenshin2438"
-description: ""
+description: "斯特林数取模小素数，在和它相关的为数不多的论文中，有人将其称为Stirling数的Lucas同余。"
+keywords:
+  - 斯特林数
+  - Stirling数
+  - 斯特林数取模
+  - 斯特林数取模小素数
+  - 斯特林数同余
+  - Lucas同余
 summary: ""
 categories: 
   - Number Theory

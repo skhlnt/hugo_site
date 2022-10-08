@@ -5,7 +5,12 @@ draft: false
 slug: f799d70a
 
 author: "Kenshin2438"
-description: ""
+description: "珂朵莉树，用于维护区间，以及处理区间赋值问题的数据结构。"
+keywords:
+  - 珂朵莉树
+  - Chtholly-Tree
+  - ODT
+  - 区间赋值
 categories:
   - Data Structure
 tags:

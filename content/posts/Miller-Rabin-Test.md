@@ -4,7 +4,14 @@ date: 2021-07-04 23:36:43
 slug: 61cd7919
 
 author: "Kenshin2438"
-description: ""
+description: "米勒-拉宾素性判别算法，在$\\mathcal{O}(k\\log_2^3(n))$时间复杂度下判别数字的素性的概率算法。"
+keywords: 
+  - Miller-Rabin
+  - 米勒-拉宾
+  - 素性判别
+  - 伪素数
+  - 卡米歇尔数
+  - "LibreOJ #143. 质数判定"
 categories:
   - Number Theory
 tags:
@@ -22,9 +29,11 @@ cover:
 ---
 
 由费马小定理可以知道，如果$p$是一个素数，且$(x, p)=1$，我们可以得到：
-$$\begin{aligned}
+$$
+\begin{aligned}
 x^{p-1} \equiv 1 \pmod{p}
-\end{aligned}$$
+\end{aligned}
+$$
 那么反之，如果有$x$满足$\forall a>1,(a,x)=1,s.t. a^x \equiv 1 \pmod{x}$，这样的$x$一定是素数吗？
 
 <!--more-->
@@ -67,15 +76,17 @@ $$a^{n-1}\equiv 1 \pmod{n}$$
 如果$p$为奇素数，那么我们可以得到$p-1$是一个偶数，则$p-1=k2^t,\textrm{k is odd}$
 
 据此，我们再看看费马小定理：
-$$\begin{aligned}
+$$
+\begin{aligned}
 \because \quad & a^{p-1}=a^{k2^t}\equiv1\pmod{p} \newline
 \therefore \quad & a^{k2^t}-1\equiv0\pmod{p} \newline
 \therefore \quad & (a^{k}-1)\prod_{i=0}^{t-1}{(a^{k2^i}+1)}\equiv0\pmod{p} \newline
-\end{aligned}$$
+\end{aligned}
+$$
 
 由此可知$p\mid(a^k-1)\prod_{i=0}^{t-1}{(a^{k2^i}+1)}$，即$p\mid (a^k-1)$或者$p\mid(a^{k2^i}+1),i=0,1,\dots,t-1$
 
-****
+---
 
 Miller Rabin Algorithm 的算法流程的核心就是，检验这些因子之中是否有数能被$p$整除。
 
@@ -155,8 +166,8 @@ $$S=\set{a:a\in Z_n^*,(a,n)=1,[n\mid(a^k-1)]\lor[n\mid(a^{k2^i}+1)]}$$
 {{< admonition success "代码均已经过测试" true >}}
 以下代码均在[LibreOJ #143. 质数判定](https://loj.ac/p/143)中提交测试。
 
-`python3`代码通过全部测试点用时`6173ms`<br>
-`cpp`代码通过全部测试点用时`476ms`
++ `python3`代码通过全部测试点用时`6173ms`
++ `cpp`代码通过全部测试点用时`447ms`
 {{< /admonition >}}
 
 + 随机数写法的`python3`的代码：
@@ -224,67 +235,33 @@ for num in sys.stdin:
 + 但是`python3`的效率实在太慢，不能在算法竞赛中使用，下面给出`c++`的代码作为模板。
 
 ```cpp
-#include <algorithm>
-#include <iostream>
-#include <cstdio>
-#include <cstring>
-#include <cmath>
-#include <queue>
-#include <vector>
-#include <string>
-#include <stack>
-#include <set>
-#include <map>
-#include <bitset>
-#define PII pair<int, int>
-#define mp make_pair
-#define fi first
-#define se second
-#define ps push
-#define all(a) a.begin(), a.end()
-#define pb push_back
-#define vec vector
-#define str string
-using namespace std;
-
-typedef long long ll;
-typedef unsigned long long ull;
-typedef __int128_t i128;
-
-const int N = 1e6 + 10;
-const int inf = 0x3f3f3f3f;
-const int mod = 1e9 + 7;
-
-ll n, bases[] = {2, 325, 9375, 28178, 450775, 9780504, 1795265022};
-
-ll mul(ll a, ll b, ll mod) {return (i128)a * b % mod;}
-
-ll qpow(ll x, ll n, ll mod) {
-  ll res = 1LL;
-  for (x %= mod; n; n >>= 1, x = mul(x, x, mod))
-    if (n & 1LL) res = mul(res, x, mod);
-  return res;
+using ull = unsigned long long;
+ull modmul(ull a, ull b, ull M) {
+  ll ret = a * b - M * ull(1.L / M * a * b);
+  return ret + M * (ret < 0) - M * (ret >= (ll)M);
 }
-bool miller_rabin(ll n) {
-  if (n < 2LL || ~n & 1LL) return n == 2LL;
-  ll k = n - 1LL, t = 0LL;
-  while (~k & 1LL) t++, k >>= 1;
-  for (ll a : bases) {
-    ll tmp = qpow(a, k, n);
+ull modpow(ull b, ull e, ull mod) {
+  ull ans = 1;
+  for (; e; b = modmul(b, b, mod), e /= 2)
+    if (e & 1) ans = modmul(ans, b, mod);
+  return ans;
+}
+bool miller_rabin(ull n) {
+  static const vector<ull> SPRP = {
+    2, 325, 9375, 28178, 450775, 9780504, 1795265022
+  };
+  if (n == 1 || n % 6 % 4 != 1) return (n | 1) == 3;
+  ll t = __builtin_ctzll(n - 1), k = (n - 1) >> t;
+  for (const ull &a : SPRP) {
+    ull tmp = modpow(a, k, n);
     if (tmp <= 1 || tmp == n - 1) continue;
     for (int i = 0; i <= t; i++) {
       if (i == t) return false;
-      tmp = mul(tmp, tmp, n);
+      tmp = modmul(tmp, tmp, n);
       if (tmp == n - 1) break;
     }
   }
   return true;
-}
-
-int main() {
-  while (~scanf("%lld", &n))
-    puts(miller_rabin(n) ? "Y" : "N");
-  return 0;
 }
 ```
 

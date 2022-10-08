@@ -5,7 +5,12 @@ draft: false
 slug: b8ca3bb8
 
 author: "Kenshin2438"
-description: ""
+description: "欧拉定理及拓展欧拉定理，主要为证明。"
+keywords:
+  - 数论
+  - 欧拉定理
+  - 拓展欧拉定理
+  - Extended Euler Theorem
 categories:
   - Number Theory
 tags:
@@ -74,7 +79,7 @@ $$
 
 下面是证明：
 
-由*Bernoulli's inequality*对左式放缩：$p^{s-1}(p-1)\geq(p-1)\times\left[1+(s-1)\times(p-1)\right]$
+由**Bernoulli's Inequality**对左式放缩：$p^{s-1}(p-1)\geq(p-1)\times\left[1+(s-1)\times(p-1)\right]$
 
 即证：$(p-1)\times\left[1+(s-1)\times(p-1)\right]-s\geq0$，
 
