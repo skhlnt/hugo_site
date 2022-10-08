@@ -46,7 +46,7 @@ params:
   ShowBreadCrumbs: true
   ShowLastMod: false
   ShowToc: true
-  TocOpen: false
+  TocOpen: true
 
   math: true
   comments: true

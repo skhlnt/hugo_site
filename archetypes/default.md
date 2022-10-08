@@ -17,6 +17,8 @@ tags:
 weight: false
 math: true
 comments: true
+ShowToc: true
+TocOpen: true
 
 cover:
   image: "" # image path/url
