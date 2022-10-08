@@ -11,6 +11,7 @@ keywords:
   - Chtholly-Tree
   - ODT
   - 区间赋值
+  - "CF915 E. Physical Education Lessons"
 categories:
   - Data Structure
 tags:
@@ -33,7 +34,7 @@ cover:
 
 <!--more-->
 
-# 基础操作
+## 基础操作
 思路十分清晰简单（暴力），维护一个有序的区间段的集合，每段区间带上其属性。
 
 拆分前用`lower_bound`找到对应的位置，删去中间原来所有的后，再加入新的那段。
@@ -65,7 +66,7 @@ struct ODT {
 };
 ```
 
-# 例题
+## 例题
 
 > [CF915 E. Physical Education Lessons](https://codeforces.com/problemset/problem/915/E)
 >

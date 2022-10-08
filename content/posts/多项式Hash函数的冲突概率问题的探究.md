@@ -27,21 +27,17 @@ cover:
   relative: false
 ---
 
-# Hash 简介
+## Hash 简介
 
 Hash 的思想很简单，通过某种映射将一个序列或者字符串对应到一个值域较小的值，自然，我们只希望这种映射关系是**单射**的。
 
 常用的 Hash 函数是一个模意义下的整系数多项式（同余式），例如，对于字符串$S$，定义Hash函数：
 
-$$
-h(S)=\left(\sum_{i=1}^{|S|}\mathrm{base}^{|S| - i} \times S_i \right) \bmod M
-$$
+$$h(S)=\left(\sum_{i=1}^{|S|}\mathrm{base}^{|S| - i} \times S_i \right) \bmod M$$
 
 那么，何为 Hash 冲突呢？对于另一个**等长**的串$T$，满足$T \neq S, h(T)=h(T)$，即：
 
-$$
-h(T)-h(S) = \left(\sum_{i=1}^{n}\mathrm{base}^{n - i} \times (T_i - S_i) \right) \equiv 0 \pmod{M}
-$$
+$$h(T)-h(S) = \left(\sum_{i=1}^{n}\mathrm{base}^{n - i} \times (T_i - S_i) \right) \equiv 0 \pmod{M}$$
 
 ---
 
@@ -51,9 +47,7 @@ $$
 
 ### $\textrm{Lagrange}$定理
 
-$$
-f(x)=\sum_{i=0}^{n}a_i\times x^i \equiv 0 \pmod{M}
-$$
+$$f(x)=\sum_{i=0}^{n}a_i\times x^i \equiv 0 \pmod{M}$$
 
 满足$n>0,a_n \not\equiv 0 \pmod{M},M\in \mathrm{Prime}$，则上同余式最多$n$个解。
 
@@ -64,15 +58,11 @@ $$
 3. 当$2 \leq n \leq M - 1$时，我们进行**反证**。假设上式有多余$n$个解（不妨令为$x_0,x_1,\dots,x_k,(k \geq n+1)$，并且$\forall i\neq j, x_i \not\equiv x_j\pmod{M}$）
 
 由于：
-$$
-f(x)-f(x_0)\equiv\sum_{i=0}^{k}a_i(x^i-x_0^i)=(x-x_0)g(x)\pmod{M}
-$$
+$$f(x)-f(x_0)\equiv\sum_{i=0}^{k}a_i(x^i-x_0^i)=(x-x_0)g(x)\pmod{M}$$
 容易知道，此时的$g(x)$为一个$n-1$次多项式，且$[x^{n-1}]g(x)=a_n\not\equiv 0\pmod{M}$。
 
 于是，由于$f(x_i)\equiv f(x_j)\pmod{M}$，我们可以知道：
-$$
-(x_i-x_0)g(x_i)\equiv 0\pmod{M}
-$$
+$$(x_i-x_0)g(x_i)\equiv 0\pmod{M}$$
 则$g(x)\equiv 0\pmod{M}$有超过$k-1\geq n$个解。由此归纳可知：一次同余式$a_nx+a_0\equiv 0\pmod{M}$应有超过$2$个解（这与上面的**结论矛盾**）。
 
 ## $M$ 为合数
