@@ -1,7 +1,7 @@
 :root {
-    --hljs-bg: rgb(51, 65, 85);
+    --hljs-bg: rgb(40, 44, 52);
     --nav-width: 1380px;
-    --article-width: 650px;
+    --article-width: 720px;
     --toc-width: 300px;
 }
 

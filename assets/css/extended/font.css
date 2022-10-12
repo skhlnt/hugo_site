@@ -2,7 +2,7 @@
     font-family: "LXGW";
     font-weight: 400;
     font-style: normal;
-    font-display: swap;
+    font-display: fallback;
     src: url("/font/LXGW.woff2") format("woff2");
 }
 
@@ -10,7 +10,7 @@
     font-family: "Monaco";
     font-weight: 400;
     font-style: normal;
-    font-display: swap;
+    font-display: fallback;
     src: url("/font/monaco-webfont.woff2") format("woff2");
 }
 
