@@ -57,8 +57,8 @@ params:
     subtitle: "ACM/Mathematics/Notes"
     imageUrl: /images/avatar.webp # optional
     imageTitle: "avatar.webp" # optional
-    # imageWidth: 120 # custom size
-    # imageHeight: 120 # custom size
+    imageWidth: 120 # custom size
+    imageHeight: 120 # custom size
     buttons:
       # - name: Notes
       #   url: "https://spacedot.xyz/"
@@ -145,3 +145,7 @@ menu:
       name: Search
       url: /search/
       weight: 50
+    - identifier: travelling
+      name: Travelling
+      url: https://travellings.link/
+      weight: 60
