@@ -43,15 +43,15 @@ cover:
   + `admonition` 支持。（实际代码来自`hugo-backup`）
   + ~~`bilibili` 视频引入。~~ （**已删除**）
 + [Sulv's Blog](https://www.sulvblog.cn) 使用了`PaperMod`的一个博客，做了许多修改，[文章合集](https://www.sulvblog.cn/posts/blog/)。
-  + 侧边`toc`栏，[文章链接](https://www.sulvblog.cn/posts/blog/hugo_toc_side/)。（效果不太满意，已经放弃）
-  + `twikoo`移植，[参考](https://www.sulvblog.cn/posts/blog/hugo_twikoo/)代码的添加方式。（目前为`hugo-backup`的实现方式）
+  + ~~侧边`toc`栏，[文章链接](https://www.sulvblog.cn/posts/blog/hugo_toc_side/)。（效果不太满意)~~ **其css代码有bug，建议参考最初来源，修改后使用。**
+  + ~~`twikoo`移植，[参考](https://www.sulvblog.cn/posts/blog/hugo_twikoo/)代码的添加方式。~~（目前为`hugo-backup`的实现方式）
   + `friend-link` 页面样式。
 + [hugo-backup](https://github.com/YazidLee/hugo-backup) 一个基于[PaperMod](https://adityatelange.github.io/hugo-PaperMod/)的定制主题。
   + `fontawsome` 直接copy了代码。
   + 侧边`go to buttom`按钮。
   + `twikoo` 评论区样式。
-+ ~~[Mathjax](https://www.mathjax.org/) 数学公式渲染~~(**已更换**为`KaTex` [Wiki](https://github.com/KaTeX/KaTeX.wiki.git))
-+ ~~[Source Code Pro](https://github.com/adobe-fonts/source-code-pro) 代码字体~~(**已调整**默认为`Monaco`字体)
++ ~~[Mathjax](https://www.mathjax.org/) 数学公式渲染~~(**已更换**为`KaTex` [Wiki](https://github.com/KaTeX/KaTeX))
++ ~~[Source Code Pro](https://github.com/adobe-fonts/source-code-pro) 代码字体~~(**已调整**默认为`Monaco`字体，使用经过`woff2`格式压缩。)
 + [favicon.io](https://favicon.io/) 网站图标
   
   > This favicon was generated using the following font:
@@ -62,7 +62,7 @@ cover:
 + ~~[highlight.js](https://highlightjs.org/) 使用highlight.js提供代码高亮，官方的`chroma`实在简陋了~~
   + ~~`atom-one-dark.min.css` 目前出了点问题，和预期的效果有点出入~~
   + 使用`chroma`，主题为`Dracula`。
-+ [cdnjs](https://cdnjs.com/)`cdn`支持了`twikoo.js`和`mathjax.js`。
++ [cdnjs](https://cdnjs.com/)`cdn`支持了`twikoo.js`和`KeTex`。
 + ~~[hugo-encryptor](https://github.com/Li4n0/hugo_encryptor) 使用参考[link](https://www.10101.io/2019/04/17/encrypt-content-in-hugo?PageSpeed=noscript)~~(**未实现**)
 + [hsingko](https://hsingko.github.io/) 一个使用同主题的博客。
   + 参考，字体与`dark`时的配色。
@@ -98,9 +98,7 @@ $$x = {-b \pm \sqrt{b^2-4ac} \over 2a}.$$
 
 + 行内公式（使用`$...$`）
 
-**未解决**
-
-<!-- $A=B=A=B=A=B=A=B=A=B=A=B=A=B=A=B=A=B=A=B=A=B=A=B=A=B=A=B$ -->
+$A=B=A=B=A=B=A=B=A=B=A=B=A=B=A=B=A=B=A=B=A=B=A=B=A=B=A=B$
 
 + 行间公式（使用`$$...$$`）
 

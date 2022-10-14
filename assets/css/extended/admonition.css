@@ -5,7 +5,7 @@
     background-color: rgba(68, 138, 255, 0.1);
     border-left: 0.25rem solid #448aff;
     border-radius: var(--radius);
-    overflow: auto;
+    /* overflow: auto; */
 }
 
 .admonition .admonition-title {
@@ -13,6 +13,10 @@
     margin: 0 -0.75rem;
     padding: 0.25rem 1.8rem;
     border-bottom: 1px solid rgba(68, 138, 255, 0.1);
+    border-top-right-radius: var(--radius);
+    border-bottom-right-radius: var(--radius);
+    border-top-left-radius: 4.5px;
+    border-bottom-left-radius: 4.5px;
     background-color: rgba(68, 138, 255, 0.25);
 }
 
