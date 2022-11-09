@@ -15,7 +15,6 @@
 }
 
 body {
-    /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; */
     font-family: 'PT Serif', 'LXGW', 'Noto Serif SC', sans-serif;
     font-size: 18px;
     line-height: 1.6;
@@ -26,4 +25,11 @@ body {
 pre,
 code {
     font-family: Monaco, Consolas, Courier, monospace;
+}
+
+.twikoo {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 18px;
+    line-height: 1.6;
+    word-break: break-word;
 }

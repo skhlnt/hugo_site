@@ -127,9 +127,9 @@
             {{- $is_search := eq (site.GetPage .KeyName).Layout `search` }}
             <li>
                 {{- if (eq .Name "Travelling") }}
-                <a href="https://travellings.link/" target="_blank" rel="noopener" title="开往-友链接力">
-                  <img src="https://travellings.link/assets/w.png" alt="开往-友链接力" width="120px"
-                    style="display: inline-block; vertical-align: middle; margin-top: -5px; min-height: 30px; min-width: 120;">
+                <a href="{{ .URL | absLangURL }}" target="_blank" rel="noopener" title="开往-友链接力">
+                    <img src="https://travellings.link/assets/w.png" alt="开往-友链接力" width="120px"
+                        style="display: inline; vertical-align: middle; margin-top: -5px; min-height: 30px; min-width: 120;">
                 </a>
                 {{- else }}
                 <a href="{{ .URL | absLangURL }}" title="{{ .Title | default .Name }} {{- cond $is_search (" (Alt + /)" | safeHTMLAttr) ("" | safeHTMLAttr ) }}"
