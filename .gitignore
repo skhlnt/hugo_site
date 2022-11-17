@@ -2,3 +2,6 @@
 /font 
 /images
 /favicon
+/node_modules
+package.json
+package-lock.json
