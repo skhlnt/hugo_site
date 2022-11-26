@@ -18,7 +18,7 @@ tags:
   - adb
 
 weight: false
-math: true
+math: false
 comments: true
 ShowToc: true
 TocOpen: true
@@ -124,7 +124,15 @@ down ！
 + 还是没有过momo！呜呜呜~
 + 自带的浏览器版本太低，似乎无法正常使用，给冻结换`via`了
 + 系统有Hi-Fi，所以没刷模块。但是听着有点不对劲，可能要设置一下
-+ 用了一会感觉还是得有root，重复之前的操作获取了magisk
++ 用了一会感觉还是得有magisk，
+  1. `adb reboot recovery`进入crDroid的recovery mode
+  2. 在rec中选择`apply update from ADB`进入`sideload`模式。（用`adb devices`确认一下）
+     ```shell
+     $ adb devices
+     List of devices attached
+     LMV510N9070dc28 sideload
+     ```
+  3. `adb sideload .\Magisk-v25.2.zip` 安装结束后重启
 + 用magisk固化了MissLee
 
 没啥好看的，就放几张图吧……

@@ -18,7 +18,7 @@ tags:
   - 吉老师线段树
 
 weight: false
-math: true
+math: false
 comments: true
 
 cover:
