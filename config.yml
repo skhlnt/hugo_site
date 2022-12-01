@@ -1,5 +1,6 @@
 baseURL: https://kenshin2438.top/
-languageCode: zh-CN
+DefaultContentLanguage: "zh"
+languageCode: en-us
 title: Kenshin2438
 theme: PaperMod
 

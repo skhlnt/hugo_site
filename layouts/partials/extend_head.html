@@ -1,3 +1,8 @@
 {{- if (cond .IsHome false .Params.math) }}
 {{ partial "math.html" . }}
 {{- end }}
+
+{{- /* webfont for lxgw-wenkai-lite */ -}}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-lite-webfont@1.6.0/lxgwwenkailite-light.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-lite-webfont@1.6.0/lxgwwenkailite-regular.css">
+{{- /* end */ -}}

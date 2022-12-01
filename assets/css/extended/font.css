@@ -17,4 +17,5 @@ body {
 pre,
 code {
     font-family: Monaco, Consolas, Courier, monospace;
+    tab-size: 2;
 }
