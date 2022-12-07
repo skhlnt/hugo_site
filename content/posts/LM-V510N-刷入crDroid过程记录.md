@@ -31,7 +31,7 @@ cover:
 ---
 
 {{< admonition danger "免责声明" true >}}
-**本文不算教程哦，任何因为阅读本记录并付诸实践去刷机的行为，其结果都与本文作者无关！**
+**本文不算教程哦！任何因为阅读本记录产生刷机的想法并付诸实践的行为，其结果都与本文作者无关！**
 
 ---
 
@@ -71,6 +71,8 @@ cover:
 
 长按`电源键`+`音量-`，快速连续地按下`音量+`，直至QFIL下`select port`出现对应的设备（此时设备不会亮屏）
 
+![9008 COM](/images/LM-V510N/Snipaste_2022-12-02_17-19-26.png)
+
 + 退出9008的手法：（***9008模式下，永远不要随意拔数据线！！！***）
 
 在QFIL中正常退出，此时手机还保持这黑屏。同时按住`电源键`+`音量-`+`音量+`，直至亮屏，可能会花点时间。
@@ -90,7 +92,7 @@ cover:
 ![Partition Manager](/images/LM-V510N/Snipaste_2022-11-24_20-11-27.png)
 
 1. 备份一下这些有重要信息的分区`boot` `fsc` `fsg` `ftm` `modemst1` `modemst2`
-2. 提取`boot_a` `boot_b`，提取完正常退出。（这里插入一部操作，因为后续还得通过9008写入新的boot，前面的操作是一致的）
+2. 提取`boot_a` `boot_b`，提取完正常退出。（这里插入一步操作，因为后续还得通过9008写入新的boot，前面的操作是一致的。也可以不退出，使用其它安装（无需刷入）了Magisk软件的手机或模拟器修补）
 
 ### Magisk修补boot
 
@@ -101,7 +103,7 @@ cover:
 
 ### Magisk下安装TWRP
 
-1. 在magisk下，同安装模块的方式一致，刷入对应的TWRP/REC（V50S 推荐使用`OrangeFox-R11.0_1.2-G8X_ab.zip`）
+1. 在magisk下，同安装模块的方式一致，刷入对应的TWRP/REC（个人选择使用`OrangeFox-R11.0_1.2-G8X_ab.zip`）
 2. 刷入TWRP后，**不要直接重启**，此时再刷入一遍magisk的卡刷包（apk后缀改zip）
 3. 重启进入TWRP，格式化`data`，不用退出，后面还需要刷入类原生的rom
 
@@ -133,7 +135,7 @@ down ！
      LMV510N9070dc28 sideload
      ```
   3. `adb sideload .\Magisk-v25.2.zip` 安装结束后重启
-+ 用magisk固化了MissLee
++ ~~用magisk固化了MissLee~~ 使用了去ad的模块，原理似乎是DNS拦截……
 
 没啥好看的，就放几张图吧……
 
