@@ -1,30 +1,30 @@
 :root {
-    --hljs-bg: rgb(40, 44, 52);
-    --nav-width: 1380px;
-    --article-width: 720px;
-    --toc-width: 300px;
+  --hljs-bg: rgb(40, 44, 52);
+  --nav-width: 1380px;
+  --article-width: 720px;
+  --toc-width: 300px;
 }
 
 .dark {
-    --theme: rgb(30, 41, 59);
-    --entry: rgb(51, 65, 85);
-    --primary: rgb(218, 218, 219);
-    --secondary: rgb(155, 156, 157);
-    --tertiary: rgb(51, 65, 85);
-    --content: rgb(196, 196, 197);
-    --hljs-bg: rgb(51, 65, 85);
-    --code-bg: rgb(51, 65, 85);
-    --border: rgb(51, 65, 85);
+  --theme: rgb(30, 41, 59);
+  --entry: rgb(51, 65, 85);
+  --primary: rgb(218, 218, 219);
+  --secondary: rgb(155, 156, 157);
+  --tertiary: rgb(51, 65, 85);
+  --content: rgb(196, 196, 197);
+  --hljs-bg: rgb(51, 65, 85);
+  --code-bg: rgb(51, 65, 85);
+  --border: rgb(51, 65, 85);
 }
 
 .katex-display {
-    overflow-x: auto;
-    overflow-y: hidden;
-    max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  max-width: 100%;
 }
 
 .katex {
-    font-size: 1.1em !important;
-    text-indent: 0;
-    text-rendering: auto;
+  font-size: 1.1em !important;
+  text-indent: 0;
+  text-rendering: auto;
 }

@@ -1,23 +1,23 @@
 @font-face {
-    font-family: "Monaco";
-    font-weight: 400;
-    font-style: normal;
-    font-display: fallback;
-    src: url("/font/monaco-webfont.woff2") format("woff2");
+	font-family: "Monaco";
+	font-weight: 400;
+	font-style: normal;
+	font-display: fallback;
+	src: url("/font/monaco-webfont.woff2") format("woff2");
 }
 
 body {
-    /* font-family: 'PT Serif', 'LXGW WenKai Lite', 'Noto Serif SC', sans-serif; */
-    font-family: "Lora","Noto Serif SC","Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,
-                    "Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
-    font-size: 18px;
-    line-height: 1.6;
-    word-break: break-word;
-    background: var(--theme);
+	/* font-family: 'PT Serif', 'LXGW WenKai Lite', 'Noto Serif SC', sans-serif; */
+	font-family: "Lora", "Noto Serif SC", "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif,
+		"Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+	font-size: 18px;
+	line-height: 1.6;
+	word-break: break-word;
+	background: var(--theme);
 }
 
 pre,
 code {
-    font-family: Monaco, Consolas, Courier, monospace;
-    tab-size: 2;
+	font-family: Monaco, Consolas, Courier, monospace;
+	tab-size: 2;
 }
