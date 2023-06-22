@@ -5,7 +5,7 @@ title: Kenshin2438
 theme: PaperMod
 
 permalinks:
-  posts: /archives/:slug.html
+  posts: /archives/:slug
 
 enableInlineShortcodes: true
 enablePermalinks: true
@@ -115,14 +115,11 @@ markup:
   goldmark:
     renderer:
       unsafe: true # HUGO 默认转义 Markdown 文件中的 HTML 代码，如需开启的话
-
-markup:
   highlight:
     codeFences: true
     lineNos: true
     guessSyntax: true
     noClasses: false
-    # style: dracula # PaperMod代码写得和shit一样
 
 menu:
   main:
