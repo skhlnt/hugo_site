@@ -7,7 +7,7 @@ ShowToc: false
 
 ### 吾友
 
-{{< friend name="Rivego's Blog" url="https://rivego.cn/" logo="https://rivego.cn/wp-content/uploads/2022/05/warma_icon.jpg" word="" >}}
+<!-- {{< friend name="Rivego's Blog" url="https://rivego.cn/" logo="https://rivego.cn/wp-content/uploads/2022/05/warma_icon.jpg" word="" >}} -->
 
 {{< friend name="尤利の博客" url="https://amcones.cn/" logo="https://amcones.cn/images/uli.jpeg" word="盛夏日落迟 灯火未夜匆匆明" >}}
 
@@ -15,7 +15,7 @@ ShowToc: false
 
 {{< friend name="Just Call Me Jax" url="https://jaxvanyang.github.io/" logo="https://jaxvanyang.github.io/assets/images/avatar.png" word="" >}}
 
-{{< friend name="ycloong" url="https://ycloong.top/" logo="https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fbc7e9a8b-e62c-44f1-b563-c0168e30e0ed%2Fimage.jpg?table=collection&id=2aa091ae-74f0-45cf-8dc3-65248f153eaa" word="一个普通的干饭人🍚" >}}
+{{< friend name="lyc的自留地" url="https://lyc2425.eu.org/" logo="https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fbc7e9a8b-e62c-44f1-b563-c0168e30e0ed%2Fimage.jpg?table=collection&id=2aa091ae-74f0-45cf-8dc3-65248f153eaa" word="要做一个苦行僧，探索自己的人生道路" >}}
 
 ### 单向友链（聊表敬意）
 
