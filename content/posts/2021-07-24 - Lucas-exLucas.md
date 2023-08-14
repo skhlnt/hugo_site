@@ -77,7 +77,7 @@ $$(a+b)^p=\sum_{i=0}^{p}{p \choose i}a^ib^{p-i}\equiv{a^p+b^p}\pmod{p}$$
 
 那么我们可以得到：
 
-$$(1+x)^n\equiv(1+x)^{\sum a_ip^i}\equiv\prod(1+x^{p^i})^{a_i}\pmod{p}$$
+$$(1+x)^n\equiv(1+x)^{\sum a_ip^i}\equiv\prod\left(1+x^{p^i}\right)^{a_i}\pmod{p}$$
 
 现在考虑$x^m$的系数，左边是${n \choose m}$，右边是$\prod{a_i \choose b_i}$，已经是`Lucas`的表达式啦。
 
@@ -138,7 +138,7 @@ inline ll fac(ll n, ll p, ll mod, ll res = 1LL) {
 }
 ```
 那么，现在我们就能得到：
-$${n \choose m} \equiv fac(n) \times inv(fac(m)) \times inv(fac(n-m)) \times p^{pot_p(n)-pot_p(m)-pot_p(n-m)} \pmod{p^{\alpha}}$$
+$${n \choose m} \equiv \frac{fac(n)}{fac(m) \times fac(n-m)} \times p^{pot_p(n)-pot_p(m)-pot_p(n-m)} \pmod{p^{\alpha}}$$
 
 之后就是简单的**CRT**啦，这个就不单独上代码了。
 
