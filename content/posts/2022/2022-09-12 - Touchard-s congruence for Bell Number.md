@@ -31,8 +31,8 @@ cover:
 
 $$
 \begin{aligned}
-B_{n+p}   & \equiv B_{n+1}+B_{n}\pmod{p} \newline
-B_{n+p^m} & \equiv B_{n+1}+mB_{n}\pmod{p} \newline
+B_{n+p}   & \equiv B_{n+1}+B_{n}  & \pmod{p} \newline
+B_{n+p^m} & \equiv B_{n+1}+mB_{n} & \pmod{p} \newline
 \end{aligned}
 $$
 

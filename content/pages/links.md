@@ -1,5 +1,6 @@
 ---
 title: "Links"
+url: "/links/"
 hidemeta: true
 ShowBreadCrumbs: false
 ShowToc: false
