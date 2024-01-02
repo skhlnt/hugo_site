@@ -1,6 +1,6 @@
 ---
 title: "吉老师线段树 - Segment tree Beats"
-draft: true
+draft: false
 date: 2021-09-07 23:43:34
 slug: ef1abe7a
 
@@ -18,7 +18,7 @@ tags:
   - 吉老师线段树
 
 weight: false
-math: false
+math: true
 comments: true
 
 cover:
@@ -35,7 +35,7 @@ cover:
 只是最近写题时觉得它让我对线段树的使用有了新的理解，故做记录。
 
 <!--more-->
-# 我的理解
+## 我的理解
 吉老师线段树不同于朴素线段树的地方在其维护方式，在维护**区间最大（小）值**的同时维护了**严格次大（小）值**。
 
 这使其对某些问题有着几近玄学的复杂度。。。
@@ -48,7 +48,7 @@ cover:
 
 线段树维护值时怎么就不能用呢？
 
-# 题目
+## 题目
 > [HDU5306 Gorgeous Sequence](http://acm.hdu.edu.cn/showproblem.php?pid=5306)
 >
 > **题目描述**
@@ -271,7 +271,7 @@ int main() {
 }
 ```
 
-# 参考资料
+## 参考资料
 
 + CSDN上有人传了吉老师的课件
 + [OI-Wiki](https://oi-wiki.org/ds/seg-beats/)

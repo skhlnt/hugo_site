@@ -31,7 +31,7 @@ cover:
   relative: false
 ---
 
-{{< admonition info "info" true >}}
+{{< admonition info "Changelog" true >}}
 Update at 2022.1.19 修正`FastMod`代码来源。
 {{< /admonition >}}
 

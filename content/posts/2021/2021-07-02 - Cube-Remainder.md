@@ -28,7 +28,7 @@ cover:
   relative: false
 ---
 
-{{< admonition info "info" true >}}
+{{< admonition info "Changelog" true >}}
 update at 2022/06/10: 更新代码，并且新增范例(51Nod-1039)，用于展示**如何求得所有解**。
 {{< /admonition >}}
 

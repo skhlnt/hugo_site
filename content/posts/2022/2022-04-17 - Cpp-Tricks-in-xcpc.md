@@ -27,7 +27,7 @@ cover:
   relative: false
 ---
 
-{{< admonition info "Info" true >}}
+{{< admonition info "Changelog" true >}}
 + update at 2022-08-27 '重写了部分代码实例，以及补充了部分内容'
 + update at 2022-04-25 '关于auto和bool的一个问题'
 + update at 2022-05-21 'accumulate返回值类型的细节'
