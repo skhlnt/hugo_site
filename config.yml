@@ -104,7 +104,7 @@ params:
     # safari_pinned_tab: ""
 
   twikoo:
-    version: 1.6.7
+    version: 1.6.29
 
 taxonomies:
   category: categories
