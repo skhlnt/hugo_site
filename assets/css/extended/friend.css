@@ -17,8 +17,7 @@
 .frienddiv {
   overflow: auto;
   height: 100px;
-  width: 49%;
-  display: inline-block !important;
+  display: flex;
   border-radius: 5px;
   background: none;
 
@@ -28,31 +27,14 @@
   transition: all ease-out 0.3s;
 }
 
-.dark .frienddiv:hover {
-  background: var(--code-bg);
-}
-
 .frienddiv:hover {
-  background: var(--theme);
-  transition: transform 1s;
-  /* webkit-transform: scale(1.1); */
+  background: var(--code-bg);
+  transition: transform 0.3s;
+
   -moz-transform: scale(1.2);
   -ms-transform: scale(1.2);
   -o-transform: scale(1.2);
   transform: scale(1.1);
-}
-
-.frienddiv:hover .frienddivleft img {
-  transition: 0.9s !important;
-  -webkit-transition: 0.9s !important;
-  -moz-transition: 0.9s !important;
-  -o-transition: 0.9s !important;
-  -ms-transition: 0.9s !important;
-  transform: rotate(360deg) !important;
-  -webkit-transform: rotate(360deg) !important;
-  -moz-transform: rotate(360deg) !important;
-  -o-transform: rotate(360deg) !important;
-  -ms-transform: rotate(360deg) !important;
 }
 
 .frienddivleft {
@@ -75,29 +57,6 @@
 
 .friendinfo {
   text-overflow: ellipsis;
-  font-size: 70%;
+  font-size: 14px;
   color: var(--primary);
-}
-
-@media screen and (max-width: 600px) {
-  .friendinfo {
-    display: none;
-  }
-
-  .frienddivleft {
-    width: 84px;
-    margin: auto;
-  }
-
-  .frienddivright {
-    height: 100%;
-    margin: auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .friendname {
-    font-size: 18px;
-  }
 }
