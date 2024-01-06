@@ -37,8 +37,6 @@ $$a^n\equiv a^{n \mod \varphi(m)} \pmod{m}$$
 
 $$a^n\equiv a^{n \mod \varphi(m) + \varphi(m)} \pmod{m} \quad \textrm{if }n \geq \varphi(m)$$
 
-<!--more-->
-
 ## 证明 - 欧拉定理
 
 证明方法来自《初等数论》柯召

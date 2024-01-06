@@ -32,8 +32,6 @@ cover:
 update at 2022/06/10: 更新代码，并且新增范例(51Nod-1039)，用于展示**如何求得所有解**。
 {{< /admonition >}}
 
-<!--more-->
-
 ## LiBreOJ #175. 模立方根
 
 > [题目链接](https://loj.ac/p/175)

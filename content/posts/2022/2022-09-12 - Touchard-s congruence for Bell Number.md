@@ -36,8 +36,6 @@ B_{n+p^m} & \equiv B_{n+1}+mB_{n} & \pmod{p} \newline
 \end{aligned}
 $$
 
-<!--more-->
-
 ## 证明思路
 
 联想到第二类斯特林数的定义，我们可知：

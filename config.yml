@@ -43,7 +43,7 @@ params:
   ShowShareButtons: false
   ShowPostNavLinks: true
   ShowReadingTime: false
-  ShowFullTextinRSS: true
+  ShowRssButtonInSectionTermList: false
   ShowBreadCrumbs: true
   ShowLastMod: false
   ShowToc: true

@@ -34,8 +34,6 @@ cover:
 
 有一个$n \times n$的方阵，每个位置上都有一盏灯。每次可以选择一个格子，选定后**它与它相邻**(有公共边)的格子的亮暗状态都会发生改变。现给定初始方阵中每盏灯的亮暗情况，请输出一个**使所有灯都熄灭的方案**。
 
-<!--more-->
-
 + 该问题在wikipedia上的词条 [Lights Out(game)](https://en.wikipedia.org/wiki/Lights_Out_(game))，尚未有中文页。
 + 如有读者想验证自己的程序，可在LibreOJ提交，[LibreOJ #6243. 关灯问题](https://loj.ac/p/6243) 。
 

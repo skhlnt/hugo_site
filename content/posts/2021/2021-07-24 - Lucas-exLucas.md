@@ -37,8 +37,6 @@ Update at 2022.1.19 修正`FastMod`代码来源。
 
 证明和代码分开，可以根据自己的需要跳转。
 
-<!--more-->
-
 ## Lucas定理
 
 $${n \choose m} \mod p = {\lfloor \frac{n}{p} \rfloor \choose \lfloor \frac{m}{p} \rfloor} {\langle n \rangle _p \choose \langle m \rangle _p} \mod p$$

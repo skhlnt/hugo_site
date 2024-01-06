@@ -5,7 +5,7 @@ draft: false
 slug: a8baf211
 
 author: "Kenshin2438"
-description: ""
+description: "Nothing"
 keywords:
   - Hugo 
   - Blog
@@ -31,8 +31,6 @@ cover:
 ## Hello World
 
 无法忍受`hexo`的速度，故换到`hugo`，使用主题为`PaperMod`。
-
-<!--more-->
 
 ## 各种参考源
 
@@ -82,7 +80,7 @@ cover:
 + [x] 修复`cases`大括号断裂 (已替换为`svg`格式显示)
 + [x] 解决`code`块出现黑色背景色的问题，恢复圆角显示
 + [x] **deleted** 停用hugo官方提供的`chroma`，使用`highlight.js`高亮代码
-+ [ ] `twikoo` 评论邮箱自动通知部署
++ [x] `twikoo` 评论邮箱自动通知部署
 + [x] 更换适合国内网络环境的`cdn`，或者放在本地（次之）。包含`twikoo`, `mathjax`。
 
 ---
