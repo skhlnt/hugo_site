@@ -17,7 +17,7 @@ tags:
   - Cpp
 
 weight: false
-math: false
+math: true
 comments: true
 
 cover:
@@ -28,37 +28,24 @@ cover:
 ---
 
 {{< admonition info "Changelog" true >}}
++ update at 2024-01-17 '优化排版，补充了部分关于c++20 ranges库的简介'
 + update at 2022-08-27 '重写了部分代码实例，以及补充了部分内容'
 + update at 2022-04-25 '关于auto和bool的一个问题'
 + update at 2022-05-21 'accumulate返回值类型的细节'
 + update at 2022-05-23 '增加了bit部分的内容'
 
 内容未完，之后写代码过程中见到或者想到的好的技巧都会逐步添加。
-
----
-
-**使用的编译指令：**
-```bash
-"g++" -std=c++17 -Wall -Ofast -DLOCAL "ac.cpp" -o "ac.exe" 
-```
-
-**`g++` 版本：**
-```bash
-@Kenshin2438 ➜  ~  g++ -v
-...
-gcc version 11.2.0 (GCC)
-```
+{{< /admonition >}}
 
 **尽量只使用宏：**
 ```cpp
-using ll = long long;
+using i64 = long long;
 #define all(a) begin(a), end(a)
 #define sz(x) (int)((x).size())
 ```
 
 **参考**
 + [cppreference 中文参考手册](https://zh.cppreference.com/w/cpp)
-{{< /admonition >}}
 
 ---
 
@@ -69,10 +56,10 @@ using ll = long long;
 + `map` - `multimap` - `unordered_map`
 + `set` - `multiset` - `unordered_set`
 + `stack` - `queue` - `prority_queue`
-+ `tuple`
++ `pair` - `tuple`
 + `bitset`
 
-支持顺序访问的容器可以用下面的办法快速枚举：
+支持顺序访问（或迭代器使用`std::next`，`std::prev`顺序访问）的容器可以用下面的办法快速枚举：
 
 ```cpp
 for (auto value : container) {
@@ -89,19 +76,21 @@ for (auto value : container) {
 ```cpp
 tuple<type_1, type_2, ....> container;
 // 或者 struct，按照定义变量的顺序来即可
-auto [value_1, value_2, ...] : container;
+for (auto [value_1, value_2, ...] : container) {...}
 ```
-上面两种可以协同使用，遍历结构体`vector<tuple<...>>`
+上面两种可以协同使用，结构化遍历`vector<tuple<...>>`
 
-但是，如果仅仅是需要**结构化绑定**，可以使用`tie()`:
+---
 
+但如果仅仅是需要**结构化绑定**，也可以使用`std::tie()`替代:
 ```cpp
 tuple<int, int> container;
 int a, b;
 
 tie(a, b) = container;
 ```
-可以见，这种写法并非**变量声明**，而是**赋值**。
+在编译器版本无法支持上述写法的时候，这不失为一种增强代码可读性的方法。
+可以见，`std::tie()`这种写法并非**变量声明**，而是**赋值**。
 {{< /admonition >}}
 
 ### 关于`Range-based for loop`的一些问题
@@ -163,11 +152,25 @@ true
 #define all(a) begin(a), end(a)
 ```
 
-在`c++`的STL中，更常用的是迭代器，而非下标（指针），这与纯`c`写法有较大区别。
+在`c++`的STL中，更常用的是迭代器，而非下标（指针），这与纯C写法有较大区别。
 
-`begin()`，`end()` 作为容器的起始迭代器和末尾的迭代器
+- `begin()`，`end()` 作为容器的起始迭代器和末尾的迭代器。  
+- `rbegin()`，`rend()` 逆向的迭代器。
 
-`rbegin()`，`rend()` 逆向的迭代器
+{{< admonition tip "一些写法" true >}}
+
+对于正序的迭代器，你可能会看见如下的两种用法：
+```cpp
+sort(a.begin(), a.end());
+sort(begin(a), end(a)); // C++11 已支持
+```
+但像`rbegin()`，`rend()`则需要到`c++14`。不过事实上这种写法不太常见，
+通常是由于`sort`默认从小到大排序，但实际需求为从大到小（恰相反，因此反序即可）。
+```cpp
+sort(a.rbegin(), a.rend());
+sort(rbegin(a), rend(a)); // C++14 已支持
+```
+{{< / admonition >}}
 
 用于遍历的函数如下（虽然有许多容器的迭代器重载了`++`和`--`，可以直接像下标一样处理，但还是推荐）：
 
@@ -176,23 +179,34 @@ prev(iterator) // 上一个迭代器
 next(iterator) // 下一个迭代器
 ```
 
-定义这个宏的原因是：使用算法库的函数经常需要填写迭代器范围。
+定义这个宏的原因是：**使用算法库的函数经常需要填写迭代器范围。**
 
-下面将介绍一些比较常见的函数（如果平时码风比较偏`c`语言，可能就不太常见）
+{{< admonition tip "Ranges library (C++20)" true >}}
++ [cppreference - ranges](https://en.cppreference.com/w/cpp/ranges) 介绍
++ [cppreference - compiler support](https://en.cppreference.com/w/cpp/compiler_support) 编译器支持情况
 
-## 算法库
-
-[cpp手册 - 算法库](https://zh.cppreference.com/w/cpp/algorithm)
-
-此处仅记录一些**本人**常用的部分，`<algorithm>`内容十分丰富，并且还在随版本更新，惟愿本文能抛砖引玉，引起读者的兴趣。
+国内这些竞赛平台对于C++语言标准的支持普遍是C++11到17，且gcc和clang目前(2024-01-17)都**未有标准库能够完全支持C++20**。不过，目前 Codeforce 和 AtCoder 所提供的c++20提交选项已经能够部分支持ranges库了。这意味着，你可以写出：
+```cpp
+std::vector<int> a {...};
+std::ranges::sort(a); // 而不是 sort(a.begin(), a.end());
+```
+{{< /admonition >}}
 
 ---
 
-### 排序 `std::sort` 与 `lambda`表达式
+## 算法库
 
-`std::sort()`，应该是一个很常见的函数，用来排序数组的时，一些偏向`c`的写法会使用头尾指针来确定范围，再写外部函数确定排序规则。
+此处仅记录一些**本人**常用的部分，事实上`<algorithm>`内容十分丰富，并且还在随版本更新。Cpp对于**并行优化**的支持也逐渐完善，出现了`<ranges>`这种十分方便的库。一些类似MATLAB的矢量化结构也有望加入到C++26的标准之中，感兴趣的可以观看CppCon 2023的一个分享：[std::linalg: Linear Algebra Coming to Standard C++ - Mark Hoemmen](https://youtu.be/-UXHMlAMXNk?si=2LfNY1oOr35MdroS)。
 
-但是，在使用如`vector`等可以排序的容器时，我们一般会动态开空间，所以此时待排序的范围就是全部元素。
+惟愿本文能抛砖引玉，引起读者的兴趣。参阅 [cppreference - algorithm](https://zh.cppreference.com/w/cpp/algorithm)。
+
+---
+
+### 排序 `std::sort`
+
+`std::sort()`，应该是一个很常见的函数，用来排序数组的时，一些偏向C的写法会使用头尾指针来确定范围，再写外部函数确定排序规则。
+
+但是，在使用如`vector`等可以排序的容器时，我们一般会动态开空间，所以此时待排序的范围就是全部元素。(或者对起始和终止的迭代器进行运算，以获得合适的排序范围)
 
 ```cpp
 vector<int> a(n);
@@ -233,8 +247,6 @@ struct Node {
     : a(_a), b(_b) {}
 };
 
-...
-
 sort(all(v), [&](const Node &p, const Node &q) {
   return p.a * q.b <= q.a * p.b;
 });
@@ -247,7 +259,7 @@ sort(all(v), [&](const Node &p, const Node &q) {
 使用 `function` 类是一种解决办法，如下面的`dfs`代码：
 
 ```cpp
-int V = 100;
+constexpr int V = 100;
 vector G(V, vector<int>(V));
 
 function<void (int, int)> dfs = [&](int u, int fa) {
@@ -258,9 +270,7 @@ function<void (int, int)> dfs = [&](int u, int fa) {
 };
 dfs(source, -1); // 使用方式
 ```
-
 如果不按照`function`类来声明该函数，`[ captures ]`无法获知自己的存在，所以一个可行的方案就是，在传值的时候将**自己**传入。
-
 ```cpp
 auto dfs = [&](auto self, int u, int fa) {
   for (auto v : G[u]) {
@@ -270,12 +280,13 @@ auto dfs = [&](auto self, int u, int fa) {
 };
 dfs(dfs, source, -1); // 注意调用时需要将 自己 传入
 ```
+按照某些人的说法，使用第二种方式（也就是将“自己”传入）会有更好的性能，理由是更容易获得内联优化。笔者对此持怀疑态度，但也并未验证，**仅凭个人经验，这两种方式至少不会出现较大的性能方面的差异**。如有读者验证过，不妨在评论中或者以其它方式告知。
 
 ### 搜索相关
 
 我们知道，对于有序容器，我们可以利用其单调性来进行二分。
 
-进行了上面的排序操作，我们的数组（暂且这么称呼）已经变得有序，如何利用`STL`中写好的二分函数呢？
++ 进行了上面的排序操作，我们的数组（暂且这么称呼）已经变得有序，如何利用`STL`中写好的二分函数呢？
 
 对于一般容器而言，二分函数的写法比较统一（以`vector<int> a`为例好了）：
 
@@ -289,7 +300,7 @@ auto it = lower_bound(all(a), value);
 auto it = upper_bound(all(a), value); 
 
 // 同时获得上述两者 返回为 std::pair<ForwardIt, ForwardIt>
-auto P = equal_range(all(a), 2);
+auto P = equal_range(all(a), value);
 ```
 
 {{< admonition warning "特殊容器" true >}}
@@ -311,9 +322,10 @@ auto it_max = max_element(all(v)); // 最大元素
 cout << *it_min; // 用于输出
 ```
 
-**如果你需要知道是一个数组的第`K`大的数（比如中位数），该怎么办呢，直接排序吗？**
++ **如果你需要知道是一个数组的第$K$大的数（比如中位数），该怎么办呢，直接排序吗？**
 
-在某些时候，我们可能连$\mathcal{O}(n\log n)$的算法也无法接受，此时可以使用均摊复杂度为$\mathcal{O}(n)$的函数`nth_element()`
+在某些时候，我们可能连$\mathcal{O}(n\log n)$的算法也无法接受，
+此时可以使用均摊复杂度为$\mathcal{O}(n)$的函数`nth_element()`
 
 ```cpp
 vector<int> a {4, 5, 3, 1, 6, 2};
@@ -321,38 +333,31 @@ int k = 2;
 nth_element(a.begin(), next(a.begin(), k), a.end());
 for (int x : a) cout << x << ' ';
 
-// 输出：2 1 3 4 5 6
+// 输出：2 1 3 4 5 6  ...  a[k] = 3
 ```
+可以见，该函数**并非排序**，而是将前$K$小的数放在最前面的$K$个位置，且令第$K+1$位上为第$K+1$大。（原理上`nth_element()`可以使用快速排序的思想完成。实际使用中，需要注意范围左闭右开）
 
-可以见，该函数并非排序，而是将前`K`小的数放在最前面的`K`个位置，且令第`K`位上为第`K`大。
+---
 
-如果仅仅需要一般的查找，使用`find`或者`find_if`即可，后者搭配`lambda`表达式，可以按需搜索。使用时请注意复杂度，对于一般容器，该函数使用的是顺序遍历，时间复杂度为$\mathcal{O}(n)$。
-
-**此处补充一点，查找元素无果，返回的迭代器为`end()`。特别的，`string`中`find`失败得到的是`string::npos`。**
+如果仅仅需要一般的查找，使用`find`或者`find_if`即可，后者搭配`lambda`表达式，可以按需搜索。使用时请注意复杂度，对于一般容器，该函数使用的是顺序遍历，时间复杂度为$\mathcal{O}(n)$。若`find()`查找元素无果，返回的迭代器为`end()`。**特别的，`string`中`find`失败得到的是`string::npos`。**
 
 ### 计算相关
 
-+ `count` 和 `count_if`
++ `count` 和 `count_if`。
 
-统计元素个数时可用前者 `count(all(a), val)` ，如果需要按满足条件来统计，使用后者再搭配上`lambda`表达式即可。
+统计元素个数时可用前者 `count(all(a), val)` ，如果需要按满足条件来统计，使用后者再搭配上`lambda`表达式即可。值得说明的一点是，**`map`和`set`中的`find`和`count`函数的复杂度是$\mathcal{O}(\log n)$，可以放心使用。**
 
-**值得说明的一点是，`map`和`set`中的`find`和`count`函数的复杂度是$\mathcal{O}(\log n)$，可以放心使用。**
-
-+ `all_of` `any_of` `none_of`
++ `all_of` `any_of` `none_of`。
 
 顾名思义，对于一个范围，判断满足条件（一般用`lambda`表达式写）的集合与全集的关系。
++ `partial_sum`。
 
-+ `partial_sum`
-
-前缀和函数，`partial_sum(all(a), begin(b))`，**此处的 `b` 需要先开够空间。**
-
-类似的还有**前向差分**函数。
-
+前缀和函数，`partial_sum(all(a), begin(b))`，**此处的 `b` 需要先开够空间**。类似的还有**前向差分**函数。
 + `accumulate`
 
-比较常见的要求是对数组求和，我们直接利用`accumulate(all(a), 0)`即可，但是该函数还有许多值得探究的部分（[参考链接](https://en.cppreference.com/w/cpp/algorithm/accumulate)）。
+比较常见的要求是对数组求和，我们直接利用`accumulate(all(a), 0)`即可，但是该函数还有许多值得探究的部分（[cppreference - accumulate](https://en.cppreference.com/w/cpp/algorithm/accumulate)）。
 
-其参数中，**求和**并非恒定不变，使用`lambda`表达式或者重载符号`+`也能够对其修改。
+注意，在`accumulate`参数中，**求和**并非恒定不变，使用`lambda`表达式或者重载符号`+`也能够对其修改。
 
 ```cpp
 struct str_node {
@@ -376,13 +381,9 @@ void example() {
 
 // 输出：abc + 123 + def + 456 + !@#
 ```
-
-### 使用 `accumulate` 值得注意的问题
-
+{{< admonition warning "使用accumulate值得注意的问题" true >}}
 先来阅读两份源码：
-
-{{< admonition quote "accumulate - cppreference.com" true >}}
-**First version**
++ **First version**
 ```cpp 
 template<class InputIt, class T>
 constexpr // since C++20
@@ -394,7 +395,7 @@ T accumulate(InputIt first, InputIt last, T init)
     return init;
 }
 ```
-**Second version**
++ **Second version**
 ```cpp 
 template<class InputIt, class T, class BinaryOperation>
 constexpr // since C++20
@@ -407,9 +408,9 @@ T accumulate(InputIt first, InputIt last, T init,
     return init;
 }
 ```
-{{< /admonition >}}
+上述两份代码均来自 cppreference。可以发现，无论是哪一种，`accumulate`的返回值类型都**不是由数组元素的类型来决定**。
 
-可以发现，无论是哪一种，`accumulate`的返回值类型都**不是由数组元素的类型来决定**。
+---
 
 所以，一个常犯的错误就是（此处 ~~点名批评~~ 感谢[pbrgg](https://rivego.cn/)提供的素材）
 
@@ -424,7 +425,8 @@ long long sum = accumulate(all(v), 0);
 // long long sum = accumulate(1 + all(v), v.front());
 ```
 
-问题何在呢？相信读者应该马上就能反应出来，**由于`0`的类型为`int`在求和的过程种结果已经溢出。**
+问题何在呢？相信读者应该马上就能反应出来，**由于`0`的类型为`int`在求和的过程中，结果已经溢出。**
+{{< /admonition >}}
 
 ---
 
@@ -523,7 +525,7 @@ template<typename E> inline E randreal(E l, E r) {
 
 等价为 `&` 上 $2^k-1$。用法大概是，最后 `&` 一下就行（大概。
 
-**注意，$2^{32}-1$需要`int64_t`。此时用`uint32_t`自然可以，但是会比`int32_t`慢。**
+**注意，$2^{32}-1$需要`int64_t`。此时用`uint32_t`自然可以，但是会比有符号的慢。**
 
 ---
 
@@ -598,9 +600,7 @@ s.substr(start，length); // length 参数缺省时表示后续直到 end()
 
 避免行末空格，原理见[我的另一篇博客](../b1757d4d.html/)。
 
-## `std::vector` 内存回收问题
-
-[CF1706D2](https://codeforces.com/problemset/problem/1706/D2)
++ `std::vector` 内存回收问题。举个例子[CF1706D2](https://codeforces.com/problemset/problem/1706/D2)。
 
 对于`std::vector`而言，`pop_back()`，`clear()`，`resize()`都不会**立即**回收已经使用过的内存（程序做的应该只是**迭代器的移动**操作，具体细节本人未作研究，建议读者自行查阅`STL`的相关源代码）。这大抵是为了方便后续的写入，省去再次分配空间的消耗。要做到立马回收空间，行之有效的方式是，利用`std::swap()`的机制，将使用的内存交换走。
 

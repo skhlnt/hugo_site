@@ -5,7 +5,7 @@ draft: false
 slug: a8baf211
 
 author: "Kenshin2438"
-description: "Nothing"
+description: "Hello HUGO"
 keywords:
   - Hugo 
   - Blog
@@ -27,6 +27,12 @@ cover:
   caption: "" # display caption under cover
   relative: false
 ---
+
+{{< admonition info "关于本站如何实现" true >}}
+博客源代码在github开源，[github - kenshin2438.top](https://github.com/Kenshin2438/kenshin2438.top)
+
+由于代码来自各处，又经过多次修改。事实上本人已经疲于维护，准备择日拿TailWind重写（学习前端ing~~）。
+{{< /admonition >}}
 
 ## Hello World
 
@@ -62,7 +68,7 @@ cover:
   + 使用`chroma`，主题为`Dracula`。
 + [cdnjs](https://cdnjs.com/)`cdn`支持了`twikoo.js`和`KeTex`。
 + ~~[hugo-encryptor](https://github.com/Li4n0/hugo_encryptor) 使用参考[link](https://www.10101.io/2019/04/17/encrypt-content-in-hugo?PageSpeed=noscript)~~(**未实现**)
-+ [hsingko](https://hsingko.github.io/) 一个使用同主题的博客。
++ ~~[hsingko](https://hsingko.github.io/) 一个使用同主题的博客。~~
   + 参考，字体与`dark`时的配色。
 
 ## TODO
@@ -89,7 +95,7 @@ cover:
 
 ### Math
 
-When $a \ne 0$, there are two solutions to \\(ax^2 + bx + c = 0\\) and they are
+When $a \ne 0$, there are two solutions to $(ax^2 + bx + c = 0)$ and they are
 $$x = {-b \pm \sqrt{b^2-4ac} \over 2a}.$$
 
 测试较长公式的处理
