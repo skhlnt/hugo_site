@@ -28,6 +28,7 @@ cover:
 ---
 
 {{< admonition info "Changelog" true >}}
++ update at 2024-01-20 'I/O using cin and cout'
 + update at 2024-01-17 '优化排版，补充了部分关于c++20 ranges库的简介'
 + update at 2022-08-27 '重写了部分代码实例，以及补充了部分内容'
 + update at 2022-04-25 '关于auto和bool的一个问题'
@@ -337,8 +338,6 @@ for (int x : a) cout << x << ' ';
 ```
 可以见，该函数**并非排序**，而是将前$K$小的数放在最前面的$K$个位置，且令第$K+1$位上为第$K+1$大。（原理上`nth_element()`可以使用快速排序的思想完成。实际使用中，需要注意范围左闭右开）
 
----
-
 如果仅仅需要一般的查找，使用`find`或者`find_if`即可，后者搭配`lambda`表达式，可以按需搜索。使用时请注意复杂度，对于一般容器，该函数使用的是顺序遍历，时间复杂度为$\mathcal{O}(n)$。若`find()`查找元素无果，返回的迭代器为`end()`。**特别的，`string`中`find`失败得到的是`string::npos`。**
 
 ### 计算相关
@@ -527,6 +526,121 @@ template<typename E> inline E randreal(E l, E r) {
 
 **注意，$2^{32}-1$需要`int64_t`。此时用`uint32_t`自然可以，但是会比有符号的慢。**
 
++ `lowbit`, `submask enumeration` 等需要在具体的数据结构和算法中使用的技巧，这里就不展开介绍了，可参考如下链接或者自行去OI-Wiki查询。
+  + [树状数组 - Fenwick Tree](https://cp-algorithms.com/data_structures/fenwick.html)
+  + [子集DP - SoSDP](https://cp-algorithms.com/algebra/all-submasks.html)
+
+更多信息可参阅 [Bit manipulation - Algorithms for Competitive Programming](https://cp-algorithms.com/algebra/bit-manipulation.html)
+
+---
+
+## I/O相关
+
+I/O在竞赛中的影响其实不算大，虽说某些“歪门邪道”对于卡常数十分执着，但这毕竟不是竞赛所考核的重点。
+但是，由于语言特性的关系，某些“语言小白”的代码可能因此从`AC`变成`TLE`，这也是本部分独立出来的目的。
+
+<div style="text-align: center; color: Red;">
+人生建议：不要刚会关同步流就跑了，然后刷OJ把能踩的坑全踩了！
+</div>
+
+### 同步流
+
+同步流是cpp关于c的兼容性处理。从字面意思上理解，“同步”和“流”就是这一机制的关键。
+- cpp的流：`std::cin`、`std::cout`、`std::cerr`、`std::clog` 以及“宽字符流”的`std::wcin`、...、`std::wclog`
+- c的流：`stdin` `stdout` `stderr`
+
+同步流就是让C++流与标准C流在每次输入/输出操作后同步。
+
+```cpp
+std::ios_base::sync_with_stdio(false);
+std::cin.tie(nullptr);
+```
+不介意警告信息（**也不会由编译器报啦，只是写法不太规范的问题**）可以写成一行
+```cpp
+cin.tie(nullptr)->sync_with_stdio(false);
+```
+
+{{< admonition info "为什么没有cout.tie(nullptr)" true >}}
+小白或许会疑惑，为什么下面这行不写？
+```cpp
+std::cout.tie(nullptr);
+```
+首先，为什么要`cin.tie(nullptr)`？在C++中`cin`和`cerr`绑定`cout`，而`cout`绑定`NULL`。
+所以写`cout.tie(nullptr)` **“字面意义上看，什么都没做”**。
+
+绑定会导致流的自动刷新（即cin之前flush一下cout，效果是这样的，但具体实现不详），在竞赛中这是一种奢侈的浪费。
+{{< /admonition >}}
+
+- 关闭了同步流，意味着`scanf/printf`, `cin/cout`等**不再同步**，C++流拥有自己的同步独立的缓冲区。
+  - 这使得混合C和C++风格的I/O非常危险，所以**最好不要混用**！！！
+- `std::endl`会导致flush，请使用`\n`换行（事实上理应如此，工程中也建议这样做）。
+  - `cin.tie(nullptr);` + `cout << endl;` 等于白忙活一场且TLE
+- `std::setprecision()` 等也会导致flush，只要设置一次就好了。
+- 对于交互题，IO性能完全不用考虑，**请不要写`cin.tie(nullptr)`**。
+
+### 关闭同步流不是 FAST IO
+
+如上文所述，关闭同步流只是恢复正常，不算快读！真正的快读，你应该自己实现`BufferedReader + fread/fwrite`
+
++ 如果你是在要，那我只能……偷大佬的板子 [Nyaan's Library - misc/fastio.hpp](https://nyaannyaan.github.io/library/misc/fastio.hpp)
+
+### 浮点数、O2 和 Windows (O.o?)
+
+~~在 codeforces 你可能会遇到（但是其它使用 Linux 环境评测的不会），浮点数读入和`O2`负优化。~~
+(**2024-01-20 实测Bug无法复现了，悲~**) 就当记录历史吧。
+
+- [Why std::cin has such a low efficiency when processing float points on Codeforces?](https://codeforces.com/blog/entry/95815)
+- [read doubles faster in cpp](https://codeforces.com/blog/entry/93706?f0a28=1)
+
+目前，**只要不选择 GNU G++17 7.3.0 非64位 的提交选项**就不会触发此问题。
+
+```diff
+friend auto operator>>(std::istream& is, Point& _p) -> std::istream& {
+-  return is >> _p.x >> _p.y;
++  static std::string s;
++  std::cin >> s;
++  _p.x = std::stod(s);
++  std::cin >> s;
++  _p.y = std::stod(s);
++  return is;
+}
+```
+在某些有点历史的代码，你可能会看见类似上面这种操作（`std::stod()`是`string -> double`的转换函数）。
+不要喷他们代码得烂，他们只是遇到了bug（
+
+### IO写法技巧
+
++ `cin.exceptions()` 如果看我的代码的话，你会发现下面这行：
+```cpp
+std::cin.exceptions(std::istream::failbit);
+```
+这是为了**捕获读入（类型）错误**，其用处是：**codeforces交错问题，让它在第一个样例RE（如果读入方式完全一样就认命吧），从而不增加罚时。**
+
+**注意**，这和 `while(cin >> ...)` 或者 `while(scanf(...) != EOF)` 的多组输入模式有冲突。原因似乎是，`while`的终止条件就是 `istream::failbit` 置位（然后被捕获，触发RE）。
+
++ `cout << " \n"[i == n];` 避免行末空格，原理见[我的另一篇博客](../b1757d4d.html/)。
++ 文件I/O，怎么用C++的风格？
+  + 其实没必要，用`freopen + scanf/printf`吧
+  + 非要用，使用`ifstream/ofstream`吧
+    + 什么？你还要`cin/cout`?
+    + 那就把`cin.rdbuf()`重定向吧。
+
+如下是一个完整的例子
+```cpp
+  std::ios_base::sync_with_stdio(false);
+  std::cin.exceptions(std::istream::failbit);
+  std::cin.tie(nullptr);
+// 在编译指令里加 -DKENSHIN ，只在本地使用文件输入输出
+#if defined(KENSHIN)
+  std::ifstream input("_.in");
+  std::ofstream output("_.out");
+
+  std::cin.rdbuf(input.rdbuf());
+  std::cout.rdbuf(output.rdbuf());
+#endif
+
+  std::cout << std::fixed << std::setprecision(15);
+```
 ---
 
 ## 杂项 与 写法上的技巧
@@ -595,10 +709,6 @@ do {
 ```cpp
 s.substr(start，length); // length 参数缺省时表示后续直到 end()
 ```
-
-+ `cout << " \n"[i == n];`
-
-避免行末空格，原理见[我的另一篇博客](../b1757d4d.html/)。
 
 + `std::vector` 内存回收问题。举个例子[CF1706D2](https://codeforces.com/problemset/problem/1706/D2)。
 
