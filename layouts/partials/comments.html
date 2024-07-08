@@ -1,6 +1,7 @@
 {{- /* Comments area start */ -}}
 {{- /* to add comments read => https://gohugo.io/content-management/comments/ */ -}}
 {{- /* twikoo.js => https://twikoo.js.org/ */ -}}
+{{- if and (site.Params.comments) (.Params.comments) }}
 <footer class="tc-container" id="comment">
   <div class="tc-title">
     <p class="c-title">Discussion</p>
@@ -17,4 +18,5 @@
     el: '#tcomment'
   })
 </script>
+{{- end }}
 {{- /* Comments area end */ -}}

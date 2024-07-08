@@ -12,7 +12,7 @@ enablePermalinks: true
 enableEmoji: true
 enableRobotsTXT: true
 
-buildDrafts: true
+buildDrafts: false
 buildFuture: false
 buildExpired: false
 
@@ -50,7 +50,7 @@ params:
   TocOpen: true
 
   math: true
-  comments: true
+  comments: false
 
   profileMode:
     enabled: true

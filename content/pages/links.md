@@ -45,6 +45,8 @@ ShowToc: false
 
 ---
 
+**抱歉，暂不接受友链申请，待本站重构完毕再尝试开放。**
+
 ### 关于本站
 
 {{< friend name="Kenshin2438のBlog" url="https://kenshin2438.top/" logo="/images/avatar.webp" word="大概算是（半）个技术博客。" >}}
