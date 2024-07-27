@@ -1,57 +1,81 @@
 ---
-title: "Links"
+title: "关于 / 友链"
 url: "/links/"
-description: "此处是友链，以及一些推荐的博客(比如本站😋)"
+description: ""
 hidemeta: true
 ShowBreadCrumbs: false
 ShowToc: false
 ---
-
----
-<!-- {{< friend name="Rivego's Blog" url="https://rivego.cn/" logo="https://rivego.cn/wp-content/uploads/2022/05/warma_icon.jpg" word="" >}} -->
-<!-- {{< friend name="不语奈何の博客" url="https://buyunaihe.cn/" logo="https://buyunaihe.cn/wp-content/uploads/2021/11/avatar1.jpg" word="" >}} -->
-<!-- {{< friend name="Just Call Me Jax" url="https://jaxvanyang.github.io/" logo="https://jaxvanyang.github.io/assets/images/avatar.png" word="">}} -->
-<!-- {{< friend name="尤利の博客" url="https://amcones.cn/" logo="https://amcones.cn/images/uli.jpeg" word="盛夏日落迟 灯火未夜匆匆明" >}} -->
-
-{{< friend name="lyc的自留地"
-  url="https://lyc2425.eu.org/"
-  logo="https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fbc7e9a8b-e62c-44f1-b563-c0168e30e0ed%2Fimage.jpg?table=collection&id=2aa091ae-74f0-45cf-8dc3-65248f153eaa"
-  word="要做一个苦行僧，探索自己的人生道路"
->}}
-
-{{< friend name="Calyee"
-  url="https://blog.calyee.top/"
-  logo="https://blog.calyee.top/img/avatar.jpg"
-  word="追求充实，分享快乐"
->}}
-
-{{< friend name="lukelzlz"
-  url="https://lukelzlz.top/"
-  logo="https://cdn.lukelzlz.top/IMG_0678.jpeg"
-  word="见证者，为见证而来。铭记者，因铭记而生。"
->}}
-
-{{< friend name="浣心／Heart of Sleeve"
-  url="https://blog.loikein.one/"
-  logo="https://avatars.githubusercontent.com/u/20618587?v=4"
-  word="用爱和理性对抗荒谬"
->}}
-
-{{< friend name="maspyのHP"
-  url="https://maspypy.com/"
-  logo="https://maspypy.com/wp-content/themes/cocoon-master/images/site-icon32x32.png"
-  word=""
->}}
-
 ---
 
-**抱歉，暂不接受友链申请，待本站重构完毕再尝试开放。**
+## 名字
 
-### 关于本站
+我的名字是Andre Pimpo。A姓比较怪异，不是个大姓，所以说每次跟人打招呼，都比较难以启齿。久而久之，养成了内向的性格。
 
-{{< friend name="Kenshin2438のBlog" url="https://kenshin2438.top/" logo="/images/avatar.webp" word="大概算是（半）个技术博客。" >}}
+后来，直到社交软件特别是微信普及了以后，这种情况才有所好转。因为大家或多或少都认识了几个“A王鑫”或者“AA 龙腾翡翠批发”。我就跟人说，这个，这个，还有这个，都是我本家。人们一下儿就明白了。
 
-- **名称**: Kenshin2438のBlog
-- **链接**: https://kenshin2438.top/
-- **图标**: https://kenshin2438.top/images/avatar.webp
-- **描述**: 大概算是（半）个技术博客
+我8岁的时候有一回去幼儿园相亲。对方听我解释完，就皱眉说，不对呀，人家天天发这么多朋友圈，你啥也不发。你是不是基因有问题啊？
+
+我就解释说，你比如说繁体字，头发的发和发财的发，它不是同一个字儿，推行简体字以后，就简化到一块去了。我们这块呢，以前姓A的，姓AA的，姓AAA的，还有姓AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA的，建国以后，统统都姓A了。所以说基因从一开始就不一样。
+
+对方问那你祖上到底是姓几个A的呀？我张口结舌答不上来。冷汗直冒。当天晚上我翻来覆去气不过，把她给拉黑了。我想，太聪明是一种危害！
+
+## 图片
+
+我特别喜欢一种植物，就是橘子。
+
+8岁那年，我看到一袋砂糖橘，仿佛身体里某个开关被打开了，一气儿吃了25个砂糖橘。第二天，我就到幼儿园相亲去了。
+
+但过程很不顺利。后来，总之呢，到了派出所去。在派出所，赵警官问我住在哪里，叫什么名字，我很难为情。我怕他知道了这些，就会想办法偷走我的魂魄。我对他说，我住在橘子共和国。事实上，我正好是橘子共和国的首席橘子。
+
+这就是为什么我的博客的图标是一个橘子。不仅仅是一个简单的橘子，更是一个至上主义的橘子。
+
+![SUPERMATISM_MANDARIN!!!!](/images/2024/apple-touch-icon-placid.png)
+
+最后，我还是从派出所回来了。我鼻炎的老毛病就是那时候落下的。
+
+## 爱好
+
+之前我在电梯里碰见一个“青春启程”口才班的学员，他告诉了我一个概念。
+
+他说朋友你看，咱们刚开始用一台电脑的时候，电脑是没有个性的。但是用了一年以后，每个人的电脑都有个性，捡到就知道是谁的。手表就永远没有这种个性。这说明越是高级的东西越有个性。
+
+我说起开，谁他妈是你朋友啊。
+
+他说朋友。我看你就很有个性嘛。
+
+我说你能不能别堵着电梯门口，我们这一电梯人都急着出去上厕所呢。
+
+后来在换裤子的时候，我仔细思考了这个问题。我觉得今天的人一般不太关心捡到的电脑有什么个性，还是比较关心硬件的具体性能。对于电脑这样的生产资料来说，爱好大概不属于具体性能的一部分吧。
+
+我最近戒断了流媒体，感觉十分良好。昨天做职业倾向评估和辅导的兄弟问我有什么爱好，我回答说我的爱好就是不消费现代工业文化产品。
+
+他立刻就肃然起敬。他又问我在空闲时间做什么，我说每天在B站学习游戏建模8小时，在微博投票抽奖8小时，在虎扑步行街发帖8小时。
+
+后来我觉得这么说不合适，就补充说，这些都是免费的，真的没有消费。他说哥们，我怕我辅导不了你呀。
+
+前两天 Netflix 自己又下回来了，还祝我生日快乐。我琢磨着，大概是市场经济向我发出了警告。
+
+## 写博客
+
+我写博客是2019年1月开始的，那个时候我快要成年，生活中有一点痛苦。
+
+我小时候常常想成为一个作家。后来上学以后，目标有所转变，想要当一个院士。我常常思考怎么调和这两种倾向。
+
+我在生活中经常在几个地方见到作家，其中之一就是安定医院。进了安定医院，也是院士了，我这样憧憬着。
+
+在本质上，痛苦只是内部或者外部精神的躁动，它的反面就是安定。我尝试了许多办法获得内心的安定。有一天，我妈给我转了一个抖音，说佛在冥想前，也是痛苦的。我想既然冥想的冥是宝盖头，写博客的写也是宝盖头，便开始写博客了。说起宝盖头，过两天出院以后，我也要去剪一个宝盖头。
+
+---
+
+## 友链
+
+我听说写博客的都爱放几个友链，就像摄影师喜欢去漫展找coser扩列，特斯拉车主喜欢别人打他们挪车电话，或者黑猩猩喜欢叫姐妹给捉虱子一样。
+
+所以我也弄了一些，放在这里，对于移动端更友好。这里有两种作者，要么是我觉得他们写的一些东西比较有意思，或者他们是我现实中认识的人里面也写博客的。
+
+- [Sean Carroll](https://www.preposterousuniverse.com/blog/)
+- [万物皆流 ](http://www.andrewsun.net/panta_rhei/)
+- [Three-toed sloth](http://bactra.org/weblog/)
+- [凉快可的松](https://coldison.github.io/)
+- [Swampy](https://swampy.io/)

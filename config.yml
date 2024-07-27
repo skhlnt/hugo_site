@@ -1,7 +1,7 @@
-baseURL: https://kenshin2438.top/
+baseURL: https://andrepimpo.wang/
 DefaultContentLanguage: "zh"
-languageCode: en-us
-title: Kenshin2438
+languageCode: zh
+title: 首页
 theme: PaperMod
 
 permalinks:
@@ -12,7 +12,7 @@ enablePermalinks: true
 enableEmoji: true
 enableRobotsTXT: true
 
-buildDrafts: false
+buildDrafts: true
 buildFuture: false
 buildExpired: false
 
@@ -30,8 +30,8 @@ paginate: 10
 
 params:
   env: production # to enable google analytics, opengraph, twitter-cards and schema.
-  author: Kenshin2438
-  description: "Kenshin2438的个人博客，不定期分享一些算法(主要为ACM/ICPC中常见的涉及数学的部分)教程，以及个人的生活琐事。"
+  author: Miralem
+  description: "对于学龄前儿童，最常见的ADHD症状是多动症。出现一些注意力不集中、注意力分散的运动活动以及冲动，这是正常现象。"
 
   # defaultTheme: light
   # defaultTheme: dark
@@ -50,42 +50,29 @@ params:
   TocOpen: true
 
   math: true
-  comments: false
+  comments: true
 
   profileMode:
-    enabled: true
-    title: "Kenshin2438のBlog" # optional default will be site title
-    subtitle: "ACM/Mathematics/Notes"
-    imageUrl: /images/avatar.webp # optional
-    imageTitle: "avatar.webp" # optional
+    enabled: false
+    title: "" # optional default will be site title
+    subtitle: ""
+    imageUrl: ""
+    imageTitle: "" # optional
     imageWidth: 120 # custom size
     imageHeight: 120 # custom size
-    buttons:
-      # - name: Notes
-      #   url: "https://spacedot.xyz/"
-      - name: Posts
-        url: "/posts/"
-      - name: Search
-        url: "/search/"
-      - name: Links
-        url: "/links/"
   
   # home-info mode
-  # homeInfoParams:
-  #   Title: "Hi there \U0001F44B"
-  #   Content: Welcome to my blog
+  homeInfoParams:
+    Title: "miralem 的博客"
+    Content: andrepimpo.wang
 
   socialIcons: # optional
-    - name: github
-      url: "https://github.com/Kenshin2438"
-    # - name: telegram
-    #   url: "https://telegram.org/"
-    # - name: qq
-    #   url: "https://qq.com/"
+    - name: email
+      url: "mailto:wzh41807@126.com"
     - name: rss
       url: "index.xml"
 
-  fuseOpts:
+  fuseOpts: # 模糊搜索参数，暂时不动了吧
     isCaseSensitive: false
     shouldSort: true
     location: 0
@@ -101,10 +88,6 @@ params:
     favicon16x16: "/favicon/favicon-16x16.png"
     favicon32x32: "/favicon/favicon-32x32.png"
     apple_touch_icon: "/favicon/apple-touch-icon.png"
-    # safari_pinned_tab: ""
-
-  twikoo:
-    version: 1.6.36
 
 taxonomies:
   category: categories
@@ -124,7 +107,7 @@ markup:
 menu:
   main:
     - identifier: archives
-      name: Archive
+      name: 归档
       url: /archives/
       weight: 10
     # - identifier: categories
@@ -132,18 +115,18 @@ menu:
     #   url: /categories/
     #   weight: 20
     - identifier: tags
-      name: Tags
+      name: 标签
       url: /tags/
       weight: 30
     - identifier: links
-      name: Links
+      name: 关于
       url: /links/
       weight: 40
     - identifier: search
-      name: Search
+      name: 搜索
       url: /search/
       weight: 50
-    - identifier: travelling
-      name: Travelling
-      url: https://travellings.link/
-      weight: 60
+    # - identifier: travelling
+    #   name: Travelling
+    #   url: https://travellings.link/
+    #   weight: 60
