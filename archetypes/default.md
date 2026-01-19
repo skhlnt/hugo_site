@@ -3,14 +3,10 @@ title: "{{ replace .Name "-" " " | title }}"
 date: {{ .Date }}
 draft: true
 slug: {{ substr (md5 (printf "%s%s" .Date (replace .TranslationBaseName "-" " " | title))) 4 8 }}
-author: "Kenshin2438"
+author: "miralem"
 
 summary: ""
 description: ""
-keywords: 
-  - 
-categories: 
-  - 
 tags: 
   - 
 
@@ -19,11 +15,4 @@ math: true
 comments: true
 ShowToc: true
 TocOpen: true
-
-cover:
-  image: "" # image path/url
-  alt: "" # alt text
-  caption: "" # display caption under cover
-  relative: false
 ---
-

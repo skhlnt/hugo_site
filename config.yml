@@ -50,7 +50,7 @@ params:
   TocOpen: true
 
   math: true
-  comments: true
+  comments: false
 
   profileMode:
     enabled: false
@@ -94,15 +94,49 @@ taxonomies:
   tag: tags
   series: series
 
+security:
+  enableInlineShortcodes: true
+
+  exec:
+    allow:
+      - '^(dart-)?sass(-embedded)?$'
+      - '^go$'
+      - '^npx$'
+      - '^postcss$'
+      - '^pandoc$'
+
 markup:
+  defaultMarkdownHandler: "goldmark"
+  # defaultMarkdownHandler: "pandoc"
   goldmark:
     renderer:
       unsafe: true # HUGO 默认转义 Markdown 文件中的 HTML 代码，如需开启的话
+    extensions:
+      passthrough:
+        delimiters:
+          block:
+          - - $$
+            - $$
+          inline:
+          - - $
+            - $
+        enable: true
   highlight:
     codeFences: true
     lineNos: true
     guessSyntax: true
     noClasses: false
+  # pandoc:
+  #   extensions:
+  #     - tex_math_dollars
+  #     - tex_math_single_backslash
+  #     - latex_macros
+  #     - raw_tex
+  #   args:
+  #     - "--mathjax"
+  #     - "--katex"
+  #   rendering:
+  #     math-renderer: "katex"
 
 menu:
   main:

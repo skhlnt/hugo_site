@@ -30,7 +30,7 @@ ShowToc: false
 
 这就是为什么我的博客的图标是一个橘子。不仅仅是一个简单的橘子，更是一个至上主义的橘子。
 
-![SUPERMATISM_MANDARIN!!!!](/images/2024/apple-touch-icon-placid.png)
+![supermatism_mandarin](/images/test/android-chrome-512x512.png)
 
 最后，我还是从派出所回来了。我鼻炎的老毛病就是那时候落下的。
 
