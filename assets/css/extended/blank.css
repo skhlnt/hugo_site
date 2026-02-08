@@ -28,3 +28,305 @@
   text-indent: 0;
   text-rendering: auto;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Header 黑色 */
+.nav {
+  background-color: #000000;
+}
+
+.nav a,
+.logo a {
+  color: white;
+}
+
+/* 隐藏黑夜模式切换按钮 */
+button#theme-toggle {
+  display: none !important;
+}
+
+#menu .active {
+  border-bottom-color: white;
+}
+
+
+/* 首页上半部分黑色背景 */
+/* 优雅方案：让黑色背景自动跟随 home-info 元素的高度 */
+
+/* 首页整体背景色 */
+body.list:has(.home-info) {
+  background-color: var(--theme);
+}
+
+.dark.list:has(.home-info) {
+  background-color: rgb(29, 30, 32);
+}
+
+/* home-info 区域：使用伪元素创建黑色背景，自动跟随内容高度 */
+.home-info {
+  position: relative;
+  background-color: transparent;
+  color: white;
+  margin-bottom: calc(var(--gap) * 2);
+}
+
+.home-info::before {
+  content: "";
+  position: absolute;
+  top: calc(-100vh); /* 向上延伸覆盖整个视口 */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100vw;
+  height: calc(100vh + 100% + var(--gap)); /* 从顶部到 home-info 下方一点 */
+  background-color: #000000;
+  z-index: -1;
+}
+
+.home-info h1,
+.home-info .entry-content {
+  color: white;
+}
+
+/* 社交图标白色 */
+.social-icons a {
+  color: white;
+}
+
+.social-icons a:hover {
+  color: var(--hover-orange) !important; /* 使用你已定义的橘色 */
+}
+
+/* 手机端调整 - 只在首页 */
+/* @media screen and (max-width: 768px) {
+  body.list:has(.home-info) {
+    background: linear-gradient(to bottom, #000000 0%, #000000 45vh, var(--theme) 45vh);
+  }
+  
+  .dark.list:has(.home-info) {
+    background: linear-gradient(to bottom, #000000 0%, #000000 45vh, rgb(29, 30, 32) 45vh);
+  }
+} */
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* 统一使用橘色变量 */
+:root {
+  --hover-orange: #f86917;
+  --hover-green: #338e1f;
+}
+
+/* Hover 橘色效果 */
+
+/* 首页所有按钮 hover */
+button:hover,
+.button:hover,
+button#theme-toggle:hover {
+  color: var(--hover-orange) !important;
+}
+
+/* 导航链接 hover */
+.nav a:hover,
+#menu a:hover,
+.logo a:hover {
+  color: var(--hover-orange) !important;
+}
+
+/* 社交图标 hover */
+.social-icons a:hover {
+  color: var(--hover-orange) !important;
+}
+
+/* 正文中的所有链接 hover */
+.post-content a:hover,
+.entry-content a:hover,
+article a:hover {
+  color: var(--hover-orange) !important;
+}
+
+/* 文章卡片标题链接 hover */
+.post-entry h2 a:hover,
+.entry-link:hover {
+  color: var(--hover-orange) !important;
+}
+
+/* 分页按钮 hover */
+.pagination a:hover {
+  background: var(--hover-orange) !important;
+  color: white !important;
+}
+
+/* 首页文章卡片 hover 橘色边框 - 直角 */
+.post-entry {
+  border: 2px solid transparent;
+  border-radius: 0 !important; /* 移除圆角 */
+  transition: border-color 0.3s ease;
+}
+
+.post-entry:hover {
+  border-color: var(--hover-green);
+}
+
+/* 首页标题 - 白色矩形黑色字体 */
+.home-info h1 {
+  background-color: var(--hover-orange);
+  color: white;
+  padding: 15px 25px;
+  border-radius: 0;
+  display: inline-block;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Tags 页面 - 移除圆角 */
+.terms-tags a,
+.term-tag {
+  border-radius: 0 !important;
+}
+
+/* 静态页面（menu页面）标题样式 - 橘色矩形 */
+.page-header h1 {
+  font-size: 1.8em;
+  background-color: var(--hover-orange); /* 橘色背景 */
+  color: white; /* 白色文字 */
+  padding: 12px 20px;
+  border-radius: 0;
+  display: inline-block;
+  margin-bottom: 20px;
+}
+
+
+
+/* 正文页面标题样式 - 小字号 */
+/* 文章页面标题样式 - 绿色矩形 */
+.post-single .post-title {
+  font-size: 1.8em;
+  background-color: var(--hover-green); /* 绿色背景 */
+  color: white; /* 白色文字 */
+  padding: 12px 20px;
+  border-radius: 0;
+  display: inline-block;
+  margin-bottom: 20px;
+  display: block;
+  width: fit-content;
+  max-width: 100%;
+}
+
+/* 如果标题太长，让它能换行 */
+.post-single .post-title {
+  display: block;
+  width: fit-content;
+  max-width: 100%;
+}
+
+body.page-gallery .post-title,
+body.page-links .post-title {
+  background-color: var(--hover-orange) !important;
+}
+
+
+
+
+
+
+
+
+
+
+
+/* 正文底部标签和翻页按钮样式调整 */
+
+/* 1. 移除圆角，变成直角 */
+.post-tags a,
+.paginav,
+.paginav a {
+  border-radius: 0 !important;
+}
+
+/* 2. paginav 容器去掉边框，改为给内部的 prev 和 next 加边框 */
+.post-tags a {
+  border: 2px solid white;
+}
+
+.paginav {
+  border: none;
+  background: transparent;
+  gap: 10px; /* prev 和 next 之间的间距 */
+}
+
+.paginav .prev,
+.paginav .next {
+  border: 2px solid white;
+  background: var(--code-bg);
+}
+
+/* 3. hover 时边框变橘色 */
+.post-tags a:hover {
+  background: white !important;
+  border-color: var(--hover-orange);
+  color: var(--primary);
+}
+
+.paginav .prev:hover,
+.paginav .next:hover {
+  border-color: var(--hover-orange);
+  background: white !important;
+}
+
+/* 首页文章列表分页按钮样式 */
+
+/* 移除圆角 */
+.pagination a {
+  border-radius: 0 !important;
+}
+
+/* 白色边框，黑色背景，白色文字 */
+.pagination a {
+  border: 2px solid white;
+  background: #000000 !important;
+  color: white !important;
+}
+
+/* hover 时边框变橘色，背景变白色，文字变黑色 */
+.pagination a:hover {
+  background: var(--hover-orange) !important;
+  border-color: var(--hover-orange);
+  color: white !important;
+}

@@ -1,0 +1,25 @@
+{{- define "main" }}
+
+{{/* We add the 'menu-page-wrapper' class here for consistent styling with other menu pages */}}
+<article class="post-single menu-page-wrapper">
+  
+  <header class="page-header">
+    {{/* This is the title of your page, e.g., "关于 / 友链" */}}
+    <h1>{{ .Title }}</h1>
+    
+    {{/* If you add a 'description' to the front matter of links.md, it will show here */}}
+    {{- if .Description }}
+    <div class="post-description">{{ .Description }}</div>
+    {{- end }}
+  </header>
+
+  {{/* This is where the main content from your content/pages/links.md file will be rendered */}}
+  {{- if .Content }}
+  <div class="post-content">
+    {{ .Content }}
+  </div>
+  {{- end }}
+
+</article>
+
+{{- end }}

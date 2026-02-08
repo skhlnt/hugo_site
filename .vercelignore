@@ -1,0 +1,22 @@
+# Hugo build output (Vercel will regenerate it)
+public/
+
+# Git files
+.git/
+.gitignore
+.gitmodules
+
+# Hugo lock file
+.hugo_build.lock
+
+# Drafts - don't need to upload
+drafts/
+
+# Theme git history if it's a submodule
+themes/*/.git/
+
+# Vercel config
+.vercel/
+
+# Map tiles - too many files, use CDN instead
+static/images/gallery/maps/

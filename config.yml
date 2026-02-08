@@ -12,7 +12,7 @@ enablePermalinks: true
 enableEmoji: true
 enableRobotsTXT: true
 
-buildDrafts: true
+buildDrafts: false
 buildFuture: false
 buildExpired: false
 
@@ -36,7 +36,7 @@ params:
   # defaultTheme: light
   # defaultTheme: dark
   defaultTheme: auto # to switch between dark or light according to browser theme
-  disableThemeToggle: false
+  disableThemeToggle: true
 
   ShowAllPagesInArchive: true
   ShowCodeCopyButtons: true
@@ -64,7 +64,7 @@ params:
   # home-info mode
   homeInfoParams:
     Title: "miralem 的博客"
-    Content: andrepimpo.wang
+    Content: 晨昏各遣奇风意，星日交轮洗愈新
 
   socialIcons: # optional
     - name: email
@@ -143,7 +143,7 @@ menu:
     - identifier: archives
       name: 归档
       url: /archives/
-      weight: 10
+      weight: 30
     # - identifier: categories
     #   name: Categories
     #   url: /categories/
@@ -151,11 +151,11 @@ menu:
     - identifier: tags
       name: 标签
       url: /tags/
-      weight: 30
+      weight: 40
     - identifier: links
       name: 关于
       url: /links/
-      weight: 40
+      weight: 10
     - identifier: search
       name: 搜索
       url: /search/
@@ -164,3 +164,8 @@ menu:
     #   name: Travelling
     #   url: https://travellings.link/
     #   weight: 60
+    - identifier: gallery
+      name: 画廊
+      url: /gallery/
+      weight: 25
+

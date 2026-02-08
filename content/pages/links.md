@@ -2,6 +2,7 @@
 title: "关于 / 友链"
 url: "/links/"
 description: ""
+layout: "links"
 hidemeta: true
 ShowBreadCrumbs: false
 ShowToc: false
