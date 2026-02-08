@@ -330,3 +330,29 @@ body.page-links .post-title {
   border-color: var(--hover-orange);
   color: white !important;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.gallery-item {
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    border: 3px solid transparent;
+    transition: border-color 0.3s ease;
+}
+
+.gallery-item:hover {
+    border: 3px solid var(--hover-green);
+}
